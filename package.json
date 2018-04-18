@@ -1,0 +1,32 @@
+{
+  "name": "tv-shows-4-u",
+  "version": "0.0.0",
+  "description": "TV Shows",
+  "main": "app.js",
+  "scripts": {
+    "migrate": "knex migrate:latest",
+    "start": "npm run migrate && node app"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "author": "Denislav Enchev",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "body-parser": "^1.18.2",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.2",
+    "express-promise-router": "^3.0.1",
+    "joi": "^13.2.0",
+    "jsonwebtoken": "^8.2.1",
+    "knex": "^0.13.0",
+    "lodash": "^4.17.4",
+    "morgan": "^1.9.0",
+    "mysql": "^2.15.0",
+    "objection": "^1.0.0",
+    "objection-password": "^1.0.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0"
+  }
+}
