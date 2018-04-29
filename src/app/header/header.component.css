@@ -1,3 +1,10 @@
+.app-header {
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    z-index: 1000;
+    background-color: #00000085;
+}
 ul {
     list-style-type: none;
     margin: 0;

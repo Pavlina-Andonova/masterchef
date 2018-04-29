@@ -5,7 +5,7 @@ const morgan = require("morgan");
 const express = require("express");
 const Promise = require("bluebird");
 const bodyParser = require("body-parser");
-const cors = require('cors'); 
+const cors = require("cors");
 const promiseRouter = require("express-promise-router");
 const path = require("path");
 const knexConfig = require("./knexfile");
@@ -22,16 +22,14 @@ const router = promiseRouter();
 const app = express()
   .use(bodyParser.json())
   .use(morgan("dev"))
+  .use(express.static(path.join(__dirname, "dist")))
   .use(router)
-  .use(cors({origin: '*'}))
+  .use(cors({ origin: "*" }))
   .set("json spaces", 2);
 
-app.use(express.static(path.join(__dirname, "dist")));
 // Register our REST API.
 registerApi(router);
-app.get("*", (req, res) => {
-  res.render("./dist/index", { req });
-});
+app.use("*", express.static(path.join(__dirname, "dist")));
 
 app.use((err, req, res, next) => {
   if (err) {

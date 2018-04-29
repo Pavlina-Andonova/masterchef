@@ -1,4 +1,4 @@
-<ul>
+<ul class="app-header">
   <li style="padding: 0 50px;">
     <img width="135px" src="https://fanart.tv/api/download.php?type=download&image=35326&section=1" />
   </li>
@@ -6,21 +6,18 @@
     <a routerLink="/">Home</a>
   </li>
   <li routerLinkActive="active-link">
-    <a routerLink="about-us" routerLinkActive=".black">About Us</a>
-  </li>
-  <li routerLinkActive="active-link">
     <a [routerLink]="['menu']">Menu</a>
   </li>
-  <li routerLinkActive="active-link" class="float-xl-right" *ngIf="!isUserAuthenticated">
-    <a routerLink="signup">Sign Up</a>
+  <li routerLinkActive="active-link" class="float-xl-right float-md-right float-sm-right" *ngIf="!isUserAuthenticated">
+    <a [routerLink]="['signup']">Sign Up</a>
   </li>
-  <li routerLinkActive="active-link" class="float-xl-right" *ngIf="!isUserAuthenticated">
-    <a routerLink="signin">Sign In</a>
+  <li routerLinkActive="active-link" class="float-xl-right float-md-right float-sm-right" *ngIf="!isUserAuthenticated">
+    <a [routerLink]="['signin']">Sign In</a>
   </li>
-  <li routerLinkActive="active-link" class="float-xl-right" *ngIf="isUserAuthenticated">
+  <li routerLinkActive="active-link" class="float-xl-right float-md-right float-sm-right" *ngIf="isUserAuthenticated">
     <a (click)="onLogout()">Log out</a>
   </li>
-  <li routerLinkActive="active-link" class="float-xl-right">
+  <li routerLinkActive="active-link" class="float-xl-right" *ngIf="isUserAuthenticated">
     <a [routerLink]="['myProfile']">
       <i class="fa fa-user"></i>
     </a>
