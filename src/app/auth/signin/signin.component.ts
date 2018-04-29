@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { AuthService } from "../auth.service";
 import { Router } from "@angular/router";
 
@@ -8,6 +8,9 @@ import { Router } from "@angular/router";
   styleUrls: ["./signin.component.css"]
 })
 export class SigninComponent implements OnInit {
+  @Output() getSigninModalStateChange = new EventEmitter<boolean>();
+  isModal = true;
+
   loginData = { email: "", password: "" };
   message = { user: "", password: "" };
   data: any;
@@ -26,5 +29,11 @@ export class SigninComponent implements OnInit {
         this.message = err.error.msg;
       }
     );
+  }
+
+
+  closeModal() {
+    this.isModal = false;
+    this.getSigninModalStateChange.emit(false);
   }
 }

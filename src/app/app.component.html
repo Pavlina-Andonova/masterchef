@@ -1,2 +1,11 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
+<div [ngClass]="{'blur-overlay': isSignupModalOpen || isSigninModalOpen}">
+    <app-header (getSigninModalStateChange)="handleSigninModal($event)" (getSignupModalStateChange)="handleSignupModal($event)"></app-header>
+    <router-outlet></router-outlet>
+</div>
+<ng-template [ngIf]="isSignupModalOpen">
+    <app-signup (getSignupModalStateChange)="handleSignupModal($event)"></app-signup>
+</ng-template>
+
+<ng-template [ngIf]="isSigninModalOpen">
+    <app-signin (getSigninModalStateChange)="handleSigninModal($event)"></app-signin>
+</ng-template>

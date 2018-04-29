@@ -1,68 +1,36 @@
-<div class="container">
-          <div class="row">
-              <div class="col-md-6 col-sm-8 mx-auto">
-                  <div class="card border-none">
-                      <div class="card-body">
-                          <div class="mt-2">
-                              <img src="http://mynewcontours.com/wp-content/uploads/sites/10/2017/06/user-icon.png"
-                                   alt="Male" class="brand-logo mx-auto d-block img-fluid rounded-circle"/>
-                          </div>
-                          <p class="mt-4 text-white lead text-center">Sign up</p>
-                          <div class="mt-4">
-                              <form (ngSubmit)="signup()" #signupForm="ngForm">
-                                  <div class="form-group">
-                                      <input
-                                          type="email"
-                                          class="form-control"
-                                          id="email"
-                                          placeholder="Enter email address"
-                                          [(ngModel)]="signupData.email"
-                                          name="email"
-                                          required />
-                                      <div class="error" *ngIf="message.email !== ''">{{message.email}}</div>
-                                  </div>
-                                  <div class="form-group">
-                                      <input
-                                          type="password"
-                                          class="form-control"
-                                          id="password"
-                                          [(ngModel)]="signupData.password"
-                                          name="password"
-                                          placeholder="Enter password"
-                                          required/>
-                                  </div>
-                                  <div class="error" *ngIf="message.password !== ''">{{message.password}}</div>
-                                  <div class="form-group">
-                                      <input
-                                          type="password"
-                                          class="form-control"
-                                          id="confirmPassword"
-                                          name="confirmPassword"
-                                          placeholder="Confirm password"
-                                          required
-                                          #confirmPassword />
-                                      <div class="error" *ngIf="confirmPassword.value !== signupData.password">
-                                          Passwords does not match
-                                      </div>
-                                  </div>
-                                  <button
-                                      type="submit"
-                                      class="btn btn-primary col-4 offset-4"
-                                      [disabled]="!signupForm.form.valid">Sign up</button>
-                              </form>
-                              <div class="clearfix"></div>
-                              <p class="content-divider center mt-4"><span>or</span></p>
-                          </div>
-                          <p class="mt-4 social-login text-center">
-                              <img src="http://webiconspng.com/wp-content/uploads/2017/09/Facebook-PNG-Image-38915.png"
-                                   style="width: 60px;"/>
-                          </p>
-                          <p class="text-center">
-                              Already have an account? <a [routerLink]="['/signin']">Sign in now</a>
-                          </p>
-                      </div>
-                  </div>
-              </div>
-          </div>
-
-  
+<div class="card border-none">
+    <div class="card-body">
+        <div class="mt-2">
+            <img src="http://mynewcontours.com/wp-content/uploads/sites/10/2017/06/user-icon.png" alt="Male" class="brand-logo mx-auto d-block img-fluid rounded-circle"
+            />
+        </div>
+        <p class="mt-4 text-white lead text-center">Sign up</p>
+        <div class="mt-4">
+            <form (ngSubmit)="signup()" #signupForm="ngForm">
+                <div class="form-group">
+                        <button (click)="closeModal()" class="popup-close-button" ng-click="closePopUpBox()"><i class="fa fa-times" aria-hidden="true"></i></button>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email address" [(ngModel)]="signupData.email" name="email"
+                        required />
+                    <div class="error" *ngIf="message.email !== ''">{{message.email}}</div>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" [(ngModel)]="signupData.password" name="password" placeholder="Enter password"
+                        required/>
+                </div>
+                <div class="error" *ngIf="message.password !== ''">{{message.password}}</div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required
+                        #confirmPassword />
+                    <div class="error" *ngIf="confirmPassword.value !== signupData.password">
+                        Passwords does not match
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary col-4 offset-4" [disabled]="!signupForm.form.valid">Sign up</button>
+            </form>
+            <div class="clearfix"></div>
+           
+        <p class="text-center">
+            Already have an account?
+            <a [routerLink]="['/signin']">Sign in now</a>
+        </p>
+    </div>

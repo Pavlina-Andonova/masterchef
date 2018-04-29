@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { AuthService } from "../auth.service";
 import { Router } from "@angular/router";
 
@@ -11,6 +11,10 @@ export class SignupComponent implements OnInit {
   signupData = { email: "", password: "" };
   message = { email: "", password: "" };
   data: any;
+
+  @Output() getSignupModalStateChange = new EventEmitter<boolean>();
+  isModal = true;
+
   constructor(private authServcie: AuthService, private router: Router) {}
 
   ngOnInit() {}
@@ -27,5 +31,10 @@ export class SignupComponent implements OnInit {
         this.message = err.error.msg;
       }
     );
+  }
+
+  closeModal() {
+    this.isModal = false;
+    this.getSignupModalStateChange.emit(false);
   }
 }
