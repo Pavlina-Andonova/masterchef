@@ -23,9 +23,6 @@
 }
 .menu-wrapper {
   max-height: 640px;
-  background: #171a20;
-  background-image: url('../../assets/imgs/pattern.png');
-  font-size: 1vw;
 }
 
 .grey {
@@ -41,10 +38,12 @@
 
 .menu-title {
   position: relative;
+  background: #000000;
   margin: 0 auto;
   padding: 50px 0;
-  width: 400px;
+  width: 100%;
   height: 300px;
+  font-weight: 600;
 }
 
 .menu-title span {
@@ -53,14 +52,14 @@
 
 .back-word {
   position: absolute;
-  top: 50%;
-  left: 25%;
+  top: 40%;
+  left: 40%;
   transform: translateY(-50%);
 }
 
 .front-word {
   position: absolute;
-  top: 45%;
+  top: 34%;
   left: 45%;
 }
 
@@ -71,6 +70,7 @@
   background: #fff;
   -webkit-box-shadow: 9px 16px 20px -6px rgba(0, 0, 0, 0.75);
   box-shadow: 9px 16px 20px -6px rgba(0, 0, 0, 0.75);
+
 }
 
 
