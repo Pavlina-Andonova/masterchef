@@ -26,6 +26,8 @@ export class SignupComponent implements OnInit {
         localStorage.setItem("jwtToken", this.data.token);
         this.authServcie.setIsUserAuthenticated(!!resp);
         this.router.navigate([""]);
+        this.isModal = false;
+        this.getSignupModalStateChange.emit(false);
       },
       err => {
         this.message = err.error.msg;

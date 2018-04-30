@@ -6,8 +6,9 @@ import { ProfileComponent } from "./profile/profile.component";
 import { SigninComponent } from "./auth/signin/signin.component";
 import { SignupComponent } from "./auth/signup/signup.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { MenuComponent } from "./menu/menu.component";
 
-import { MenuComponent } from "./menu/menu/menu.component";
+
 
 const appRouter: Routes = [
   { path: "", component: HomeComponent, pathMatch: "full" },

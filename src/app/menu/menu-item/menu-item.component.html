@@ -1,0 +1,39 @@
+<div class="menu-item-card d-inline-block m-2" *ngFor="let menuItem of menu">
+  <div class="overlay">
+    <div class="container">
+      <div class="row">
+        <div>
+
+        </div>
+        <div class="col-6">
+          <h3 class="menu-item-name">{{menuItem.title}}</h3>
+          <img class="menu-item-img" src="https://dostavka.happy.bg/remote/files/images/136/fit_640_400.png">
+          <div class="price">
+            <span>{{menuItem.price}}
+              <span class="comma">,</span>
+
+
+              <small>40</small>
+              <sub>лв.</sub>
+            </span>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="weight">
+            <span>{{menuItem.weight}} </span>
+            <span>гр.</span>
+          </div>
+          <div class="desc">
+            Dscription goes here...
+          </div>
+
+          <div class="buttons">
+            <a class="item_link">Details</a>
+            <a class="item_link add">Add</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,15 +1,15 @@
-import { NgModule } from "@angular/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { CommonModule } from "@angular/common";
-import { BrowserModule } from "@angular/platform-browser";
-import { RouterModule } from "@angular/router";
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
-
-
-import { AuthService } from "./auth.service";
+import { AuthService } from './auth.service';
+import { SigninComponent } from './signin/signin.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [SigninComponent, SignupComponent],
   imports: [
     FormsModule,
     ReactiveFormsModule,
@@ -17,6 +17,7 @@ import { AuthService } from "./auth.service";
     BrowserModule,
     RouterModule
   ],
+  exports: [SigninComponent, SignupComponent],
   providers: [AuthService]
 })
 export class AuthModule {}

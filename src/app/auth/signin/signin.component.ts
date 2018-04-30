@@ -24,6 +24,8 @@ export class SigninComponent implements OnInit {
         localStorage.setItem("jwtToken", this.data.token);
         this.aurhService.setIsUserAuthenticated(!!resp);
         this.router.navigate([""]);
+        this.isModal = false;
+        this.getSigninModalStateChange.emit(false);
       },
       err => {
         this.message = err.error.msg;

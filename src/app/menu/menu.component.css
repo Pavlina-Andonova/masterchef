@@ -1,0 +1,45 @@
+img {
+  width: 100%;
+}
+.menu-wrapper {
+  margin: 0 4%;
+}
+.header {
+  position: absolute;
+}
+.menu-title {
+  position: absolute;
+  top: 22%;
+  left: 36%;
+  margin: 0 auto;
+  padding: 50px 0;
+  width: 400px;
+  height: 300px;
+}
+
+.menu-title span {
+  font-size: 80px;
+}
+
+.back-word {
+  position: absolute;
+  transform: translateY(-50%);
+}
+
+.front-word {
+  position: absolute;
+  top: 33px;
+  left: 66px;
+}
+
+.grey {
+  color: #55575a;
+}
+
+.orange {
+  color: #934215;
+}
+.menu-wrapper h1 {
+  font-size: 5.5em;
+  position: absolute;
+}

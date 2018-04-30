@@ -14,8 +14,7 @@ import { HeaderComponent } from "./header/header.component";
 import { HomeComponent } from "./home/home.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
-import { SignupComponent } from "./auth/signup/signup.component";
-import { SigninComponent } from "./auth/signin/signin.component";
+
 
 @NgModule({
   declarations: [
@@ -24,9 +23,7 @@ import { SigninComponent } from "./auth/signin/signin.component";
     PageNotFoundComponent,
     SplitPipe,
     ProfileComponent,
-    HomeComponent,
-    SignupComponent,
-    SigninComponent
+    HomeComponent
   ],
   imports: [
     AppRouterModule,
