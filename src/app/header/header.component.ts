@@ -29,7 +29,7 @@ export class HeaderComponent {
   onLogout() {
     localStorage.removeItem("jwtToken");
     this.authService.setIsUserAuthenticated(false);
-    this.router.navigate(["home"]);
+    this.router.navigate([""]);
   }
 
   ngOnDestroy() {
