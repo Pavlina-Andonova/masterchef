@@ -32,12 +32,14 @@
   </div>
 
 
-
-  <div class="category-card">
-    <img src="https://images.food52.com/qb4osJLC7G7LlErt33itL2HIHWw=/753x502/4932babe-6786-4653-bfdb-872c171a72bd--food52_10-25-11-3782.jpg"
-      alt="">
-    <div class="title">
-      <h2>Salads</h2>
+  <div class="container">
+    <div class="row">
+      <div 
+      class="col-6 col-md-4 col-lg-3 flip-card"
+      *ngFor="let menuCategory of menuCategories" >
+        <app-flip-card
+          [flipCardData]="menuCategory"
+        ></app-flip-card>
+      </div>
     </div>
-
   </div>
