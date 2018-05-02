@@ -9,6 +9,13 @@ export class MenuListItemComponent implements OnInit {
 
   constructor() { }
 
+  categories = [
+    {type: 'salad'},
+    {type: 'desserts'},
+    {type: 'main'},
+    {type: 'pizza'},
+    {type: 'drinks'}
+  ]
   ngOnInit() {
   }
 

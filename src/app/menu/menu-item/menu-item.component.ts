@@ -28,6 +28,42 @@ export class MenuItemComponent implements OnInit {
       description: 'Description goes here...',
       price: 7.0,
       weight: 350
+    },
+    {
+      title: 'Salad',
+      description: 'Description goes here...',
+      price: 7.0,
+      weight: 350
+    },
+    {
+      title: 'Salad 1',
+      description: 'Description goes here...',
+      price: 7.0,
+      weight: 350
+    },
+    {
+      title: 'Salad 2',
+      description: 'Description goes here...',
+      price: 7.0,
+      weight: 350
+    },
+    {
+      title: 'Salad',
+      description: 'Description goes here...',
+      price: 7.0,
+      weight: 350
+    },
+    {
+      title: 'Salad 1',
+      description: 'Description goes here...',
+      price: 7.0,
+      weight: 350
+    },
+    {
+      title: 'Salad 2',
+      description: 'Description goes here...',
+      price: 7.0,
+      weight: 350
     }
   ];
 }

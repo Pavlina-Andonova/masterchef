@@ -1,4 +1,4 @@
-<div class="container menu-list-item">
+<div class="container menu-list-item" *ngFor="let category of categories">
   <div class="row align-items-center">
 
     <div class="l-side img-hold col-4">
@@ -9,12 +9,9 @@
 
     <div class="r-side col-7 ">
       <div class="overlay">
-        <span class="title">Salad</span>
+        <span class="title">{{category.type}}</span>
         <img class="right-arrow " src="https://di-uploads-pod2.dealerinspire.com/grapponefordredesign/uploads/2015/02/white-right-arrow.png">
       </div>
     </div>
-
- 
-
 </div>
 </div>
