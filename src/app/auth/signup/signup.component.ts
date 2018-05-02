@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { AuthService } from "../auth.service";
 import { Router } from "@angular/router";
+import { ValidationManager } from "../../shared/Services/validation-manager";
 
 @Component({
   selector: "app-signup",
@@ -8,19 +9,31 @@ import { Router } from "@angular/router";
   styleUrls: ["./signup.component.scss"]
 })
 export class SignupComponent implements OnInit {
-  signupData = { email: "", password: "" };
-  message = { email: "", password: "" };
-  data: any;
-
+  
   @Output() getSignupModalStateChange = new EventEmitter<boolean>();
   isModal = true;
+  
+  form: any;
+  data: any;
+  message = { email: "", password: "" };
 
   constructor(private authServcie: AuthService, private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.form = new ValidationManager({
+      'email': 'required|email',
+      'password': 'required|rangeLength:4,15',
+      'confirmPassword': 'required'
+    });
+
+    
+  }
 
   signup() {
-    this.authServcie.registerUser(this.signupData).subscribe(
+    let userData = {...this.form.formGroup.value};
+    delete userData.confirmPassword;
+
+    this.authServcie.registerUser(userData).subscribe(
       resp => {
         this.data = resp;
         localStorage.setItem("jwtToken", this.data.token);
@@ -33,10 +46,10 @@ export class SignupComponent implements OnInit {
         this.message = err.error.msg;
       }
     );
+    console.log(this.form.formGroup.value)
   }
 
-  closeModal() {
-    this.isModal = false;
-    this.getSignupModalStateChange.emit(false);
+  handleCloseModal(isModalClosed) {
+    isModalClosed && this.getSignupModalStateChange.emit(false);
   }
 }

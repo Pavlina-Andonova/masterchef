@@ -7,30 +7,19 @@
         <p class="mt-4 text-white lead text-center">Sign up</p>
         <div class="mt-4">
             <form (ngSubmit)="signup()" #signupForm="ngForm">
-                <div class="form-group">
-                        <button (click)="closeModal()" class="popup-close-button" ng-click="closePopUpBox()"><i class="fa fa-times" aria-hidden="true"></i></button>
-                    <input type="email" class="form-control" id="email" placeholder="Enter email address" [(ngModel)]="signupData.email" name="email"
-                        required />
-                    <div class="error" *ngIf="message.email !== ''">{{message.email}}</div>
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" id="password" [(ngModel)]="signupData.password" name="password" placeholder="Enter password"
-                        required/>
-                </div>
-                <div class="error" *ngIf="message.password !== ''">{{message.password}}</div>
-                <div class="form-group">
-                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required
-                        #confirmPassword />
-                    <div class="error" *ngIf="confirmPassword.value !== signupData.password">
-                        Passwords does not match
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary col-4 offset-4" [disabled]="!signupForm.form.valid">Sign up</button>
+                <popup-close-button (getCloseButtonStateChange)="handleCloseModal($event)"></popup-close-button>
+                <xinput name='email' label='Email' [form]='form' placeholder='Email'></xinput>
+                <xpassword name='password' label='Password' [form]='form' placeholder='Password'></xpassword>
+                <xpassword name='confirmPassword' [form]='form' placeholder='Password'></xpassword>
+                <!-- <div class="error" *ngIf="confirmPassword.value !== signupData.password">
+                    Passwords does not match
+                </div> -->
+                <xbutton></xbutton>
             </form>
-            <div class="clearfix"></div>
-           
+        </div>
         <p class="text-center">
             Already have an account?
             <a [routerLink]="['/signin']">Sign in now</a>
         </p>
     </div>
+</div>

@@ -1,0 +1,10 @@
+.ui-button {
+  background: #934215;
+  border: none;
+  &:hover {
+    background: #934215!important;
+  }
+  &:focus {
+    background: #934215;
+  }
+}

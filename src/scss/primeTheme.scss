@@ -27,7 +27,7 @@ $contentTextColor: #222222;
 $stateDefaultBorderWidth: 1px;
 $stateDefaultBorderColor: #7f7f7f;
 $stateDefaultBgColor: #ffffff;
-$stateDefaultTextColor: #555555;
+$stateDefaultTextColor: #ffffff;
 
 //Active State
 $stateActiveBorderColor: #bebebe;
@@ -51,7 +51,7 @@ $stateErrorTextColor: #cd0a0a;
 
 //Hover State
 $stateHoverBorderColor: none;
-$stateHoverBgColor: none;
+$stateHoverBgColor: red;
 $stateHoverTextColor: none;
 
 //Forms

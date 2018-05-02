@@ -9,11 +9,14 @@ import { ValidationManager } from "../../shared/Services/validation-manager";
   styleUrls: ["./signin.component.scss"]
 })
 export class SigninComponent implements OnInit {
-  form: any;
+
   @Output() getSigninModalStateChange = new EventEmitter<boolean>();
   isModal = true;
-  message = { user: "", password: "" };
+
+  form: any;
   data: any;
+  message = { user: "", password: "" };
+  
   constructor(private aurhService: AuthService, private router: Router) {}
 
   ngOnInit() {
