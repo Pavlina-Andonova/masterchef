@@ -14,6 +14,7 @@ import { HeaderComponent } from "./header/header.component";
 import { HomeComponent } from "./home/home.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { SharedModule } from "./shared/shared.module";
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
     AppRouterModule,
     AuthModule,
     MenuModule,
+    SharedModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,

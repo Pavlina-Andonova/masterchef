@@ -1,24 +1,31 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { AuthService } from "../auth.service";
 import { Router } from "@angular/router";
+import { ValidationManager } from "../../shared/Services/validation-manager";
 
 @Component({
   selector: "app-signin",
   templateUrl: "./signin.component.html",
-  styleUrls: ["./signin.component.css"]
+  styleUrls: ["./signin.component.scss"]
 })
 export class SigninComponent implements OnInit {
+  form: any;
   @Output() getSigninModalStateChange = new EventEmitter<boolean>();
   isModal = true;
-
-  loginData = { email: "", password: "" };
   message = { user: "", password: "" };
   data: any;
   constructor(private aurhService: AuthService, private router: Router) {}
-  ngOnInit() {}
 
+  ngOnInit() {
+    this.form = new ValidationManager({
+      'email': 'required|email',
+      'password': 'required|rangeLength:4,15'
+    });
+    console.log(this.form);
+  }
   signin() {
-    this.aurhService.loginUser(this.loginData).subscribe(
+    console.log(this.form);
+    this.aurhService.loginUser(this.form.formGroup.value).subscribe(
       resp => {
         this.data = resp;
         localStorage.setItem("jwtToken", this.data.token);
@@ -31,11 +38,10 @@ export class SigninComponent implements OnInit {
         this.message = err.error.msg;
       }
     );
+    console.log(this.data);
   }
 
-
-  closeModal() {
-    this.isModal = false;
-    this.getSigninModalStateChange.emit(false);
+  handleCloseModal(isModalClosed) {
+    isModalClosed && this.getSigninModalStateChange.emit(false);
   }
 }

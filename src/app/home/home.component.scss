@@ -22,7 +22,10 @@
   height: 20%;
 }
 .menu-wrapper {
-  max-height: 640px;
+  width: 100%;
+  height: 200px;
+  background: #000;
+  font-size: 1vw;
 }
 
 .grey {
@@ -41,9 +44,8 @@
   background: #000000;
   margin: 0 auto;
   padding: 50px 0;
-  width: 100%;
-  height: 300px;
-  font-weight: 600;
+  width: 280px;
+  height: 100%;
 }
 
 .menu-title span {
@@ -53,7 +55,7 @@
 .back-word {
   position: absolute;
   top: 40%;
-  left: 40%;
+  left: 25%;
   transform: translateY(-50%);
 }
 
@@ -72,22 +74,7 @@
   box-shadow: 9px 16px 20px -6px rgba(0, 0, 0, 0.75);
 
 }
-
-
-.category-card img {
-  width: 100%;
-  height: 100%;
-}
-
-.category-card .title {
-  position: relative;
-  bottom: 145px;
-  left: 22%;
-}
-
-.category-card h2 {
-  font-size: 5rem;
-  font-weight: 700;
-  color: #000000;
-  text-shadow: 3px 0 #5d5d5d;
+.flip-card {
+  height: 250px;
+  padding: 20px 10px;
 }
