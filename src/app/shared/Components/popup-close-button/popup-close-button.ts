@@ -7,7 +7,7 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
 })
 export class PopupCloseButton {
   @Output() getCloseButtonStateChange = new EventEmitter<boolean>();
-
+  @Input() btnColor;
   triggerClose() {
     this.getCloseButtonStateChange.emit(true);
   }

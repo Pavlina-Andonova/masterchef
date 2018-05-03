@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MenuService } from '../menu.service';
 
 @Component({
@@ -8,6 +8,8 @@ import { MenuService } from '../menu.service';
 })
 export class MenuItemComponent implements OnInit {
   menu: any;
+  
+
   constructor(private menuService: MenuService) {}
 
   ngOnInit() {
@@ -20,61 +22,4 @@ export class MenuItemComponent implements OnInit {
       }
     );
   }
-
-  // menu = [
-  //   {
-  //     title: 'Salad',
-  //     description: 'Description goes here...',
-  //     price: 7.0,
-  //     weight: 350
-  //   },
-  //   {
-  //     title: 'Salad 1',
-  //     description: 'Description goes here...',
-  //     price: 7.0,
-  //     weight: 350
-  //   },
-  //   {
-  //     title: 'Salad 2',
-  //     description: 'Description goes here...',
-  //     price: 7.0,
-  //     weight: 350
-  //   },
-  //   {
-  //     title: 'Salad',
-  //     description: 'Description goes here...',
-  //     price: 7.0,
-  //     weight: 350
-  //   },
-  //   {
-  //     title: 'Salad 1',
-  //     description: 'Description goes here...',
-  //     price: 7.0,
-  //     weight: 350
-  //   },
-  //   {
-  //     title: 'Salad 2',
-  //     description: 'Description goes here...',
-  //     price: 7.0,
-  //     weight: 350
-  //   },
-  //   {
-  //     title: 'Salad',
-  //     description: 'Description goes here...',
-  //     price: 7.0,
-  //     weight: 350
-  //   },
-  //   {
-  //     title: 'Salad 1',
-  //     description: 'Description goes here...',
-  //     price: 7.0,
-  //     weight: 350
-  //   },
-  //   {
-  //     title: 'Salad 2',
-  //     description: 'Description goes here...',
-  //     price: 7.0,
-  //     weight: 350
-  //   }
-  // ];
 }

@@ -9,6 +9,7 @@ export class AppComponent {
   title = "app";
   isSignupModalOpen = false;
   isSigninModalOpen = false;
+  
 
   isModalOpen = true;
 

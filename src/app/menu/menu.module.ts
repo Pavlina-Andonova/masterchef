@@ -7,6 +7,7 @@ import { MenuItemComponent } from './menu-item/menu-item.component';
 import { CommonModule } from "@angular/common";
 import { MenuService } from "./menu.service";
 import { SharedModule } from "../shared/shared.module";
+import { MenuItemDetailComponent } from './menu-item/menu-item-detail/menu-item-detail.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { SharedModule } from "../shared/shared.module";
     MenuListComponent,
     MenuListItemComponent,
     MenuItemComponent,
+    MenuItemDetailComponent,
   ],
   imports: [
     CommonModule,

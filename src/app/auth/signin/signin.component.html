@@ -7,7 +7,7 @@
         <p class="mt-4 text-white lead text-center">Sign in</p>
         <div class="mt-4">
             <form (ngSubmit)="signin()" #loginForm="ngForm">
-                <popup-close-button (getCloseButtonStateChange)="handleCloseModal($event)"></popup-close-button>
+                <popup-close-button btnColor="btn-white" (getCloseButtonStateChange)="handleCloseModal($event)"></popup-close-button>
                 <xinput  name='email' label='Email' [form]='form' placeholder='Email'></xinput>
                 <xpassword  name='password' label='Password' [form]='form' placeholder='Password'></xpassword>
                <xbutton></xbutton>
