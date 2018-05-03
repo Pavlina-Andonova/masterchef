@@ -3,8 +3,6 @@ import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 
-import { SplitPipe } from "./shared/split.pipe";
-
 import { AppRouterModule } from "./router.module";
 import { AuthModule } from "./auth/auth.module";
 import { MenuModule } from "./menu/menu.module";
@@ -22,7 +20,6 @@ import { SharedModule } from "./shared/shared.module";
     AppComponent,
     HeaderComponent,
     PageNotFoundComponent,
-    SplitPipe,
     ProfileComponent,
     HomeComponent
   ],

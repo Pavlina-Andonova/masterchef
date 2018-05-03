@@ -8,5 +8,6 @@ import { Component, Input, ViewEncapsulation } from "@angular/core";
 })
 export class XButton {
     @Input() type="submit";
+    @Input() label;
 
 }

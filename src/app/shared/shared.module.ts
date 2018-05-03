@@ -39,9 +39,10 @@ import { XInput } from "./Components/xinput/xinput";
 import { XPassword } from "./Components/xpassword/xpassword";
 import { XButton } from "./Components/xbutton/xbutton";
 import { PopupCloseButton } from "./Components/popup-close-button/popup-close-button";
+import { SplitPipe } from "./split.pipe";
 
 @NgModule({
-  declarations: [FlipCardComponent, XInput, XPassword, XButton, PopupCloseButton],
+  declarations: [SplitPipe, FlipCardComponent, XInput, XPassword, XButton, PopupCloseButton],
   imports: [
     FormsModule,
     ReactiveFormsModule,
@@ -104,7 +105,8 @@ import { PopupCloseButton } from "./Components/popup-close-button/popup-close-bu
     XInput,
     XPassword,
     XButton,
-    PopupCloseButton
+    PopupCloseButton,
+    SplitPipe
     
   ]
 })

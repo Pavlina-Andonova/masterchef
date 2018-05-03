@@ -5,7 +5,8 @@ import { MenuListComponent } from './menu-list/menu-list.component';
 import { MenuListItemComponent } from './menu-list/menu-list-item/menu-list-item.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { CommonModule } from "@angular/common";
-
+import { MenuService } from "./menu.service";
+import { SharedModule } from "../shared/shared.module";
 
 
 @NgModule({
@@ -14,14 +15,12 @@ import { CommonModule } from "@angular/common";
     MenuListComponent,
     MenuListItemComponent,
     MenuItemComponent,
-  
-
   ],
   imports: [
-    CommonModule 
-
+    CommonModule,
+    SharedModule
   ],
-  providers: []
+  providers: [MenuService]
 
 })
 export class MenuModule {}

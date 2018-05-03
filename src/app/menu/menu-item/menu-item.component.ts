@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuService } from '../menu.service';
 
 @Component({
   selector: 'app-menu-item',
@@ -6,64 +7,74 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu-item.component.scss']
 })
 export class MenuItemComponent implements OnInit {
-  constructor() {}
+  menu: any;
+  constructor(private menuService: MenuService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.menuService.getMenu().subscribe(
+      res => {
+        this.menu = res;
+      },
+      err => {
+        err.error.msg;
+      }
+    );
+  }
 
-  menu = [
-    {
-      title: 'Salad',
-      description: 'Description goes here...',
-      price: 7.0,
-      weight: 350
-    },
-    {
-      title: 'Salad 1',
-      description: 'Description goes here...',
-      price: 7.0,
-      weight: 350
-    },
-    {
-      title: 'Salad 2',
-      description: 'Description goes here...',
-      price: 7.0,
-      weight: 350
-    },
-    {
-      title: 'Salad',
-      description: 'Description goes here...',
-      price: 7.0,
-      weight: 350
-    },
-    {
-      title: 'Salad 1',
-      description: 'Description goes here...',
-      price: 7.0,
-      weight: 350
-    },
-    {
-      title: 'Salad 2',
-      description: 'Description goes here...',
-      price: 7.0,
-      weight: 350
-    },
-    {
-      title: 'Salad',
-      description: 'Description goes here...',
-      price: 7.0,
-      weight: 350
-    },
-    {
-      title: 'Salad 1',
-      description: 'Description goes here...',
-      price: 7.0,
-      weight: 350
-    },
-    {
-      title: 'Salad 2',
-      description: 'Description goes here...',
-      price: 7.0,
-      weight: 350
-    }
-  ];
+  // menu = [
+  //   {
+  //     title: 'Salad',
+  //     description: 'Description goes here...',
+  //     price: 7.0,
+  //     weight: 350
+  //   },
+  //   {
+  //     title: 'Salad 1',
+  //     description: 'Description goes here...',
+  //     price: 7.0,
+  //     weight: 350
+  //   },
+  //   {
+  //     title: 'Salad 2',
+  //     description: 'Description goes here...',
+  //     price: 7.0,
+  //     weight: 350
+  //   },
+  //   {
+  //     title: 'Salad',
+  //     description: 'Description goes here...',
+  //     price: 7.0,
+  //     weight: 350
+  //   },
+  //   {
+  //     title: 'Salad 1',
+  //     description: 'Description goes here...',
+  //     price: 7.0,
+  //     weight: 350
+  //   },
+  //   {
+  //     title: 'Salad 2',
+  //     description: 'Description goes here...',
+  //     price: 7.0,
+  //     weight: 350
+  //   },
+  //   {
+  //     title: 'Salad',
+  //     description: 'Description goes here...',
+  //     price: 7.0,
+  //     weight: 350
+  //   },
+  //   {
+  //     title: 'Salad 1',
+  //     description: 'Description goes here...',
+  //     price: 7.0,
+  //     weight: 350
+  //   },
+  //   {
+  //     title: 'Salad 2',
+  //     description: 'Description goes here...',
+  //     price: 7.0,
+  //     weight: 350
+  //   }
+  // ];
 }
