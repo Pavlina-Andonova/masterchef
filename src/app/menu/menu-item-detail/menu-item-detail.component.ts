@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuService } from '../../menu.service';
 import { ActivatedRoute } from '@angular/router';
+
+import { MenuService } from '../menu.service';
 
 @Component({
   selector: 'app-menu-item-detail',

@@ -9,11 +9,9 @@
           <h3 class="menu-item-name">{{menuItem.title}}</h3>
           <img class="menu-item-img" src="{{menuItem.menuItemImage}}">
           <div class="price">
-            <span>10
+            <span>{{menuItem.price | split:'.'}}
               <span class="comma">,</span>
-
-
-              <small>70</small>
+              <small>{{menuItem.price | split:'.':1}}</small>
               <sub>лв.</sub>
             </span>
           </div>
