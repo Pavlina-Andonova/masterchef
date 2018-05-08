@@ -8,6 +8,7 @@ import { CommonModule } from "@angular/common";
 import { MenuService } from "./menu.service";
 import { SharedModule } from "../shared/shared.module";
 import { MenuItemDetailComponent } from "./menu-item-detail/menu-item-detail.component";
+import { FormsModule } from "@angular/forms";
 
 
 
@@ -18,9 +19,11 @@ import { MenuItemDetailComponent } from "./menu-item-detail/menu-item-detail.com
     MenuListItemComponent,
     MenuItemComponent,
     MenuItemDetailComponent,
+
   ],
   imports: [
     CommonModule,
+    FormsModule,
     SharedModule
   ],
   providers: [MenuService]

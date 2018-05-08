@@ -1,9 +1,9 @@
-<div class="menu-item-card d-inline-block m-2" *ngFor="let menuItem of menu">
+<app-search></app-search>
+<div  class="menu-item-card d-inline-block m-2" *ngFor="let menuItem of menu | filter:listFilter">
   <div class="overlay">
     <div class="container">
       <div class="row">
         <div>
-
         </div>
         <div class="col-6">
           <h3 class="menu-item-name">{{menuItem.title}}</h3>

@@ -8,6 +8,7 @@ import { MenuService } from '../menu.service';
 })
 export class MenuItemComponent implements OnInit {
   menu: any;
+
   
 
   constructor(private menuService: MenuService) {}
@@ -22,4 +23,5 @@ export class MenuItemComponent implements OnInit {
       }
     );
   }
+
 }
