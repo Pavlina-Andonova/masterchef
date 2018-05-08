@@ -8,9 +8,7 @@ import { MenuService } from '../menu.service';
 })
 export class MenuItemComponent implements OnInit {
   menu: any;
-
-  
-
+  criteria="";
   constructor(private menuService: MenuService) {}
 
   ngOnInit() {
@@ -22,6 +20,10 @@ export class MenuItemComponent implements OnInit {
         err.error.msg;
       }
     );
+  }
+
+  handleCriteriaChange(criteria:string){
+   this.criteria = criteria;
   }
 
 }

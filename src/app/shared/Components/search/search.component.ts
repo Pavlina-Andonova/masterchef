@@ -6,10 +6,15 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-
+  @Output() searchCriteriaChange = new EventEmitter<string>();
+  searchCriteria="";
   constructor() { }
 
   ngOnInit() {
+  }
+
+  criteriaChange() {
+    this.searchCriteriaChange.emit(this.searchCriteria);
   }
  
 }
