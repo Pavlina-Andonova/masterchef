@@ -1,7 +1,7 @@
 <app-search (searchCriteriaChange)="handleCriteriaChange($event)"></app-search>
 <div   
     class="menu-item-card d-inline-block m-2" 
-    *ngFor="let menuItem of menu | filter:criteria"
+    *ngFor="let menuItem of menu | filter:criteria:'title'"
     >
   <div class="overlay">
     <div class="container">

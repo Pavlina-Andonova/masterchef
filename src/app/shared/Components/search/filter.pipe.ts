@@ -4,12 +4,12 @@ import { PipeTransform, Pipe } from "@angular/core";
   name: "filter"
 })
 export class FilterPipe implements PipeTransform {
-  transform(value: any[], filterBy: string): any[] {
+  transform(value: any[], filterBy: string, criteria: string): any[] {
     filterBy = filterBy ? filterBy.toLocaleLowerCase() : null;
-    return filterBy
+    return filterBy && criteria
       ? value.filter(
-          (menuItem: any) =>
-            menuItem.title.toLocaleLowerCase().indexOf(filterBy) !== -1
+          (item: any) =>
+            item[criteria].toLocaleLowerCase().indexOf(filterBy) !== -1
         )
       : value;
   }

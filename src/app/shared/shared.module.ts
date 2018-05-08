@@ -42,10 +42,11 @@ import { PopupCloseButton } from "./Components/popup-close-button/popup-close-bu
 import { SplitPipe } from "./split.pipe";
 import { SearchComponent } from "./Components/search/search.component";
 import { FilterPipe } from "./Components/search/filter.pipe";
+import { PopupComponent } from './Components/popup/popup.component';
 
 
 @NgModule({
-  declarations: [SplitPipe, FlipCardComponent, XInput, XPassword, XButton, PopupCloseButton, SearchComponent, FilterPipe],
+  declarations: [SplitPipe, FlipCardComponent, XInput, XPassword, XButton, PopupCloseButton, SearchComponent, FilterPipe, PopupComponent, PopupComponent],
   imports: [
     FormsModule,
     ReactiveFormsModule,
@@ -111,7 +112,8 @@ import { FilterPipe } from "./Components/search/filter.pipe";
     PopupCloseButton,
     SplitPipe,
     SearchComponent,
-    FilterPipe
+    FilterPipe,
+    PopupComponent
     
   ]
 })
