@@ -11,4 +11,8 @@ export class MenuService {
   getMenuItemById(id: string) {
     return this.http.get("/api/menuItem/" + id);
   }
+
+  getFavourites(){
+    return this.http.get('/api/favourites/add')
+  }
 }
