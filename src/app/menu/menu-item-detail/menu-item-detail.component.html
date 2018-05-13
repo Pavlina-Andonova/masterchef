@@ -1,0 +1,27 @@
+<div class="container menu-item-detail" *ngIf="menuDetail">
+    <div class="row wrapper">
+      <div class="col-5 l-side">
+        <img src="{{menuDetail.menuItemImage}}">
+      </div>
+      <div class="col-7 r-side">
+        <h3 class="title">{{menuDetail.title}}</h3>
+        <popup-close-button btnColor="btn-black"></popup-close-button>
+        <div class="weight">
+          <span>{{menuDetail.weight}}</span>
+          <span>grams</span>
+        </div>
+        <div class="description">
+           {{menuDetail.description}}
+        </div>
+        <div class="price">
+          <div class="price">
+            <span>7
+              <small>49</small>
+              <sub>lv.</sub>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

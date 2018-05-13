@@ -1,0 +1,83 @@
+h2,
+h3,
+p {
+  color: black;
+}
+.menu-item-detail {
+  width: 850px;
+  height: 550px;
+  margin-top: 12%;
+  border: 1px solid black;
+}
+
+.wrapper {
+  height: 100%;
+}
+
+.l-side {
+  width: 42.8%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    height: 100%;
+  }
+}
+.r-side {
+  border: 1px solid black;
+  height: 100%;
+}
+
+.price {
+  position: relative;
+  color: #5f5a5a;
+  display: block;
+  font-family: roboto_condensedregular;
+  font-size: 36px;
+  line-height: 49px;
+  text-align: left;
+  letter-spacing: -1px;
+  text-shadow: 1px 1px 3px #000000;
+  left: 10px;
+}
+
+small {
+  font-size: 18px;
+  position: absolute;
+  top: -7px;
+  left: 20px;
+}
+
+sub {
+  bottom: 16px;
+  font-size: 12px;
+  position: absolute;
+  font-family: roboto_condensedregular;
+  left: 26px;
+}
+
+.popup-close-button {
+  float: right;
+  width: auto;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  font-size: 1.8rem;
+  font-weight: bold;
+  position: absolute;
+  bottom: 515px;
+  left: 455px;
+}
+
+.btn-black {
+  top: -10px;
+  position: absolute;
+  left: 456px;
+}

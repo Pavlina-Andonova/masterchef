@@ -1,0 +1,9 @@
+.popup {
+    position: absolute;
+    top: calc(50% + 50px/2);
+    left: 50%;
+    width: 650px;
+    height: 500px;
+    border: 1px solid black;
+    transform: translate(-50%,-50%);
+}

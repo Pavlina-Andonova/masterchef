@@ -1,0 +1,40 @@
+@import './primeTheme';
+
+a {
+  text-decoration: none !important;
+}
+a,
+p,
+h1,
+h2,
+h3,
+label {
+  color: #fff;
+}
+input {
+  width: 100%;
+  height: 30px;
+}
+
+button {
+  width: 100%;
+  height: 30px;
+  margin: 5px 0;
+}
+
+.error {
+  color: #900606;
+}
+.error-wrapper {
+  height: 20px;
+}
+
+.ui-inputtext {
+  padding-left: 5px;
+}
+
+a:focus,
+button:focus,
+input:focus {
+  outline: none;
+}
