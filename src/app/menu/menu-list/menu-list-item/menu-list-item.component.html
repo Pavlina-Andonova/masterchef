@@ -1,17 +1,16 @@
-<div class="container menu-list-item" *ngFor="let category of categories">
-  <div class="row align-items-center">
-
-    <div class="l-side img-hold col-4">
-      <div class="overlay">
-        <img src="https://cdn1.iconfinder.com/data/icons/bistro-restaurant-part-i/64/bistro-and-restaurant_17-512.png">
-      </div>
-    </div>
-
-    <div class="r-side col-7 ">
-      <div class="overlay">
-        <span class="title">{{category.type}}</span>
-        <img class="right-arrow " src="https://di-uploads-pod2.dealerinspire.com/grapponefordredesign/uploads/2015/02/white-right-arrow.png">
-      </div>
-    </div>
-</div>
+<div class="row dishname "  *ngFor="let menuItem of menu">
+  <div class="col-md-3">
+    <img src="{{menuItem.menuItemImage}}" alt="">
+  </div>
+  <div class="col-md-7">
+    <span>{{menuItem.title}}</span>
+    <app-favourite></app-favourite>
+    <hr>
+    <p>{{menuItem.description}}</p>
+  </div>
+  <div class="col-md-2 price text-center">
+    <p>{{menuItem.price}}$</p>
+    <a class="btn btn-primary content-primary-button" href="#" role="button">Order</a>
+    <a class="btn btn-primary content-primary-button" href="#" role="button">Details</a>
+  </div>
 </div>

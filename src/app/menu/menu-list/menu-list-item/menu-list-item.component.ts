@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuService } from '../../menu.service';
 
 @Component({
   selector: 'app-menu-list-item',
@@ -7,16 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuListItemComponent implements OnInit {
 
-  constructor() { }
+  menu: any;
+  criteria="";
+  constructor(private menuService: MenuService) {}
 
-  categories = [
-    {type: 'salad'},
-    {type: 'desserts'},
-    {type: 'main'},
-    {type: 'pizza'},
-    {type: 'drinks'}
-  ]
   ngOnInit() {
+    this.menuService.getMenu().subscribe(
+      res => {
+        this.menu = res;
+      },
+      err => {
+        err.error.msg;
+      }
+    );
+  }
+
+  handleCriteriaChange(criteria:string){
+   this.criteria = criteria;
   }
 
 }

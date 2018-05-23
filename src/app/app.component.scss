@@ -1,9 +1,10 @@
-body {
-    font-family: ProximaNova-Extrabld, sans-serif;
-}
-
 .blur-overlay {
     filter: blur(10px);
     pointer-events: none;
     overflow: hidden;
+}
+
+div {
+    height: 100%;
+    width: 100%;
 }
