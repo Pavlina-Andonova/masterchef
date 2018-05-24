@@ -10,7 +10,6 @@ module.exports = function (passport) {
 
   passport.use(new JwtStrategy(opts, async function (jwt_payload, done) {
     const userProfile = await (Profile.query().findById(jwt_payload.userId));
-
     if (userProfile) {
       return done(null, userProfile);
     } else {

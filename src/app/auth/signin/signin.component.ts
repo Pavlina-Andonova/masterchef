@@ -17,7 +17,7 @@ export class SigninComponent implements OnInit {
   data: any;
   message = { user: "", password: "" };
   
-  constructor(private aurhService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.form = new ValidationManager({
@@ -28,17 +28,18 @@ export class SigninComponent implements OnInit {
   }
   signin() {
     console.log(this.form);
-    this.aurhService.loginUser(this.form.formGroup.value).subscribe(
+    this.authService.loginUser(this.form.formGroup.value).subscribe(
       resp => {
         this.data = resp;
-        localStorage.setItem("jwtToken", this.data.token);
-        this.aurhService.setIsUserAuthenticated(!!resp);
+        sessionStorage.setItem("jwtToken", this.data.token);
+        this.authService.setIsUserAuthenticated(!!resp);
         this.router.navigate([""]);
         this.isModal = false;
         this.getSigninModalStateChange.emit(false);
       },
       err => {
         this.message = err.error.msg;
+        this.authService.setIsUserAuthenticated(false);
       }
     );
     console.log(this.data);

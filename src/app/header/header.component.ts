@@ -27,7 +27,7 @@ export class HeaderComponent {
   }
 
   onLogout() {
-    localStorage.removeItem("jwtToken");
+    sessionStorage.removeItem("jwtToken");
     this.authService.setIsUserAuthenticated(false);
     this.router.navigate([""]);
   }

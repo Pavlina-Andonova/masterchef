@@ -5,7 +5,7 @@ import { Subject } from "rxjs/Subject";
 
 @Injectable()
 export class AuthService {
-  isUserAuthenticated: false;
+  isUserAuthenticated: boolean = false;
   userAuthenticationChanged = new Subject<boolean>();
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -15,7 +15,7 @@ export class AuthService {
   }
 
   loginUser(userData) {
-    return this.http.post('/api/users/login', userData);
+    return this.http.post("/api/users/login", userData);
   }
 
   setIsUserAuthenticated(isUserAuthenticated) {
@@ -23,7 +23,14 @@ export class AuthService {
     this.userAuthenticationChanged.next(this.isUserAuthenticated);
   }
 
-  checkIfUserIsAuthenticated() {
-    return !!localStorage.getItem("jwtToken");
+  checkIfUserIsAuthenticated(): boolean {
+    return this.isUserAuthenticated;
+  }
+
+  getUser(token) {
+    const httpOptions = {
+      headers: new HttpHeaders({ Authorization: token })
+    };
+    return this.http.get("/api/users", httpOptions);
   }
 }

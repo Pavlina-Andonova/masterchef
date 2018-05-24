@@ -17,13 +17,13 @@ export class SignupComponent implements OnInit {
   data: any;
   message = { email: '', password: '' };
 
-  constructor(private authServcie: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.form = new ValidationManager({
       email: 'required|email',
       password: 'required|rangeLength:4,15',
-      confirmPassword: 'required'
+      confirmPassword: 'required|equalTo:password'
     });
   }
 
@@ -31,17 +31,18 @@ export class SignupComponent implements OnInit {
     let userData = { ...this.form.formGroup.value };
     delete userData.confirmPassword;
 
-    this.authServcie.registerUser(userData).subscribe(
+    this.authService.registerUser(userData).subscribe(
       resp => {
         this.data = resp;
-        localStorage.setItem('jwtToken', this.data.token);
-        this.authServcie.setIsUserAuthenticated(!!resp);
+        sessionStorage.setItem('jwtToken', this.data.token);
+        this.authService.setIsUserAuthenticated(!!resp);
         this.router.navigate(['']);
         this.isModal = false;
         this.getSignupModalStateChange.emit(false);
       },
       err => {
         this.message = err.error.msg;
+        this.authService.setIsUserAuthenticated(false);
       }
     );
     console.log(this.form.formGroup.value);

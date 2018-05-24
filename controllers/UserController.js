@@ -20,19 +20,20 @@ const create = async function(req, res) {
     firstName: req.body.email.split("@")[0]
   };
 
-  const insertedGraph = await transaction(User.knex(), trx => {
+  const newUser = await transaction(User.knex(), trx => {
     return User.query(trx)
-      .allowInsert("[profile]")
+      .allowInsert("profile")
       .insertGraph(graph);
   });
 
-  return res.send(insertedGraph);
+  return res.send(newUser.getJWT());
 };
 
 module.exports.create = create;
 
 const get = async function(req, res) {
   res.setHeader("Content-Type", "application/json");
+  console.log(req.user)
   return res.send(req.user);
 };
 module.exports.get = get;
