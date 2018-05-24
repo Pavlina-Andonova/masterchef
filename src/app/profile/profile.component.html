@@ -1,3 +1,26 @@
-<p>
-  profile works!
-</p>
+<div class="profile">
+  <div class="intro"></div>
+  <div class="overlay"></div>
+  <h1>Ptofile Information</h1>
+  <div class="header-wrapper">
+    <div class="container header">
+      <ul class="row text-center">
+        <li class="col-md-4">
+          <i class="fas fa-user-alt"></i>
+          <a [routerLink]="['/personalInformation']">Personal Information</a>
+        </li>
+        <li class="col-md-4">
+          <i class="fa fa-map-marker"></i>
+          <a [routerLink]="['/addresses']">Addresses</a>
+        </li>
+        <li class="col-md-4">
+          <i class="fas fa-star"></i>
+          <a [routerLink]="['/favourites']">Favourites</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>

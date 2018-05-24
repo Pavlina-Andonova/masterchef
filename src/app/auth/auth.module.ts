@@ -8,6 +8,9 @@ import { AuthService } from './auth.service';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { SharedModule } from '../shared/shared.module';
+import { AuthGuardService } from './auth-guard.service';
+
+
 
 
 @NgModule({
@@ -21,6 +24,6 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule
   ],
   exports: [SigninComponent, SignupComponent],
-  providers: [AuthService]
+  providers: [AuthService, AuthGuardService]
 })
 export class AuthModule {}

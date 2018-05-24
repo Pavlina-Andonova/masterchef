@@ -8,6 +8,8 @@ export class AuthService {
   isUserAuthenticated: boolean = false;
   userAuthenticationChanged = new Subject<boolean>();
 
+
+
   constructor(private http: HttpClient, private router: Router) {}
 
   registerUser(userData) {
@@ -33,4 +35,6 @@ export class AuthService {
     };
     return this.http.get("/api/users", httpOptions);
   }
+
+  
 }

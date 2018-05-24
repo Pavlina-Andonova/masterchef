@@ -13,14 +13,13 @@ import { HomeComponent } from "./home/home.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { SharedModule } from "./shared/shared.module";
-
+import { ProfileModule } from "./profile/profile.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     PageNotFoundComponent,
-    ProfileComponent,
     HomeComponent
   ],
   imports: [
@@ -32,6 +31,7 @@ import { SharedModule } from "./shared/shared.module";
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    ProfileModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
