@@ -15,6 +15,7 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
 import { SharedModule } from "./shared/shared.module";
 import { ProfileModule } from "./profile/profile.module";
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,7 @@ import { ProfileModule } from "./profile/profile.module";
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ProfileModule,
+    ProfileModule  
   ],
   providers: [],
   bootstrap: [AppComponent]

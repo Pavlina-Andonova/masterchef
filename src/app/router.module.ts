@@ -7,7 +7,7 @@ import { SigninComponent } from "./auth/signin/signin.component";
 import { SignupComponent } from "./auth/signup/signup.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { MenuComponent } from "./menu/menu.component";
-import { AuthGuardService as AuthGuard } from "./auth/auth-guard.service";
+import { AuthGuardService } from "./auth/auth-guard.service";
 import { PersonalInformationComponent } from "./profile/personal-information/personal-information.component";
 import { AddressesComponent } from "./profile/addresses/addresses.component";
 import { FavouritesComponent } from "./profile/favourites/favourites.component";
@@ -18,12 +18,14 @@ const appRouter: Routes = [
   // { path: 'menu/:id', component: MenuItemDetailComponent },
   { path: "signin", component: SigninComponent },
   { path: "signup", component: SignupComponent },
-  { path: 'myProfile', component: ProfileComponent, canActivate: ['AuthGuard'], children: [
-    { path: "", redirectTo: "/personalInformation", pathMatch: 'full'},
-    { path: "personalInformation", component: PersonalInformationComponent },
-    { path: "addresses", component: AddressesComponent },
-    { path: "favourites", component: FavouritesComponent }
-  ] }
+  { path: 'myProfile', component: ProfileComponent, canActivate: [AuthGuardService]}
+  // { path: 'myProfile', component: ProfileComponent, canActivate: ['AuthGuard'], children: [
+  //   { path: "", redirectTo: "/personalInformation", pathMatch: 'full'},
+  //   { path: "personalInformation", component: PersonalInformationComponent },
+  //   { path: "addresses", component: AddressesComponent },
+  //   { path: "favourites", component: FavouritesComponent }
+  // ] }
+
 ];
 
 @NgModule({
