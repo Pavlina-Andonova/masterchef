@@ -1,5 +1,6 @@
 .dishname {
   font-family: 'Raleway', sans-serif;
+  margin: 2rem auto;
   h1,
   h2,
   h3,
@@ -11,24 +12,9 @@
   img {
     width:100%;
   }
-  margin: 2rem;
   .price {
     font-size: 2rem;
   }
-}
-
-.content-primary-button {
-  color: goldenrod;
-  background-color: transparent;
-  border: 2px solid goldenrod;
-  border-radius: 0;
-  width: 100%;
-}
-
-.content-primary-button:hover {
-  color: #fff;
-  background-color: goldenrod;
-  border: 2px solid goldenrod;
 }
 
 app-favourite {

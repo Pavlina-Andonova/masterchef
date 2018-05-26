@@ -1,0 +1,19 @@
+button {
+  height: 40px;
+  button:focus {
+    box-shadow: none;
+  }
+}
+.content-primary-button {
+    color: goldenrod;
+    background-color: transparent;
+    border: 2px solid goldenrod;
+    border-radius: 0;
+    width: 100%;
+  }
+  
+  .content-primary-button:hover {
+    color: #fff;
+    background-color: goldenrod;
+    border: 2px solid goldenrod;
+  }

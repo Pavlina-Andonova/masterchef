@@ -18,13 +18,13 @@ const appRouter: Routes = [
   // { path: 'menu/:id', component: MenuItemDetailComponent },
   { path: "signin", component: SigninComponent },
   { path: "signup", component: SignupComponent },
-  { path: 'myProfile', component: ProfileComponent, canActivate: [AuthGuardService]}
-  // { path: 'myProfile', component: ProfileComponent, canActivate: ['AuthGuard'], children: [
-  //   { path: "", redirectTo: "/personalInformation", pathMatch: 'full'},
-  //   { path: "personalInformation", component: PersonalInformationComponent },
-  //   { path: "addresses", component: AddressesComponent },
-  //   { path: "favourites", component: FavouritesComponent }
-  // ] }
+  // { path: 'myProfile', component: ProfileComponent, canActivate: [AuthGuardService]}
+  { path: 'myProfile', component: ProfileComponent, canActivate: ['AuthGuard'], children: [
+    { path: "", redirectTo: "/personalInformation", pathMatch: 'full'},
+    { path: "personalInformation", component: PersonalInformationComponent },
+    { path: "addresses", component: AddressesComponent },
+    { path: "favourites", component: FavouritesComponent }
+  ] }
 
 ];
 

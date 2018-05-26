@@ -44,6 +44,7 @@ import { SearchComponent } from "./Components/search/search.component";
 import { FilterPipe } from "./Components/search/filter.pipe";
 import { PopupComponent } from './Components/popup/popup.component';
 import { FavouriteComponent } from "./Components/favourite/favourite.component";
+import { CustomButtonGoldenrodComponent } from './Components/custom-button-goldenrod/custom-button-goldenrod.component';
 
 
 
@@ -59,7 +60,8 @@ import { FavouriteComponent } from "./Components/favourite/favourite.component";
     FilterPipe, 
     PopupComponent, 
     PopupComponent, 
-    FavouriteComponent
+    FavouriteComponent,
+    CustomButtonGoldenrodComponent
   ],
   imports: [
     FormsModule,
@@ -128,7 +130,8 @@ import { FavouriteComponent } from "./Components/favourite/favourite.component";
     SearchComponent,
     FilterPipe,
     PopupComponent,
-    FavouriteComponent
+    FavouriteComponent,
+    CustomButtonGoldenrodComponent
     
   ]
 })
