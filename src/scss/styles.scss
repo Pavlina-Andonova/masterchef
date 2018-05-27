@@ -31,6 +31,10 @@ button {
   background-color: goldenrod;
   border-color: goldenrod;
 }
+button, textarea, input:focus,
+button, textarea, input:active  {
+  outline: none
+}
 
 .error {
   color: #900606;

@@ -9,6 +9,7 @@ import { MenuService } from '../../../menu.service';
 })
 export class MenuListItemDetailComponent implements OnInit {
   menuDetail: any;
+  isReviewOpen:boolean = false;
   constructor(private route: ActivatedRoute, private menuSrevice: MenuService) {}
 
   ngOnInit() {
@@ -19,6 +20,10 @@ export class MenuListItemDetailComponent implements OnInit {
        }
      );
     });
+  }
+
+  addReview() {
+    this.isReviewOpen = !this.isReviewOpen;
   }
 }
 

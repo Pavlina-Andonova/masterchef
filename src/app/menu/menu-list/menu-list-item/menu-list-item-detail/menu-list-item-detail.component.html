@@ -30,11 +30,18 @@
             {{menuDetail.price}}$
           </div>
           <div class="row">
-            <div class="col-10 col-md-5">
-              <app-custom-button-goldenrod buttonText="Add Comment"></app-custom-button-goldenrod>
+            <div class="col-12 col-md-5">
+              <app-custom-button-goldenrod (click)="addReview()" [buttonText]="isReviewOpen ? 'Close' : 'Add Review' "></app-custom-button-goldenrod>
             </div>
-            <div class="col-10 col-md-5">
+            <div class="col-12 col-md-5">
               <app-custom-button-goldenrod buttonText="Order"></app-custom-button-goldenrod>
+            </div>
+            <div class="col-12 review" *ngIf="isReviewOpen">
+              <h2>Review:</h2>
+              <textarea maxlength="240"></textarea>
+            </div>
+            <div class="col-12 col-md-5" *ngIf="isReviewOpen">
+              <app-custom-button-goldenrod buttonText="Submit"></app-custom-button-goldenrod>
             </div>
           </div>
         </div>

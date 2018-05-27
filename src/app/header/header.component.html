@@ -33,18 +33,27 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
         <ul class="navbar-nav text-center">
-          <li class="nav-item">
-            <a class="nav-link"  routerLink="/">Home</a>
+          <li class="nav-item add-border">
+            <a class="nav-link" routerLink="/">Home</a>
           </li>
-
-          <li>
+          <li class="add-border">
             <a class="nav-link" [routerLink]="['menu']">Menu</a>
           </li>
+        </ul>
+        <ul class="navbar-nav text-center">
           <li *ngIf="isUserAuthenticated">
             <a class="nav-link" [routerLink]="['myProfile']">
               <i class="fas fa-user-circle"> </i>
+            </a>
+          </li>
+          <li *ngIf="isUserAuthenticated">
+            <a class="nav-link shopping-card-wrapper" [routerLink]="['myProfile']">
+              <div class="shopping-card"></div>
+              <div class="counter">
+               <span class="count">12</span>
+              </div>
             </a>
           </li>
           <li *ngIf="!isUserAuthenticated">
