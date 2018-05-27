@@ -41,22 +41,23 @@
   .information-wrapper {
     min-height: 435px;
     width: 100%;
+
     .item-weight {
       font-size: 30px;
       padding: 10px 0;
     }
+
     .item-description {
       font-size: 22px;
       line-height: 1.1;
       padding: 10px 0;
+      width: 75%;
     }
+
     .item-price{
       font-size: 22px;
       font-weight: 700;
       padding: 10px 0;
-    }
-    .add-btn {
-      width: 50%;
     }
   }
 }

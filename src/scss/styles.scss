@@ -20,6 +20,17 @@ button {
   height: 30px;
   margin: 5px 0;
 }
+.btn-primary.focus, .btn-primary:focus, {
+  box-shadow: none;
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus {
+  box-shadow: none;
+}
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+  color: none;
+  background-color: goldenrod;
+  border-color: goldenrod;
+}
 
 .error {
   color: #900606;

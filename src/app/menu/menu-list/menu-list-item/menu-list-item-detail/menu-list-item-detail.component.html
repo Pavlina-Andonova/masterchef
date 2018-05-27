@@ -1,27 +1,3 @@
-<!-- <div class="container menu-item-detail" *ngIf="menuDetail">
-    <div class="row wrapper">
-      <div class="col-md-5 l-side">
-        <img src="{{menuDetail.menuItemImage}}" alt="{{menuDetail.name}}">
-      </div>
-      <div class="col-md-7 r-side">
-        <h3 class="title">{{menuDetail.title | uppercase}}</h3>
-        <div class="weight">
-          <span>{{menuDetail.weight}}</span>
-          <span>grams</span>
-        </div>
-        <div class="description">
-            {{menuDetail.description}}
-        </div>
-        <div class="price">
-          <div class="price">
-           {{menuDetail.price}}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-   -->
-
 <div class="menu-detail-wrapper" *ngIf="menuDetail">
   <div class="menu-title-bg">
     <div class="title">
@@ -53,12 +29,16 @@
           <div class="item-price">
             {{menuDetail.price}}$
           </div>
-          <div class="add-btn">
-            <app-custom-button-goldenrod  buttonText="Order"></app-custom-button-goldenrod>
+          <div class="row">
+            <div class="col-10 col-md-5">
+              <app-custom-button-goldenrod buttonText="Add Comment"></app-custom-button-goldenrod>
+            </div>
+            <div class="col-10 col-md-5">
+              <app-custom-button-goldenrod buttonText="Order"></app-custom-button-goldenrod>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
 </div>
