@@ -69,7 +69,10 @@ body {
     font-family: "Pacifico", cursive;
     color: goldenrod;
     font-size: 1.8em;
-    padding: 0 4em 0 0;
+
+    @media screen and (min-width: 768px){
+      padding: 0 4em 0 0;
+    }
   }
   .hamburger-btn {
     width: 55px;

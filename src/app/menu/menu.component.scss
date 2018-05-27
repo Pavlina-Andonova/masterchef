@@ -20,4 +20,37 @@
     z-index: 3;
   }
 }
+.type-selector-wrapper {
+  background: black;
 
+  .type-selector-content {
+    ul {
+      padding: 25px 0 10px 0;
+      margin: 0;
+
+      li {
+        display: inline-block;
+        width: 150px;
+        height: 40px;
+        margin: 5px 0;
+        border: 1px solid #fff;
+
+        &:hover,
+        &:active {
+          background-color: #fff;
+
+          a {
+            color: #000;
+          }
+        }
+
+        a {
+          display: inline-block;
+          padding: 7px 5px;
+          color: #fff;
+
+        }
+      }
+    }
+  }
+}
