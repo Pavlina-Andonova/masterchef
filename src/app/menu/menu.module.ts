@@ -9,10 +9,11 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { MenuListComponent } from './menu-list/menu-list.component';
 import { MenuListItemComponent } from './menu-list/menu-list-item/menu-list-item.component';
+import { MenuListItemDetailComponent } from './menu-list/menu-list-item/menu-list-item-detail/menu-list-item-detail.component';
 
 
 @NgModule({
-  declarations: [MenuComponent,MenuListComponent, MenuListItemComponent],
+  declarations: [MenuComponent,MenuListComponent, MenuListItemComponent, MenuListItemDetailComponent],
   imports: [CommonModule, FormsModule, SharedModule],
   providers: [MenuService]
 })

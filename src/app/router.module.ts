@@ -11,11 +11,12 @@ import { AuthGuardService } from "./auth/auth-guard.service";
 import { PersonalInformationComponent } from "./profile/personal-information/personal-information.component";
 import { AddressesComponent } from "./profile/addresses/addresses.component";
 import { FavouritesComponent } from "./profile/favourites/favourites.component";
+import { MenuListItemDetailComponent } from "./menu/menu-list/menu-list-item/menu-list-item-detail/menu-list-item-detail.component";
 
 const appRouter: Routes = [
   { path: "", component: HomeComponent, pathMatch: "full" },
   { path: "menu", component: MenuComponent },
-  // { path: 'menu/:id', component: MenuItemDetailComponent },
+  { path: 'menu/:id', component: MenuListItemDetailComponent },
   { path: "signin", component: SigninComponent },
   { path: "signup", component: SignupComponent },
   // { path: 'myProfile', component: ProfileComponent, canActivate: [AuthGuardService]}

@@ -11,6 +11,6 @@
   <div class="col-md-2 price text-center">
     <p>{{menuItem.price}}$</p>
     <app-custom-button-goldenrod buttonText="Order"></app-custom-button-goldenrod>
-    <app-custom-button-goldenrod buttonText="Details"></app-custom-button-goldenrod>
+    <app-custom-button-goldenrod [id]="menuItem.id" buttonText="Details"></app-custom-button-goldenrod>
   </div>
 </div>

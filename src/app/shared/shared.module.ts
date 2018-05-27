@@ -132,7 +132,7 @@ import { CustomButtonGoldenrodComponent } from './Components/custom-button-golde
     PopupComponent,
     FavouriteComponent,
     CustomButtonGoldenrodComponent
-    
+
   ]
 })
 export class SharedModule {}

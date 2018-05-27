@@ -1,1 +1,10 @@
-<button class="btn btn-primary content-primary-button" href="#" role="button">{{buttonText}}</button>
+<a
+  *ngIf="id"
+  class="btn btn-primary content-primary-button"
+  [routerLink]="[id]" 
+  role="button">{{buttonText}}</a>
+<button 
+  *ngIf="!id"
+  class="btn btn-primary content-primary-button"
+  role="button">{{buttonText}}</button>
+
