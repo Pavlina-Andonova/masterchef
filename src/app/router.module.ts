@@ -12,11 +12,14 @@ import { PersonalInformationComponent } from "./profile/personal-information/per
 import { AddressesComponent } from "./profile/addresses/addresses.component";
 import { FavouritesComponent } from "./profile/favourites/favourites.component";
 import { MenuListItemDetailComponent } from "./menu/menu-list/menu-list-item/menu-list-item-detail/menu-list-item-detail.component";
+import { OrdersComponent } from "./orders/orders.component";
+
 
 const appRouter: Routes = [
   { path: "", component: HomeComponent, pathMatch: "full" },
   { path: "menu", component: MenuComponent },
   { path: 'menu/:id', component: MenuListItemDetailComponent },
+  { path: 'orders', component: OrdersComponent },
   { path: "signin", component: SigninComponent },
   { path: "signup", component: SignupComponent },
   // { path: 'myProfile', component: ProfileComponent, canActivate: [AuthGuardService]}

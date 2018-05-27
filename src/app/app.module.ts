@@ -14,6 +14,7 @@ import { ProfileComponent } from "./profile/profile.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { SharedModule } from "./shared/shared.module";
 import { ProfileModule } from "./profile/profile.module";
+import { OrdersComponent } from './orders/orders.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ProfileModule } from "./profile/profile.module";
     AppComponent,
     HeaderComponent,
     PageNotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    OrdersComponent
   ],
   imports: [
     AppRouterModule,

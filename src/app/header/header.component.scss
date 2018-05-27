@@ -69,6 +69,11 @@ body {
       width: 100px;
       padding: 0 0.5em;
       border: 2px solid transparent;
+
+      &:hover {
+        cursor: pointer;
+      }
+      
       &.add-border:hover {
         border: 2px solid goldenrod;
         cursor: pointer;
