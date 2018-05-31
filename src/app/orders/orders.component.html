@@ -6,12 +6,12 @@
       <p class="text-center pb-3">* Get from the restaurant and get a 10% discount from your order</p>
       <div class="row buttons">
         <div class="col-12 col-md-6">
-          <div class="home" [ngClass]="{'selected-home': showHome}" (click)="handleHomeOptions()">
+          <div class="home" [ngClass]="{'selected-home': isHomeOptionsShown}" (click)="handleHomeOptions()">
             Home
           </div>
         </div>
         <div class="col-12 col-md-6">
-          <div class="restaurant" [ngClass]="{'selected-restaurant': showRestaurant}" (click)="handleRestaourantOptions()" >
+          <div class="restaurant" [ngClass]="{'selected-restaurant': isRestaurantOptionsShown}" (click)="handleRestaourantOptions()" >
             Restaurant
           </div>
         </div>
