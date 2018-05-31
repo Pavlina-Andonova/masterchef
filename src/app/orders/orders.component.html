@@ -3,6 +3,7 @@
   <div class="orders-content">
     <div class="container">
       <h2 class="text-center pt-3">How do you prefer to receive your order?</h2>
+      <p class="text-center pb-3">* Get from the restaurant and get a 10% discount from your order</p>
       <div class="row buttons">
         <div class="col-12 col-md-6">
           <div class="home" [ngClass]="{'selected-home': showHome}" (click)="handleHomeOptions()">
@@ -10,7 +11,7 @@
           </div>
         </div>
         <div class="col-12 col-md-6">
-          <div class="restaurant" [ngClass]="{'selected-restaurant': showRestaurant}" (click)="handleRestaurantOptions()">
+          <div class="restaurant" [ngClass]="{'selected-restaurant': showRestaurant}" (click)="handleRestaourantOptions()" >
             Restaurant
           </div>
         </div>
@@ -18,7 +19,7 @@
       <div class="container">
         <div class="row m-auto">
           <div class="col-12">
-            <div class="home-options" *ngIf="showHome">
+            <div class="home-options"  *ngIf="isHomeOptionsShown">
               <h4 class="order-type">
                 Please choose the appropriate address for the order
               </h4>
@@ -39,7 +40,7 @@
         </div>
         <div class="row m-auto">
           <div class="col-12">
-            <div class="restaurant-options" *ngIf="showRestaurant">
+            <div class="restaurant-options" *ngIf="isRestaurantOptionsShown">
               <h4 class="order-type">Please select the restaurant from which you would receive your order</h4>
               <div class="col-5 m-auto">
                 <div class="dropdown restaurant" >

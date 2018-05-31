@@ -6,26 +6,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
+  
+  isHomeOptionsShown: boolean = true;
+  isRestaurantOptionsShown: boolean = false;
+  constructor() {}
 
-  showHome: boolean = true;
-  showRestaurant: boolean = false;
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
-  }
+  handleHomeOptions() {
+    this.isHomeOptionsShown = true;
 
-  handleHomeOptions(){
-    this.showHome = !this.showHome;
-    if(this.showRestaurant === true) {
-      this.showRestaurant = !this.showRestaurant;
+    if (this.isHomeOptionsShown = true) {
+      this.isRestaurantOptionsShown = false;
     }
   }
 
-  handleRestaurantOptions() {
-    this.showRestaurant = !this.showRestaurant;
-    if(this.showHome === true) {
-      this.showHome = !this.showHome;
+  handleRestaourantOptions() {
+    this.isRestaurantOptionsShown = true;
+
+    if (this.isRestaurantOptionsShown = true) {
+      this.isHomeOptionsShown = false;
     }
   }
-
 }
