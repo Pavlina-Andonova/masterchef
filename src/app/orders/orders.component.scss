@@ -1,8 +1,42 @@
 .orders-wrapper {
-  padding-top: 65px;
+  padding-top: 12%;
   .orders-content {
     width: 100%;
     height: 500px;
     border: 2px solid black;
   }
+
+  .buttons {
+    margin: auto;
+    .home,
+    .restaurant {
+      width: 70%;
+      margin: auto;
+      border: 1px solid black;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+}
+
+.home-options,
+.restaurant-options {
+  // width: 50%;
+  border: 1px solid black;
+  height: 150px;
+  margin: 15px auto;
+  .order-type {
+    text-align: center;
+    padding: 10px;
+  }
+}
+
+.selected-home{
+  background: black;
+  color: white;
+}
+
+.selected-restaurant {
+  background: black;
+  color: white;
 }
