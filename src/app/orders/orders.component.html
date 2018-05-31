@@ -11,7 +11,7 @@
           </div>
         </div>
         <div class="col-12 col-md-6">
-          <div class="restaurant" [ngClass]="{'selected-restaurant': isRestaurantOptionsShown}" (click)="handleRestaourantOptions()" >
+          <div class="restaurant" [ngClass]="{'selected-restaurant': isRestaurantOptionsShown}" (click)="handleRestaourantOptions()">
             Restaurant
           </div>
         </div>
@@ -19,7 +19,7 @@
       <div class="container">
         <div class="row m-auto">
           <div class="col-12">
-            <div class="home-options"  *ngIf="isHomeOptionsShown">
+            <div class="home-options" *ngIf="isHomeOptionsShown">
               <h4 class="order-type">
                 Please choose the appropriate address for the order
               </h4>
@@ -43,7 +43,7 @@
             <div class="restaurant-options" *ngIf="isRestaurantOptionsShown">
               <h4 class="order-type">Please select the restaurant from which you would receive your order</h4>
               <div class="col-5 m-auto">
-                <div class="dropdown restaurant" >
+                <div class="dropdown restaurant">
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
                     Take out order from the restaurant
@@ -58,6 +58,36 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row m-auto">
+    <div class="col-3 pl-0">
+      <div>
+        <img width="100%" src="https://assets.bonappetit.com/photos/5ad51b07ff795274c43a0f58/16:9/w_1200,c_limit/20180403_Basically_122.jpg"
+          alt="">
+      </div>
+    </div>
+    <div class="col-4">
+      <div>
+        <h3> Item Title</h3>
+        <h4>400grams</h4>
+        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eveniet est recusandae ex obcaecati molestias, cumque,
+          facere commodi iusto numquam asperiores! Vel, recusandae. Iste cum explicabo blanditiis tenetur, id quis.</span>
+      </div>
+    </div>
+    <div class="col-3">
+      <div>
+        <button>Click</button>
+      </div>
+    </div>
+    <div class="col-2">
+      <div>
+        <span>1 x</span>
+        <span>14.50</span>
       </div>
     </div>
   </div>
