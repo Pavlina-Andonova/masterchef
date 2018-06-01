@@ -62,49 +62,9 @@
     </div>
   </div>
 </div>
-
-
-<!-- Single Item -->
-<div class="container" *ngIf="number > 0">
-  <div class="row m-auto item-wrapper">
-    <div class="col-3 pl-0">
-      <div class="img-wrapper">
-        <img width="100%" src="https://assets.bonappetit.com/photos/5ad51b07ff795274c43a0f58/16:9/w_1200,c_limit/20180403_Basically_122.jpg"
-          alt="">
-      </div>
-    </div>
-    <div class="col-5  m-auto">
-      <div>
-        <h3> Item Title</h3>
-        <h4>400grams</h4>
-        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eveniet est recusandae ex obcaecati molestias, cumque,
-          facere commodi iusto numquam asperiores! Vel, recusandae. Iste cum explicabo blanditiis tenetur, id quis.</span>
-      </div>
-    </div>
-    <div class="col-1  m-auto">
-      <div class="plus-btn" (click)="addItem()">
-        <i class="fas fa-plus"></i>
-      </div>
-      <div class="minus-btn" (click)="removeItem()">
-        <i class="fas fa-minus"></i>
-      </div>
-    </div>
-    <div class="col-1  m-auto">
-      <div class="delete-btn" (click)="deleteItem()">
-        <i class="far fa-trash-alt"></i>
-      </div>
-    </div>
-
-    <div class="col-2 m-auto">
-      <div class="price">
-        <span>{{number}} x</span>
-        <span>{{price}}</span>
-      </div>
-    </div>
-  </div>
-</div>
+<app-ordered-item></app-ordered-item>
 <div class="container">
   <div class="total">
-    <h4>Total: {{result}}</h4>  
+    <h4>Total: {{result}}</h4>
   </div>
 </div>

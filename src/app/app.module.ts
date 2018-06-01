@@ -14,8 +14,7 @@ import { ProfileComponent } from "./profile/profile.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { SharedModule } from "./shared/shared.module";
 import { ProfileModule } from "./profile/profile.module";
-import { OrdersComponent } from './orders/orders.component';
-
+import { OrdersModule } from "./orders/orders.module";
 
 @NgModule({
   declarations: [
@@ -23,7 +22,6 @@ import { OrdersComponent } from './orders/orders.component';
     HeaderComponent,
     PageNotFoundComponent,
     HomeComponent,
-    OrdersComponent
   ],
   imports: [
     AppRouterModule,
@@ -34,7 +32,8 @@ import { OrdersComponent } from './orders/orders.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ProfileModule  
+    ProfileModule,
+    OrdersModule
   ],
   providers: [],
   bootstrap: [AppComponent]

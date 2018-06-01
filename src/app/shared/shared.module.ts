@@ -33,7 +33,7 @@ import {
   SelectButtonModule,
   TriStateCheckboxModule,
   ToggleButtonModule,
-  EditorModule
+  EditorModule,
 } from "./prime";
 
 import { FlipCardComponent } from "./Components/flip-card/flip-card.component";
@@ -47,7 +47,7 @@ import { FilterPipe } from "./Components/search/filter.pipe";
 import { PopupComponent } from './Components/popup/popup.component';
 import { FavouriteComponent } from "./Components/favourite/favourite.component";
 import { CustomButtonGoldenrodComponent } from './Components/custom-button-goldenrod/custom-button-goldenrod.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 
 @NgModule({
@@ -63,7 +63,8 @@ import { CustomButtonGoldenrodComponent } from './Components/custom-button-golde
     PopupComponent, 
     PopupComponent, 
     FavouriteComponent,
-    CustomButtonGoldenrodComponent
+    CustomButtonGoldenrodComponent,
+      
   ],
   imports: [
     FormsModule,
@@ -95,7 +96,8 @@ import { CustomButtonGoldenrodComponent } from './Components/custom-button-golde
     SelectButtonModule,
     TriStateCheckboxModule,
     ToggleButtonModule,
-    EditorModule
+    EditorModule,
+    BrowserAnimationsModule
   ],
   exports: [
     ButtonModule,
