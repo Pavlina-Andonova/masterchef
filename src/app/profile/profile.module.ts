@@ -7,6 +7,7 @@ import { PersonalInformationComponent } from "./personal-information/personal-in
 import { AddressesComponent } from "./addresses/addresses.component";
 import { FavouritesComponent } from "./favourites/favourites.component";
 import { SharedModule } from "../shared/shared.module";
+import { FavouritesService } from "./favourites/favourites.service";
 
 
 @NgModule({
@@ -17,6 +18,6 @@ import { SharedModule } from "../shared/shared.module";
     FavouritesComponent
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule,SharedModule, ProfileRoutesModule],
-  providers: []
+  providers: [FavouritesService]
 })
 export class ProfileModule {}

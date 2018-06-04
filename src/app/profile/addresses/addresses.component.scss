@@ -1,0 +1,23 @@
+.wrapper {
+
+  input {
+    padding-left: 5px;
+  }
+  .main-info {
+    padding-top: 40px;
+    .building-type {
+      width: 100%;
+      height: 30px;
+    }
+  }
+
+  .additional-info {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    .city,
+    .district,
+    .building-type {
+      margin-top: 5px;
+    }
+  }
+}

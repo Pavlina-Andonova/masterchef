@@ -1,0 +1,22 @@
+.dishname {
+  font-family: 'Raleway', sans-serif;
+  margin: 2rem auto;
+  h1,
+  h2,
+  h3,
+  h4,
+  .title {
+    font-family: 'Pacifico', cursive;
+    color: goldenrod;
+  }
+  img {
+    width:100%;
+  }
+  .price {
+    font-size: 2rem;
+  }
+}
+
+app-favourite {
+  display: inline-block;
+}

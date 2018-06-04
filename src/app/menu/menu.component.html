@@ -7,29 +7,28 @@
   </div>
 </div>
 <div class="container-fluid type-selector-wrapper">
-    <div class="container type-selector-content">
-        <ul class="text-center">
-          <li>
-            <a href="#">Salads</a>
-          </li>
-          <li>
-            <a href="#">Main Dishes</a>
-          </li>
-          <li>
-            <a href="#">Pasta</a>
-          </li>
-          <li>
-            <a href="#">Pizzas</a>
-          </li>
-          <li>
-            <a href="#">Risotto</a>
-          </li>
-          <li>
-            <a href="#">Desserts</a>
-          </li>
-        </ul>
-        <hr>
-      </div>
+  <div class="container type-selector-content">
+    <ul class="text-center">
+      <li (click)="filterBy('salad')">
+        <a>Salad</a>
+      </li>
+      <li>
+        <a> Main Dishes</a>
+      </li>
+      <li>
+        <a>Pasta</a>
+      </li>
+      <li (click)="filterBy('pizza')">
+        <a>Pizzas</a>
+      </li>
+      <li>
+        <a>Risotto</a>
+      </li>
+      <li>
+        <a>Desserts</a>
+      </li>
+    </ul>
+    <hr>
+  </div>
 </div>
-
 <app-menu-list></app-menu-list>

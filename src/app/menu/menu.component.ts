@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuService } from './menu.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
   listFilter;
-  constructor() { }
+  // menu: any;
+  // constructor(private menuService: MenuService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
+  // filterBy(filter: string) {
+  //   switch (filter) {
+  //     case 'salad':
+  //       this.menu = this.menu.filter(menu => {
+  //         return menu.type.toLowerCase().includes('salad');
+  //       });
+  //       console.log(this.menu);
+
+  //     case 'pizza':
+  //       this.menu = this.menu.filter(menu => {
+  //         return menu.type.toLowerCase().includes('pizza');
+  //       });
+  //       console.log(this.menu);
+  //   }
+  // }
 }
