@@ -9,9 +9,9 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-ordered-item',
-  templateUrl: './ordered-item.component.html',
-  styleUrls: ['./ordered-item.component.scss'],
+  selector: 'app-shopping-cart',
+  templateUrl: './shopping-cart.component.html',
+  styleUrls: ['./shopping-cart.component.scss'],
   animations: [
     trigger('divState', [
       state(
@@ -32,7 +32,14 @@ import {
     ])
   ]
 })
-export class OrderedItemComponent implements OnInit {
+
+export class ShoppingCartComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
   state = 'normal';
 
   // result = this.number * this.price;
@@ -80,9 +87,4 @@ export class OrderedItemComponent implements OnInit {
       'price': '16',
       'number': '1'
     }
-  ]
-
-
-
-  
 }

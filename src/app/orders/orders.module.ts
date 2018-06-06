@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { OrdersComponent } from './orders.component';
-import { OrderedItemComponent } from './ordered-item/ordered-item.component';
-
+import { DeliveryTypeComponent } from './delivery-type/delivery-type.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 
 @NgModule({
-  declarations: [OrdersComponent, OrderedItemComponent],
+  declarations: [OrdersComponent, DeliveryTypeComponent, ConfirmationComponent, ShoppingCartComponent],
   imports: [CommonModule, FormsModule, SharedModule],
   providers: []
 })

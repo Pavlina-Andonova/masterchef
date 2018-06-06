@@ -1,30 +1,4 @@
-<!-- <ul class="app-header">
-  <li style="padding: 0 50px;">
-    <img width="135px" src="https://fanart.tv/api/download.php?type=download&image=35326&section=1" />
-  </li>
-  <li routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
-    <a routerLink="/">Home</a>
-  </li>
-  <li routerLinkActive="active-link">
-    <a [routerLink]="['menu']">Menu</a>
-  </li>
-  <li routerLinkActive="active-link" class="float-xl-right float-md-right float-sm-right" *ngIf="!isUserAuthenticated">
-    <a (click)="openSignupModal()">Sign Up</a>
-  </li>
-  <li routerLinkActive="active-link" class="float-xl-right float-md-right float-sm-right" *ngIf="!isUserAuthenticated">
-    <a (click)="openSigninModal()">Sign In</a>
-  </li>
-  <li routerLinkActive="active-link" class="float-xl-right float-md-right float-sm-right" *ngIf="isUserAuthenticated">
-    <a (click)="onLogout()">Log out</a>
-  </li>
-  <li routerLinkActive="active-link" class="float-xl-right" *ngIf="isUserAuthenticated">
-    <a [routerLink]="['myProfile']">
-      <i class="fa fa-user"></i>
-    </a>
-  </li>
-</ul> -->
-
-<div class="container-fluid header">
+<div class="container-fluid header" [ngClass]="{'page-scroll-header': isScrolled}">
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light ">
       <a class="logo" routerLink="/">MasterChef</a>
@@ -49,7 +23,7 @@
             </a>
           </li>
           <li *ngIf="isUserAuthenticated">
-            <a class="nav-link shopping-card-wrapper" [routerLink]="['orders']">
+            <a class="nav-link shopping-card-wrapper" [routerLink]="['orders/shopping-cart']">
               <div class="shopping-card"></div>
               <div class="counter">
                <span class="count">12</span>

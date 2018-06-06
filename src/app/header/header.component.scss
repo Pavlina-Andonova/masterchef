@@ -16,12 +16,14 @@ body {
   border: 2px solid goldenrod;
 }
 
+.page-scroll-header {
+  background: black!important;
+}
 .header {
   position: fixed;
   z-index: 3;
   background: #00000094;
   width: 100%;
-
   nav {
     padding: 0;
     margin: 10px auto;

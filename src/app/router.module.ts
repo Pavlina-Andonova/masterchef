@@ -13,17 +13,24 @@ import { AddressesComponent } from "./profile/addresses/addresses.component";
 import { FavouritesComponent } from "./profile/favourites/favourites.component";
 import { MenuListItemDetailComponent } from "./menu/menu-list/menu-list-item/menu-list-item-detail/menu-list-item-detail.component";
 import { OrdersComponent } from "./orders/orders.component";
+import { DeliveryTypeComponent } from "./orders/delivery-type/delivery-type.component";
+import { ConfirmationComponent } from "./orders/confirmation/confirmation.component";
+import { ShoppingCartComponent } from "./orders/shopping-cart/shopping-cart.component";
 
 
 const appRouter: Routes = [
   { path: "", component: HomeComponent, pathMatch: "full" },
   { path: "menu", component: MenuComponent },
   { path: 'menu/:id', component: MenuListItemDetailComponent },
-  { path: 'orders', component: OrdersComponent },
+  { path: 'orders', component: OrdersComponent, children: [
+    { path: "", redirectTo: "shopping-cart", pathMatch: 'full'},    
+    { path: "shopping-cart", component: ShoppingCartComponent },
+    { path: "delivery-type", component: DeliveryTypeComponent },
+    { path: "confirmation", component: ConfirmationComponent }
+  ]},
   { path: "signin", component: SigninComponent },
   { path: "signup", component: SignupComponent },
-  // { path: 'myProfile', component: ProfileComponent, canActivate: [AuthGuardService]}
-  { path: 'myProfile', component: ProfileComponent, canActivate: ['AuthGuard'], children: [
+  { path: 'myProfile', component: ProfileComponent, canActivate: ['AuthGuardService'], children: [
     { path: "", redirectTo: "/personalInformation", pathMatch: 'full'},
     { path: "personalInformation", component: PersonalInformationComponent },
     { path: "addresses", component: AddressesComponent },
