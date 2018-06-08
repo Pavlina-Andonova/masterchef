@@ -1,3 +1,30 @@
-<p>
-  confirmation works!
-</p>
+<div class="confirmation-wrapper">
+  <div class="container text-center">
+    <h3 class="mb-4">How would you like to pay?</h3>
+    <div class="row m-0 content">
+      <div class="col-md-6 pay-type">
+        <div class="text-center ">
+          <input type="radio" name="payType" value="cash" checked>
+          <i class="fas fa-wallet"></i>
+         <h4>With Cash</h4> 
+        </div>
+      </div>
+      <div class="col-md-6  pay-type">
+        <div class="text-center">
+          <input type="radio" name="payType" value="cart">
+          <i class="fab fa-cc-visa"></i>
+          <h4>With Cart</h4>
+        </div>
+      </div>
+    </div>
+    <div class="row m-0 justify-content-center">
+      <div class="col-md-6">
+        <div class="additional-info">
+          <h3>Additional information about the order:</h3>
+          <textarea></textarea>
+        </div>
+        <app-custom-button-goldenrod buttonText="Finish the Order"></app-custom-button-goldenrod>
+      </div>
+    </div>
+  </div>
+</div>

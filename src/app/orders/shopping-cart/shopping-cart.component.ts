@@ -32,22 +32,16 @@ import {
     ])
   ]
 })
-
 export class ShoppingCartComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+  constructor() {}
+  ngOnInit() {}
 
   state = 'normal';
 
   // result = this.number * this.price;
   // total = this.result;
-  constructor() {}
 
-  ngOnInit() {}
-  
+
   // addItem() {
   //   this.number += 1;
   //   this.result = this.number * this.price;
@@ -72,19 +66,23 @@ export class ShoppingCartComponent implements OnInit {
 
   items = [
     {
-      'img': 'https://recipes.timesofindia.com/photo/53110049.cms',
-      'title': 'pizza',
-      'description': 'Pizza Margherita is a typical Neapolitan pizza, made with San Marzano tomatoes, mozzarella fior di latte,[1] fresh basil, salt and extra-virgin olive oil.',
-      'weight': '400',
-      'price': '12',
-      'number': '1'
+      img: 'https://recipes.timesofindia.com/photo/53110049.cms',
+      title: 'pizza',
+      description:
+        'Pizza Margherita is a typical Neapolitan pizza, made with San Marzano tomatoes, mozzarella fior di latte,[1] fresh basil, salt and extra-virgin olive oil.',
+      weight: '400',
+      price: '12',
+      number: '1'
     },
     {
-      'img': 'https://assets.bonappetit.com/photos/5ad51b07ff795274c43a0f58/16:9/w_1200,c_limit/20180403_Basically_122.jpg',
-      'title': 'salad',
-      'description': 'Pizza Margherita is a typical Neapolitan pizza, made with San Marzano tomatoes, mozzarella fior di latte,[1] fresh basil, salt and extra-virgin olive oil.',
-      'weight': '400',
-      'price': '16',
-      'number': '1'
+      img:
+        'https://assets.bonappetit.com/photos/5ad51b07ff795274c43a0f58/16:9/w_1200,c_limit/20180403_Basically_122.jpg',
+      title: 'salad',
+      description:
+        'Pizza Margherita is a typical Neapolitan pizza, made with San Marzano tomatoes, mozzarella fior di latte,[1] fresh basil, salt and extra-virgin olive oil.',
+      weight: '400',
+      price: '16',
+      number: '1'
     }
+  ];
 }

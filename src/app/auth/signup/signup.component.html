@@ -10,7 +10,7 @@
                 <popup-close-button btnColor="btn-white" (getCloseButtonStateChange)="handleCloseModal($event)"></popup-close-button>
                 <xinput name='email' label='Email' [form]='form' placeholder='Email'></xinput>
                 <xpassword name='password' label='Password' [form]='form' placeholder='Password'></xpassword>
-                <xpassword name='confirmPassword' [form]='form' placeholder='Password'></xpassword>
+                <xpassword name='confirmPassword' label="Repeat password" [form]='form' placeholder='Password'></xpassword>
                 <!-- <div class="error" *ngIf="confirmPassword.value !== signupData.password">
                     Passwords does not match
                 </div> -->
@@ -19,7 +19,7 @@
         </div>
         <p class="text-center">
             Already have an account?
-            <a [routerLink]="['/signin']">Sign in now</a>
+            <a [routerLink]="['/signin']"> Sign in now</a>
         </p>
     </div>
 </div>

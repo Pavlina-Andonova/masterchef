@@ -18,13 +18,13 @@
         </ul>
         <ul class="navbar-nav text-center">
           <li *ngIf="isUserAuthenticated">
-            <a class="nav-link" [routerLink]="['myProfile']">
+            <a class="nav-link p-0" style="margin-top:10px;" [routerLink]="['myProfile']">
               <i class="fas fa-user-circle"> </i>
             </a>
           </li>
           <li *ngIf="isUserAuthenticated">
-            <a class="nav-link shopping-card-wrapper" [routerLink]="['orders/shopping-cart']">
-              <div class="shopping-card"></div>
+            <a class="nav-link shopping-cart-wrapper" [routerLink]="['orders/shopping-cart']">
+              <div class="shopping-cart"></div>
               <div class="counter">
                <span class="count">12</span>
               </div>
