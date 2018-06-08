@@ -5,19 +5,23 @@ import { HttpClient } from '@angular/common/http';
 export class MenuService {
   constructor(private http: HttpClient) {}
 
+  createMenuItem(menuItemData) {
+    return this.http.post("/api/menuItem" , menuItemData);
+  }
+
   getMenu() {
     return this.http.get('/api/menu');
   }
 
   getMenuItemById(id: string) {
-    return this.http.get("/api/menuItem/" + id);
+    return this.http.get('/api/menuItem/' + id);
   }
 
   // deleteMenuItem(id: string){
   //   return this.http.delete('api/menuItem/' + id)
   // }
 
-  getFavourites(){
-    return this.http.get('/api/favourites/add')
+  getFavourites() {
+    return this.http.get('/api/favourites/add');
   }
 }

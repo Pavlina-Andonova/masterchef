@@ -1,15 +1,17 @@
-<div class="row dishname " *ngFor="let menuItem of menu">
-  <div class="col-md-3">
-    <img src="{{menuItem.menuItemImage}}" alt="">
+<form>
+  <div class="row dishname " *ngFor="let menuItem of menu">
+    <div class="col-md-3">
+      <img src="{{menuItem.menuItemImage}}">
+    </div>
+    <div class="col-md-7">
+      <span class="title">{{menuItem.title}}</span>
+      <hr>
+      <p>{{menuItem.description}}</p>
+    </div>
+    <div class="col-md-2 price text-center">
+      <p>{{menuItem.price}}$</p>
+      <app-custom-button-goldenrod buttonText="Edit"></app-custom-button-goldenrod>
+      <app-custom-button-goldenrod buttonText="Remove"></app-custom-button-goldenrod>
+    </div>
   </div>
-  <div class="col-md-7">
-    <span class="title">{{menuItem.title}}</span>
-    <hr>
-    <p>{{menuItem.description}}</p>
-  </div>
-  <div class="col-md-2 price text-center">
-    <p>{{menuItem.price}}$</p>
-    <app-custom-button-goldenrod buttonText="Edit"></app-custom-button-goldenrod>
-    <app-custom-button-goldenrod buttonText="Remove"></app-custom-button-goldenrod>
-  </div>
-</div>
+</form>
