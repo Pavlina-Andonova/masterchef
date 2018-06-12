@@ -1,31 +1,56 @@
-import { Component, OnInit } from '@angular/core';
-import { ValidationManager } from '../../../shared/Services/validation-manager';
-import { MenuService } from '../../menu.service';
+import { Component, OnInit, EventEmitter } from "@angular/core";
+import { MenuService } from "../../menu.service";
+import { ValidationManager } from "../../../shared/Services/validation-manager";
+import { HttpClient } from "@angular/common/http";
+import { Output } from "@angular/core";
+
+
 
 @Component({
-  selector: 'app-menu-list-item-add',
-  templateUrl: './menu-list-item-add.component.html',
-  styleUrls: ['./menu-list-item-add.component.scss']
+  selector: "app-menu-list-item-add",
+  templateUrl: "./menu-list-item-add.component.html",
+  styleUrls: ["./menu-list-item-add.component.scss"]
 })
 export class MenuListItemAddComponent implements OnInit {
-form;
-  constructor(private menuService: MenuService) { }
+  menuItemForm: any;
+
+  @Output() newMenuItemAdded = new EventEmitter<any>();
+
+  constructor( private menuService: MenuService, private http: HttpClient) {}
 
   ngOnInit() {
-    // this.form = new ValidationManager({
-    //   image: 'required',
-    //   type: 'required',
-    //   title: 'required',
-    //   description: 'required',
-    //   price: 'required',
-    //   weight: 'required',
-    // })
+    this.menuItemForm = new ValidationManager({
+      type: "required",
+      title: "required",
+      description: "required",
+      price: "required",
+      weight: "required",
+      menuItemImage: "required"
+    });
+  }
+  
+  onSubmit() {
+    const formData = { ...this.menuItemForm.formGroup.value };
+    this.menuService.createMenuItem(formData).subscribe(
+      resp => {
+        this.newMenuItemAdded.emit(resp);
+        console.log(formData);
+      }
+)
   }
 
-  // addMenuItem(menuItemData) {
-  //   let manuItemData = { ...this.form.formGroup.value };
-
-  //   this.menuService.createMenuItem(menuItemData)
-  // }
-
-}
+//   this.authService.registerUser(userData).subscribe(
+//     resp => {
+//       this.data = resp;
+//       sessionStorage.setItem('jwtToken', this.data.token);
+//       this.authService.setIsUserAuthenticated(!!resp);
+//       this.router.navigate(['']);
+//       this.isModal = false;
+//       this.getSignupModalStateChange.emit(false);
+//     },
+//     err => {
+//       this.message = err.error.msg;
+//       this.authService.setIsUserAuthenticated(false);
+//     }
+//   );
+ }

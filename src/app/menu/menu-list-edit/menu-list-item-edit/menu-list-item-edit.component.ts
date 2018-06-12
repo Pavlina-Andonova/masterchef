@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MenuService } from '../../menu.service';
 
 @Component({
@@ -7,22 +7,12 @@ import { MenuService } from '../../menu.service';
   styleUrls: ['./menu-list-item-edit.component.scss']
 })
 export class MenuListItemEditComponent implements OnInit {
-  menu: any;
+  @Input() menuItem: any;
 
   criteria = '';
-  constructor(
-    private menuService: MenuService,
-  ) {}
+  constructor() {}
 
   ngOnInit() {
-    this.menuService.getMenu().subscribe(
-      res => {
-        this.menu = res;
-      },
-      err => {
-        err.error.msg;
-      }
-    );
+    
   }
-
 }
