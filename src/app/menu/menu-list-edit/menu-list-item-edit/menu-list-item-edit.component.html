@@ -4,14 +4,20 @@
       <img src="{{menuItem.menuItemImage}}">
     </div>
     <div class="col-md-7">
-      <span class="title">{{menuItem.title}}</span>
+      <div *ngIf="isEditting" class="title">{{menuItem.title}}</div>
+      <input *ngIf="!isEditting" type="text" [value]="menuItem.title">
+
+      <div *ngIf="isEditting" class="weight">{{menuItem.weight}} grams.</div>
+      <input *ngIf="!isEditting" type="text" [value]="menuItem.weight">
       <hr>
-      <p>{{menuItem.description}}</p>
+      <p *ngIf="isEditting">{{menuItem.description}}</p>
+      <textarea *ngIf="!isEditting" [value]="menuItem.description"></textarea>
     </div>
     <div class="col-md-2 price text-center">
-      <p>{{menuItem.price}}$</p>
-      <app-custom-button-goldenrod buttonText="Edit"></app-custom-button-goldenrod>
-      <app-custom-button-goldenrod buttonText="Remove"></app-custom-button-goldenrod>
+      <p *ngIf="isEditting">{{menuItem.price}}$</p>
+      <input *ngIf="!isEditting" type="text" [value]="menuItem.price">
+      <app-custom-button-goldenrod [buttonText]="isEditting ? 'Edit' : 'Save'" (click)="onEdit()"></app-custom-button-goldenrod>
+      <app-custom-button-goldenrod buttonText="Remove" (click)="onDelete()"></app-custom-button-goldenrod>
     </div>
   </div>
 </form>

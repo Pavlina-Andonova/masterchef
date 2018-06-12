@@ -27,4 +27,10 @@ export class MenuListEditComponent implements OnInit {
     this.menuList.unshift(menuItemData);
   }
 
+  handleDeletedMenuItem(menuItemId:any) {
+    this.menuList = this.menuList.filter((item) => {
+        return item.id !== menuItemId;
+    });
+  }
+
 }

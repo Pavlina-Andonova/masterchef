@@ -1,6 +1,6 @@
 <div class="container">
   <app-menu-list-item-add (newMenuItemAdded)="handleNewMenuItem($event)"></app-menu-list-item-add>
   <ng-container *ngIf="menuList && menuList.length > 0">
-    <app-menu-list-item-edit *ngFor="let menuItem of menuList" [menuItem]="menuItem"></app-menu-list-item-edit>
+    <app-menu-list-item-edit (deletedMenuItem)="handleDeletedMenuItem($event)" *ngFor="let menuItem of menuList" [menuItem]="menuItem"></app-menu-list-item-edit>
   </ng-container>
 </div>
