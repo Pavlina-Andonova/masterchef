@@ -10,6 +10,10 @@ export class MenuService {
     return this.http.post("/api/menuItem" , menuItemData);
   }
 
+  updateMenuItem(menuItemData) {
+    return this.http.put('/api/menuItem/' + menuItemData.id, menuItemData);
+  }
+
   getMenu() {
     return this.http.get('/api/menu');
   }

@@ -9,6 +9,7 @@ import { Input } from '@angular/core';
 export class CustomButtonGoldenrodComponent implements OnInit {
   @Input() buttonText;
   @Input() id: string = '';
+  @Input() clicked: any;
   constructor() { }
 
   ngOnInit() {

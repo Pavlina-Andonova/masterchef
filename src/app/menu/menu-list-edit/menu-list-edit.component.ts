@@ -33,4 +33,15 @@ export class MenuListEditComponent implements OnInit {
     });
   }
 
+  handleEditedMenuItem(menuItem:any) {
+    this.menuList = this.menuList.map((item) => {
+      if (item.id === menuItem.id) {
+        item = menuItem;
+        console.log(item);
+      }
+
+      return item;
+  });
+  }
+
 }

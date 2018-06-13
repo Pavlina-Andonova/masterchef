@@ -1,23 +1,25 @@
-<form>
-  <div class="row dishname">
-    <div class="col-md-3">
-      <img src="{{menuItem.menuItemImage}}">
-    </div>
-    <div class="col-md-7">
-      <div *ngIf="isEditting" class="title">{{menuItem.title}}</div>
-      <input *ngIf="!isEditting" type="text" [value]="menuItem.title">
+<form (ngSubmit)="onEdit()" ngForm>
+  <fieldset [formGroup]="menuItemForm && menuItemForm.getForm()">
+    <div class="row dishname">
+      <div class="col-md-3">
+        <img src="{{menuItem.menuItemImage}}">
+      </div>
+      <div class="col-md-7">
+        <div *ngIf="isEditting" class="title">{{menuItem.title}}</div>
+        <input *ngIf="!isEditting" id="title" name="title" formControlName="title" type="text" [value]="menuItem.title">
 
-      <div *ngIf="isEditting" class="weight">{{menuItem.weight}} grams.</div>
-      <input *ngIf="!isEditting" type="text" [value]="menuItem.weight">
-      <hr *ngIf="isEditting">
-      <p *ngIf="isEditting">{{menuItem.description}}</p>
-      <textarea *ngIf="!isEditting" [value]="menuItem.description"></textarea>
+        <div *ngIf="isEditting" class="weight">{{menuItem.weight}} grams.</div>
+        <input *ngIf="!isEditting" id="weight" name="weight" formControlName="weight" type="text" [value]="menuItem.weight">
+        <hr *ngIf="isEditting">
+        <p *ngIf="isEditting">{{menuItem.description}}</p>
+        <textarea *ngIf="!isEditting" id="description" name="description" formControlName="description" [value]="menuItem.description"></textarea>
+      </div>
+      <div class="col-md-2 price text-center">
+        <p *ngIf="isEditting">{{menuItem.price}}$</p>
+        <input *ngIf="!isEditting" type="text" [value]="menuItem.price">
+        <app-custom-button-goldenrod [buttonText]="isEditting ? 'Edit' : 'Save'"></app-custom-button-goldenrod>
+        <app-custom-button-goldenrod buttonText="Remove" (click)="onDelete()"></app-custom-button-goldenrod>
+      </div>
     </div>
-    <div class="col-md-2 price text-center">
-      <p *ngIf="isEditting">{{menuItem.price}}$</p>
-      <input *ngIf="!isEditting" type="text" [value]="menuItem.price">
-      <app-custom-button-goldenrod [buttonText]="isEditting ? 'Edit' : 'Save'" (click)="onEdit()"></app-custom-button-goldenrod>
-      <app-custom-button-goldenrod buttonText="Remove" (click)="onDelete()"></app-custom-button-goldenrod>
-    </div>
-  </div>
+  </fieldset>
 </form>
