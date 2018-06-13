@@ -1,12 +1,21 @@
-
-  .item-img {
-    height: 160px;
+.item-img {
+  height: 160px;
+  width: 100%;
+  border: 1px solid black;
+  i {
     width: 100%;
-    border: 1px solid black;
+    text-align: center;
+    padding-top: 17%;
+    font-size: 70px;
+    cursor: pointer;
   }
-  textarea {
-    width: 100%;
-    height: 120px;
-    resize: none;
-  }
-
+}
+input,
+textarea {
+  padding: 5px;
+}
+textarea {
+  width: 100%;
+  height: 120px;
+  resize: none;
+}

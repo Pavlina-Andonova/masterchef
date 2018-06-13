@@ -9,7 +9,7 @@
 
       <div *ngIf="isEditting" class="weight">{{menuItem.weight}} grams.</div>
       <input *ngIf="!isEditting" type="text" [value]="menuItem.weight">
-      <hr>
+      <hr *ngIf="isEditting">
       <p *ngIf="isEditting">{{menuItem.description}}</p>
       <textarea *ngIf="!isEditting" [value]="menuItem.description"></textarea>
     </div>
