@@ -45,7 +45,6 @@ export class SignupComponent implements OnInit {
         this.authService.setIsUserAuthenticated(false);
       }
     );
-    console.log(this.form.formGroup.value);
   }
 
   handleCloseModal(isModalClosed) {

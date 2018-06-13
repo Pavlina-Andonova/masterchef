@@ -32,8 +32,7 @@ export class MenuListItemEditComponent implements OnInit {
       description: this.menuItem.description,
       price: this.menuItem.price,
       weight: this.menuItem.weight,
-      menuItemImage: this.menuItem.menuItemImage,
-      
+      menuItemImage: this.menuItem.menuItemImage
     });
   }
 
@@ -50,7 +49,7 @@ export class MenuListItemEditComponent implements OnInit {
     const menuItemData = {
       ...this.menuItemForm.formGroup.value,
       id: this.menuItem.id
-    }
+    };
     this.isEditting = !this.isEditting;
 
     if (this.isEditting) {

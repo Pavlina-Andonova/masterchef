@@ -6,7 +6,6 @@ export class MenuService {
   constructor(private http: HttpClient) {}
 
   createMenuItem(menuItemData) {
-    console.log('asdadasd');
     return this.http.post("/api/menuItem" , menuItemData);
   }
 

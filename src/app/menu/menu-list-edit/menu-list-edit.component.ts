@@ -23,7 +23,6 @@ export class MenuListEditComponent implements OnInit {
   }
 
   handleNewMenuItem(menuItemData: any){
-    console.log(menuItemData);
     this.menuList.unshift(menuItemData);
   }
 
@@ -37,7 +36,6 @@ export class MenuListEditComponent implements OnInit {
     this.menuList = this.menuList.map((item) => {
       if (item.id === menuItem.id) {
         item = menuItem;
-        console.log(item);
       }
 
       return item;

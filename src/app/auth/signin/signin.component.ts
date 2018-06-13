@@ -24,10 +24,8 @@ export class SigninComponent implements OnInit {
       'email': 'required|email',
       'password': 'required|rangeLength:4,15'
     });
-    console.log(this.form);
   }
   signin() {
-    console.log(this.form);
     this.authService.loginUser(this.form.formGroup.value).subscribe(
       resp => {
         this.data = resp;
@@ -42,7 +40,6 @@ export class SigninComponent implements OnInit {
         this.authService.setIsUserAuthenticated(false);
       }
     );
-    console.log(this.data);
   }
 
   handleCloseModal(isModalClosed) {

@@ -33,7 +33,6 @@ module.exports.create = create;
 
 const get = async function(req, res) {
   res.setHeader("Content-Type", "application/json");
-  console.log(req.user)
   return res.send(req.user);
 };
 module.exports.get = get;

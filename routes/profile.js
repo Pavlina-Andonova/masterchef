@@ -5,6 +5,7 @@ const { transaction } = require("objection");
 const ProfileController = require("../controllers/ProfileController");
 
 module.exports = router => {
+  //* Favourites *//
   //* Add new item*//
   router.post("/api/favourites/add", ProfileController.addMenuItemToFavourites);
 

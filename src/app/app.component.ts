@@ -33,12 +33,10 @@ export class AppComponent implements OnInit {
   }
 
   handleSigninModal(isModalOpen: boolean) {
-    console.log(isModalOpen);
     this.isSigninModalOpen = isModalOpen;
   }
 
   handleSignupModal(isModalOpen: boolean) {
-    console.log(isModalOpen);
     this.isSignupModalOpen = isModalOpen;
   }
 

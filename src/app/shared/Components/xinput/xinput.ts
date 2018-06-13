@@ -26,7 +26,6 @@ export class XInput implements OnInit {
 
     ngOnChanges(changes) {
         this.ctrl = this.form && this.form.formGroup.controls[this.name] || {};
-        // console.log(changes, this.ctrl);
         if (_.get(changes, 'disabled.currentValue') === true) {
             this.ctrl.disable && this.ctrl.disable();
         } else {
