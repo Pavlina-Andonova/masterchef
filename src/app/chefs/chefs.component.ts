@@ -11,19 +11,4 @@ export class ChefsComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  cheffs = [
-    {
-      name: 'Cheff 1',
-      description: ' asdas asd asd asd asd';
-    },
-    {
-      name: 'Cheff 2',
-      description: ' asdas asd asd asd asd';
-    },
-    {
-      name: 'Cheff 3',
-      description: ' asdas asd asd asd asd';
-    },
-  ]
 }

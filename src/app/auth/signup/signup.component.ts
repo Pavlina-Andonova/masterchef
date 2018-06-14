@@ -35,14 +35,14 @@ export class SignupComponent implements OnInit {
       resp => {
         this.data = resp;
         sessionStorage.setItem('jwtToken', this.data.token);
-        this.authService.setIsUserAuthenticated(!!resp);
+        this.authService.setIsUserAuthenticated(resp);
         this.router.navigate(['']);
         this.isModal = false;
         this.getSignupModalStateChange.emit(false);
       },
       err => {
         this.message = err.error.msg;
-        this.authService.setIsUserAuthenticated(false);
+        this.authService.setIsUserAuthenticated(null);
       }
     );
   }

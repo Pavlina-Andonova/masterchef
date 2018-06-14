@@ -1,32 +1,58 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { MenuService } from '../../menu.service';
-import { FavouritesService } from '../../../profile/favourites/favourites.service';
+import { Component, OnInit, EventEmitter, Output } from "@angular/core";
+import { MenuService } from "../../menu.service";
+import { FavouritesService } from "../../../profile/favourites/favourites.service";
+import { AuthService } from "../../../auth/auth.service";
+import { Subscription } from "rxjs/Subscription";
 
 @Component({
-  selector: 'app-menu-list-item',
-  templateUrl: './menu-list-item.component.html',
-  styleUrls: ['./menu-list-item.component.scss']
+  selector: "app-menu-list-item",
+  templateUrl: "./menu-list-item.component.html",
+  styleUrls: ["./menu-list-item.component.scss"]
 })
 export class MenuListItemComponent implements OnInit {
   menu: any;
   menuItem;
-  id;
-  favouriteMenuItem;
+  favouriteMenuItems;
   selectedItem;
 
   @Output() newFavouriteItemAdded = new EventEmitter<any>();
-
-  criteria = '';
+  currentUser: any;
+  criteria = "";
+  subscription: Subscription;
   constructor(
     private menuService: MenuService,
-    private favService: FavouritesService
+    private favService: FavouritesService,
+    private authService: AuthService
   ) {}
-  filteredMenu
+
   ngOnInit() {
     this.menuService.getMenu().subscribe(
-      res => {
-        this.menu = res;
-        console.log(this.menu)
+      (res: any) => {
+        const menu = res;
+        const token = sessionStorage.getItem("jwtToken");
+        if (token) {
+          this.favService.getFavourites(token).subscribe(
+            (resp: any) => {
+              const favouriteMenuItemsId = resp.map(
+                favouriteMenuItem => {
+                  return favouriteMenuItem.id;
+                }
+              );
+
+              this.menu = menu.map((menuItem: any) => {
+                return {
+                  ...menuItem,
+                  isFavourite: favouriteMenuItemsId.indexOf(menuItem.id) >= 0
+                };
+              });
+            },
+            error => {
+              this.menu = menu;
+            }
+          );
+        } else {
+          this.menu = menu;
+        }
       },
       err => {
         err.error.msg;
@@ -39,6 +65,6 @@ export class MenuListItemComponent implements OnInit {
   }
 
   addToFavourites() {
-    console.log('Add to fav')
+    this.menu.isFavourite = !this.menu.isFavourite;
   }
 }

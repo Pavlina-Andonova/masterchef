@@ -25,6 +25,6 @@ export class PersonalInformationComponent implements OnInit {
   //     lastName: this.profileForm.lastName,
   //     email: this.profileForm.email
   //   });
-  // }
+  }
 
 }

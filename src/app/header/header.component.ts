@@ -27,15 +27,15 @@ export class HeaderComponent {
   ngOnInit() {
     this.isUserAuthenticated = this.authService.checkIfUserIsAuthenticated();
     this.subscription = this.authService.userAuthenticationChanged.subscribe(
-      (isUserAuthenticated: boolean) => {
-        this.isUserAuthenticated = isUserAuthenticated;
+      (user: any) => {
+        this.isUserAuthenticated = !!user;
       }
     );
   }
 
   onLogout() {
     sessionStorage.removeItem('jwtToken');
-    this.authService.setIsUserAuthenticated(false);
+    this.authService.setIsUserAuthenticated(null);
     this.router.navigate(['']);
   }
 

@@ -5,10 +5,8 @@ import { Subject } from "rxjs/Subject";
 
 @Injectable()
 export class AuthService {
-  isUserAuthenticated: boolean = false;
-  userAuthenticationChanged = new Subject<boolean>();
-
-
+  currentUser: any = null;
+  userAuthenticationChanged = new Subject<any>();
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -20,13 +18,17 @@ export class AuthService {
     return this.http.post("/api/users/login", userData);
   }
 
-  setIsUserAuthenticated(isUserAuthenticated) {
-    this.isUserAuthenticated = isUserAuthenticated;
-    this.userAuthenticationChanged.next(this.isUserAuthenticated);
+  setIsUserAuthenticated(user: any) {
+    this.currentUser = user;
+    this.userAuthenticationChanged.next(this.currentUser);
   }
 
   checkIfUserIsAuthenticated(): boolean {
-    return this.isUserAuthenticated;
+    return !!this.currentUser;
+  }
+
+  getCurrentUser() {
+    return this.currentUser;
   }
 
   getUser(token) {
@@ -35,6 +37,4 @@ export class AuthService {
     };
     return this.http.get("/api/users", httpOptions);
   }
-
-  
 }

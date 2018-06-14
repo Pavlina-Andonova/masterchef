@@ -21,14 +21,14 @@ export class AppComponent implements OnInit {
     if (authenticationToken) {
       this.authService.getUser(authenticationToken).subscribe(
         (response: Response) => {
-          this.authService.setIsUserAuthenticated(!!response);
+          this.authService.setIsUserAuthenticated(response);
         },
         error => {
-          this.authService.setIsUserAuthenticated(false);
+          this.authService.setIsUserAuthenticated(null);
         }
       );
     } else {
-      this.authService.setIsUserAuthenticated(false);
+      this.authService.setIsUserAuthenticated(null);
     }
   }
 

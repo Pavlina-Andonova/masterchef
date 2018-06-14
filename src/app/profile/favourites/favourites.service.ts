@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class FavouritesService {
@@ -10,8 +10,11 @@ export class FavouritesService {
     return this.http.post('/api/favourites/add', favItem)
   }
 
-  getFavourites() {
-    return this.http.get('/api/favourites');
+  getFavourites(token) {
+    const httpOptions = {
+      headers: new HttpHeaders({ Authorization: token })
+    };
+    return this.http.get('/api/favourites', httpOptions);
   }
 
   deleteFavourite() {

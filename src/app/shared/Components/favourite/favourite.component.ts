@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./favourite.component.scss']
 })
 export class FavouriteComponent implements OnInit {
-  @Input() isFavourite: boolean = true;
+  @Input() isFavourite: boolean = false;
   constructor() { }
 
   ngOnInit() {

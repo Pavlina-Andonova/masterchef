@@ -20,12 +20,13 @@ module.exports.addMenuItemToFavourites = addMenuItemToFavourites;
 
 const getFavouriteMenuItems = async function(req, res) {
   const menuItemsData = await ProfileMenuItem.query().select('menuItemId').where({
-    profileId: 2
+    profileId: req.user.id
   });
 
   const menuItemsIds = menuItemsData.map((menuItem)=>{
     return menuItem.menuItemId;
-  })
+  });
+  
   const menuItems = await MenuItem.query().whereIn('id',menuItemsIds);
 
   return res.send(menuItems);
