@@ -16,10 +16,12 @@ import { OrdersComponent } from "./orders/orders.component";
 import { DeliveryTypeComponent } from "./orders/delivery-type/delivery-type.component";
 import { ConfirmationComponent } from "./orders/confirmation/confirmation.component";
 import { ShoppingCartComponent } from "./orders/shopping-cart/shopping-cart.component";
+import { ChefsComponent } from "./chefs/chefs.component";
 
 
 const appRouter: Routes = [
   { path: "", component: HomeComponent, pathMatch: "full" },
+  { path: "chefs", component: ChefsComponent },
   { path: "menu", component: MenuComponent },
   { path: 'menu/:id', component: MenuListItemDetailComponent },
   { path: 'orders', component: OrdersComponent, children: [

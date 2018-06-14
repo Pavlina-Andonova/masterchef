@@ -1,0 +1,21 @@
+<div class="wrapper" *ngFor="let chef of chefs">
+  <div class="container pl-0">
+    <div class="chef-wrapper">
+      <div class="row custom-row">
+        <div class="col-4 p-0">
+          <div class="chef-img">
+            <img class="chef" src="{{chef.image}}"
+              alt="">
+          </div>
+        </div>
+        <div class="col-8 p-0">
+          <div class="chef-description">
+            <h2>{{chef.name}}</h2>
+            <h4>{{chef.job}}</h4>
+            <div>{{chef.description}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

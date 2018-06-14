@@ -15,6 +15,8 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
 import { SharedModule } from "./shared/shared.module";
 import { ProfileModule } from "./profile/profile.module";
 import { OrdersModule } from "./orders/orders.module";
+import { ChefsComponent } from './chefs/chefs.component';
+import { ChefItemComponent } from './chefs/chef-item/chef-item.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { OrdersModule } from "./orders/orders.module";
     HeaderComponent,
     PageNotFoundComponent,
     HomeComponent,
+    ChefsComponent,
+    ChefItemComponent,
   ],
   imports: [
     AppRouterModule,

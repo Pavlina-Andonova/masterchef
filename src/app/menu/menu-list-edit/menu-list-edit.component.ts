@@ -37,7 +37,6 @@ export class MenuListEditComponent implements OnInit {
       if (item.id === menuItem.id) {
         item = menuItem;
       }
-
       return item;
   });
   }

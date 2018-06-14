@@ -9,7 +9,7 @@
 <div class="container-fluid type-selector-wrapper">
   <div class="container type-selector-content">
     <ul class="text-center">
-      <li (click)="filterBy('salad')">
+      <li>
         <a>Salad</a>
       </li>
       <li>
@@ -18,7 +18,7 @@
       <li>
         <a>Pasta</a>
       </li>
-      <li (click)="filterBy('pizza')">
+      <li>
         <a>Pizzas</a>
       </li>
       <li>
@@ -31,5 +31,5 @@
     <hr>
   </div>
 </div>
-<app-menu-list *ngIf="isUserAuthenticated"></app-menu-list>
-<app-menu-list-edit></app-menu-list-edit>
+<app-menu-list></app-menu-list>
+<!-- <app-menu-list-edit></app-menu-list-edit> -->

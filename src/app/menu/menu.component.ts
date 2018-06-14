@@ -8,24 +8,10 @@ import { MenuService } from './menu.service';
 })
 export class MenuComponent implements OnInit {
   listFilter;
-  // menu: any;
-  // constructor(private menuService: MenuService) {}
+
+  constructor(private menuService: MenuService) {}
 
   ngOnInit() {}
 
-  // filterBy(filter: string) {
-  //   switch (filter) {
-  //     case 'salad':
-  //       this.menu = this.menu.filter(menu => {
-  //         return menu.type.toLowerCase().includes('salad');
-  //       });
-  //       console.log(this.menu);
-
-  //     case 'pizza':
-  //       this.menu = this.menu.filter(menu => {
-  //         return menu.type.toLowerCase().includes('pizza');
-  //       });
-  //       console.log(this.menu);
-  //   }
-  // }
+ 
 }
