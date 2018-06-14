@@ -28,4 +28,5 @@ export class MenuService {
   getFavourites() {
     return this.http.get('/api/favourites/add');
   }
+
 }

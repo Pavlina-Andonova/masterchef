@@ -1,11 +1,11 @@
-<div class="row dishname "  *ngFor="let menuItem of menu">
+<div class="row dishname">
   <div class="col-md-3">
-    <img src="{{menuItem.menuItemImage}}" alt="">
+    <img src="{{menuItem.menuItemImage}}" alt="{{menuItem.title}}" />
   </div>
   <div class="col-md-7">
     <span class="title">{{menuItem.title}}</span>
-    <app-favourite [isFavourite]="menuItem.isFavourite" (click)='addToFavourites()'></app-favourite>
-    <hr>
+    <app-favourite [isFavourite]="menuItem.isFavourite" (click)='toggleFavourite()'></app-favourite>
+    <hr />
     <p>{{menuItem.description}}</p>
   </div>
   <div class="col-md-2 price text-center">

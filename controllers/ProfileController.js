@@ -57,7 +57,7 @@ const removeMenuItemFromFavourites = async function(req, res) {
 
     return res.send({
       message: "MenuItem removed successfully from Favourites!",
-      result: true
+      result: false
     });
   }
 

@@ -15,5 +15,5 @@ module.exports = router => {
   router.get("/api/favourites", passport.authenticate("jwt", { session: false }), ProfileController.getFavouriteMenuItems);
 
   //* Remove item*//
-  router.delete("/api/favourites/remove", passport.authenticate("jwt", { session: false }), ProfileController.removeMenuItemFromFavourites);
+  router.post("/api/favourites/remove", passport.authenticate("jwt", { session: false }), ProfileController.removeMenuItemFromFavourites);
 };

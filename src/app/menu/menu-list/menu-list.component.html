@@ -1,3 +1,5 @@
 <div class="container">
-  <app-menu-list-item></app-menu-list-item>
+  <ng-container *ngFor="let menuItem of menu">
+    <app-menu-list-item [menuItem]="menuItem"></app-menu-list-item>
+  </ng-container>
 </div>
