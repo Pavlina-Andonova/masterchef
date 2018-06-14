@@ -65,6 +65,7 @@ export class MenuListItemComponent implements OnInit {
   }
 
   addToFavourites() {
-    this.menu.isFavourite = !this.menu.isFavourite;
+    // this.menu.isFavourite = !this.menu.isFavourite;
+    console.log(this.menu.isFavourite);
   }
 }

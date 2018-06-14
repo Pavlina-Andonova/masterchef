@@ -23,7 +23,7 @@ export class MenuListItemEditComponent implements OnInit {
       description: "required",
       price: "required",
       weight: "required",
-      menuItemImage: "required"
+      menuItemImage: ""
     });
 
     this.menuItemForm.setValue({
