@@ -25,6 +25,7 @@ export class MenuListItemComponent implements OnInit {
     } else {
       this.favService.addFavourite(this.menuItem.id).subscribe((res: any) => {
         this.menuItem.isFavourite = res.result;
+        console.log(this.menuItem);
       });
     }
   }

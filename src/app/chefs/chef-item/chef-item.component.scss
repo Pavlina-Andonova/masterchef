@@ -1,10 +1,10 @@
 .wrapper {
-  padding: 60px 0;
+  padding: 25px 0;
 }
 .chef-wrapper {
   border: 1px solid #daa520bf;
   width: 100%;
-  height: 355px;
+  height: 335px;
 
   .chef-img {
     width: 100%;
@@ -39,4 +39,11 @@
 .carousel-control-next-icon, .carousel-control-prev-icon {
   width: 35px;
   height: 35px;
+}
+
+.carousel-control-prev{
+  padding-right: 45px;
+}
+.carousel-control-next{
+  padding-left: 45px;
 }
