@@ -1,4 +1,5 @@
 <div class="container">
+  <app-spinner *ngIf="showSpinner"></app-spinner>
   <ng-container *ngFor="let menuItem of menu">
     <app-menu-list-item [menuItem]="menuItem"></app-menu-list-item>
   </ng-container>

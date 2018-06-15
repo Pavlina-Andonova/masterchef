@@ -47,7 +47,8 @@ import { FilterPipe } from "./Components/search/filter.pipe";
 import { PopupComponent } from './Components/popup/popup.component';
 import { FavouriteComponent } from "./Components/favourite/favourite.component";
 import { CustomButtonGoldenrodComponent } from './Components/custom-button-goldenrod/custom-button-goldenrod.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SpinnerComponent } from './Components/spinner/spinner.component'
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     PopupComponent, 
     FavouriteComponent,
     CustomButtonGoldenrodComponent,
+    SpinnerComponent,
       
   ],
   imports: [
@@ -135,7 +137,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     FilterPipe,
     PopupComponent,
     FavouriteComponent,
-    CustomButtonGoldenrodComponent
+    CustomButtonGoldenrodComponent,
+    SpinnerComponent
 
   ]
 })

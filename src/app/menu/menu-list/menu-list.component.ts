@@ -1,16 +1,16 @@
-import { Component, OnInit } from "@angular/core";
-import { AuthService } from "../../auth/auth.service";
-import { MenuService } from "../menu.service";
-import { FavouritesService } from "../../profile/favourites/favourites.service";
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../auth/auth.service';
+import { MenuService } from '../menu.service';
+import { FavouritesService } from '../../profile/favourites/favourites.service';
 
 @Component({
-  selector: "app-menu-list",
-  templateUrl: "./menu-list.component.html",
-  styleUrls: ["./menu-list.component.scss"]
+  selector: 'app-menu-list',
+  templateUrl: './menu-list.component.html',
+  styleUrls: ['./menu-list.component.scss']
 })
 export class MenuListComponent implements OnInit {
   menu: any;
-
+  showLoader: boolean = true;
   constructor(
     private menuService: MenuService,
     private authService: AuthService,
@@ -26,7 +26,7 @@ export class MenuListComponent implements OnInit {
             const favouriteMenuItemsId = resp.map(favouriteMenuItem => {
               return favouriteMenuItem.id;
             });
-
+            
             this.menu = menu.map((menuItem: any) => {
               return {
                 ...menuItem,
@@ -34,7 +34,7 @@ export class MenuListComponent implements OnInit {
               };
             });
           },
-          error => {
+          res => {
             this.menu = menu;
           }
         );
@@ -43,5 +43,7 @@ export class MenuListComponent implements OnInit {
         err.error.msg;
       }
     );
+    this.showLoader = false;
   }
+  
 }

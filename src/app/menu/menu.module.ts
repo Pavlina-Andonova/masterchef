@@ -14,27 +14,34 @@ import { MenuListEditComponent } from './menu-list-edit/menu-list-edit.component
 import { MenuListItemEditComponent } from './menu-list-edit/menu-list-item-edit/menu-list-item-edit.component';
 import { MenuListItemAddComponent } from './menu-list-edit/menu-list-item-add/menu-list-item-add.component';
 import { HttpClientModule } from '@angular/common/http';
-
-
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: 
-  [ 
+  declarations: [
     MenuComponent,
-    MenuListComponent, 
-    MenuListItemComponent, 
-    MenuListItemDetailComponent, 
-    MenuListEditComponent, 
-    MenuListItemEditComponent, 
-    MenuListItemAddComponent            
-  ], 
-  imports: 
-  [
+    MenuListComponent,
+    MenuListItemComponent,
+    MenuListItemDetailComponent,
+    MenuListEditComponent,
+    MenuListItemEditComponent,
+    MenuListItemAddComponent
+  ],
+  imports: [
+    SharedModule,
+    RouterModule.forChild([
+      {
+        path: '',
+        component: MenuListComponent
+      },
+      // {
+      //   path: ':id',
+      //   component: MenuListItemDetailComponent
+      // }
+    ]),
     HttpClientModule,
-    CommonModule, 
-    FormsModule, 
-    ReactiveFormsModule,
-    SharedModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [MenuService]
 })
