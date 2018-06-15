@@ -11,18 +11,16 @@ import { FavouritesService } from "./favourites/favourites.service";
 import { ProfileService } from "./profile.service";
 import { FavouriteItemComponent } from './favourites/favourite-item/favourite-item.component';
 import { AddressFormComponent } from './addresses/address-form/address-form.component';
-import { AddressesListComponent } from './addresses/addresses-list/addresses-list.component';
-import { SingleAddressComponent } from './addresses/addresses-list/single-address/single-address.component';
+import { SingleAddressComponent } from "./addresses/single-address/single-address.component";
 
 @NgModule({
   declarations: [
     ProfileComponent,
     PersonalInformationComponent,
-    AddressesComponent,
     FavouritesComponent,
     FavouriteItemComponent,
+    AddressesComponent,
     AddressFormComponent,
-    AddressesListComponent,
     SingleAddressComponent
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule,SharedModule, ProfileRoutesModule],

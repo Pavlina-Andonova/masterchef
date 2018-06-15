@@ -1,44 +1,43 @@
-<form>
-    <fieldset>
-  
-    </fieldset>
-  </form>
-  <div class="container">
-    <div class="wrapper">
-      <div class="main-info">
-        <div class="row m-0">
-          <div class="col-md-4 city">
-            <input placeholder="City" />
-          </div>
-          <div class="col-md-4 district">
-            <input placeholder="Street" />
-          </div>
-          <div class="col-md-4">
-            <select class="building-type" name="" id="">
-              <option value="">House</option>
-              <option value="">Building</option>
-            </select>
+<form (ngSubmit)="onSubmit()" ngForm>
+  <fieldset [formGroup]="addressForm && addressForm.getForm()">
+    <div class="container">
+      <div class="wrapper">
+        <div class="main-info">
+          <div class="row m-0">
+            <div class="col-md-4 city">
+              <input name="city" formControlName="city" placeholder="City" />
+            </div>
+            <div class="col-md-4 district">
+              <input name="district" formControlName="district" placeholder="Street" />
+            </div>
+            <div class="col-md-4">
+              <select class="building-type" name="buildingType" id="buildingType" formControlName="buildingType" value="house">
+                <option value="house" name="buildingType" >House</option>
+                <option value="building" name="buildingType">Building</option>
+              </select>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="additional-info">
-        <div class="row m-0">
-          <div class="col-md-3">
-            <input placeholder="Number">
-          </div>
-          <div class="col-md-3">
-            <input placeholder="Entry">
-          </div>
-          <div class="col-md-3">
-            <input placeholder="Floor">
-          </div>
-          <div class="col-md-3">
-            <input placeholder="Apartment">
+        <div class="additional-info">
+          <div class="row m-0">
+            <div class="col-md-3">
+              <input name="number" formControlName="number" placeholder="Number">
+            </div>
+            <div class="col-md-3">
+              <input name="entry" formControlName="entry" placeholder="Entry">
+            </div>
+            <div class="col-md-3">
+              <input name="floor" formControlName="floor" placeholder="Floor">
+            </div>
+            <div class="col-md-3">
+              <input name="apartment" formControlName="apartment" placeholder="Apartment">
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-6 m-auto">
-        <app-custom-button-goldenrod buttonText="Save"></app-custom-button-goldenrod>
+        <div class="col-md-6 m-auto">
+          <app-custom-button-goldenrod buttonText="Save"></app-custom-button-goldenrod>
+        </div>
       </div>
     </div>
-  </div>
+  </fieldset>
+</form>

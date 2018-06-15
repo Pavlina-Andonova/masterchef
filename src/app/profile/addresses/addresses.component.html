@@ -1,3 +1,7 @@
-<app-address-form></app-address-form>
+<app-address-form [editedAddress]="editedAddress" (newAddress)="handleNewAddress($event)"></app-address-form>
 <hr>
-<app-addresses-list></app-addresses-list>
+<div class="list">
+    <ng-container *ngFor="let singleAddress of addresses">
+        <app-single-address (editedAddress)="handleEdittedAddress($event)" [singleAddress]="singleAddress"></app-single-address>
+    </ng-container>
+</div>

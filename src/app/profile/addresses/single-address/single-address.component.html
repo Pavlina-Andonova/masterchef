@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="wrapper mt-2 mb-2">
+    <div class="row">
+      <div class="col-md-4">
+        <span>City:</span>
+        <hr class="mt-1 mb-1">
+        <div class="city">
+        {{singleAddress.city}}
+        </div>
+      </div>
+      <div class="col-md-4">
+        <span>Street:</span>
+        <hr class="mt-1 mb-1">
+        <div class="street">
+          {{singleAddress.district}}
+        </div>
+      </div>
+      <div class="col-md-4">
+        <span>Number:</span>
+        <hr class="mt-1 mb-1">
+        <div class="number">
+          {{singleAddress.number}}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <span>Building type::</span>
+        <hr class="mt-1 mb-1">
+        <div class="type">
+          {{singleAddress.type}}
+        </div>
+      </div>
+      <div class="col-md-3">
+        <span>Entry:</span>
+        <hr class="mt-1 mb-1">
+        <div class="entry">
+          {{singleAddress.entry}}
+        </div>
+      </div>
+      <div class="col-md-3">
+        <span>Floor:</span>
+        <hr class="mt-1 mb-1">
+        <div class="floor">
+         {{singleAddress.floor}}
+        </div>
+      </div>
+      <div class="col-md-3">
+        <span>Aparment:</span>
+        <hr class="mt-1 mb-1">
+        <div class="floor">
+          {{singleAddress.apartment}}
+        </div>
+      </div>
+    </div>
+    <div class="edit" (click)="onEdit()">
+      <i class="fas fa-edit"></i>
+    </div>
+  </div>
+</div>
