@@ -30,6 +30,30 @@ const getMenu = async function(req, res) {
 
 module.exports.getMenu = getMenu;
 
+const getMenuGroup = async function(req, res) {
+  res.setHeader("Content-Type", "application/json");
+  if (req.body.menuItems && req.body.menuItems.length > 0) {
+    const menuItems = await transaction(MenuItem.knex(), () => {
+      return MenuItem.query().whereIn("id", req.body.menuItems.map(item => item.id));
+    });
+
+    const result = req.body.menuItems.map(item => {
+      const itemData = menuItems.find(currentItem => currentItem.id === item.id);
+
+      return {
+        ...item,
+        ...itemData
+      };
+    });
+
+    return res.send(result);
+  } else {
+    return res.send([]);
+  }
+};
+
+module.exports.getMenuGroup = getMenuGroup;
+
 /**
  * Get a Menu Item
  *

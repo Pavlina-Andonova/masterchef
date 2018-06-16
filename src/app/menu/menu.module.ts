@@ -15,6 +15,7 @@ import { MenuListItemEditComponent } from './menu-list-edit/menu-list-item-edit/
 import { MenuListItemAddComponent } from './menu-list-edit/menu-list-item-add/menu-list-item-add.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { OrdersService } from '../orders/orders.service';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,6 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [MenuService]
+  providers: [MenuService, OrdersService]
 })
 export class MenuModule {}

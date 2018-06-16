@@ -1,40 +1,36 @@
 <!-- Single Item -->
-<div class="container" *ngFor="let item of items">
-    <div class="row m-auto item-wrapper" [@divState]="state" *ngIf="item.number > 0">
-      <div class="col-3 pl-0">
-        <div class="img-wrapper">
-          <img width="100%" src="{{item.img}}"
-            alt="">
-        </div>
+<div class="container" *ngFor="let item of ordersList" >
+  <div class="row m-auto item-wrapper" [@divState]="state" >
+    <div class="col-3 pl-0">
+      <div class="img-wrapper">
+        <img width="100%" [src]="item.menuItemImage" [alt]="item.title" />
       </div>
-      <div class="col-5">
-        <div class="info">
-          <h3 class="title">{{item.title}}</h3>
-          <h4>{{item.weight}}grams</h4>
-          <h4>{{item.description}}</h4>
-        </div>
+    </div>
+    <div class="col-5">
+      <div class="info">
+        <h3 class="title">{{item.title}}</h3>
+        <h4>{{item.weight}}grams</h4>
+        <h4>{{item.description}}</h4>
       </div>
-      <div class="col-1 m-auto">
-        <div class="plus-btn" (click)="addItem()">
-          <i class="fas fa-plus"></i>
-        </div>
-        <div class="minus-btn" (click)="removeItem()">
-          <i class="fas fa-minus"></i>
-        </div>
+    </div>
+    <div class="col-1 m-auto">
+      <div class="plus-btn" (click)="addItem(item.id)">
+        <i class="fas fa-plus"></i>
       </div>
-      <div class="col-1 m-auto">
-        <div class="delete-btn" (click)="deleteItem()">
-          <i class="far fa-trash-alt"></i>
-        </div>
+      <div class="minus-btn" (click)="removeItem(item.id)">
+        <i class="fas fa-minus"></i>
       </div>
-  
-      <div class="col-2 m-auto">
-        <div class="price">
-          <span>{{item.number}} x</span>
-          <span>{{item.price}}</span>
-        </div>
+    </div>
+    <div class="col-1 m-auto">
+      <div class="delete-btn" (click)="deleteItem(item.id)">
+        <i class="far fa-trash-alt"></i>
+      </div>
+    </div>
+    <div class="col-2 m-auto">
+      <div class="price">
+        <span>{{item.count}} x</span>
+        <span>{{item.price}}</span>
       </div>
     </div>
   </div>
-  
-
+</div>

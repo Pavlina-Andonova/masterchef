@@ -11,6 +11,9 @@ module.exports = router => {
   //* Read menu *//
   router.get("/api/menu", MenuController.getMenu);
 
+  //* Get group of menu items *//
+  router.post("/api/menu/group", MenuController.getMenuGroup);
+
   //* Read menu item *//
   router.get("/api/menuItem/:id", MenuController.getMenuItem);
 

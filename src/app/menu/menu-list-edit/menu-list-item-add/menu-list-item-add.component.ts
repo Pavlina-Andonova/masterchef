@@ -23,12 +23,15 @@ export class MenuListItemAddComponent implements OnInit {
       description: "required",
       price: "required",
       weight: "required",
-      menuItemImage: "required"
+      menuItemImage: ""
     });
   }
 
   onSubmit() {
-    const formData = { ...this.menuItemForm.formGroup.value };
+    const formData = { 
+      ...this.menuItemForm.formGroup.value,
+      menuItemImage: 'http://flashnews.bg/wp-content/uploads/2017/03/pizza-1150031_960_720.jpg'
+    };
     this.menuService.createMenuItem(formData).subscribe(resp => {
       this.newMenuItemAdded.emit(resp);
       this.menuItemForm.reset();
