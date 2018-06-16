@@ -1,5 +1,4 @@
-import { Component } from "@angular/core";
-import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
+import { Component, OnInit } from "@angular/core";
 import { AuthService } from "./auth/auth.service";
 
 @Component({

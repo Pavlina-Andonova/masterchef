@@ -30,8 +30,17 @@ export class SigninComponent implements OnInit {
       resp => {
         this.data = resp;
         sessionStorage.setItem("jwtToken", this.data.token);
-        this.authService.setIsUserAuthenticated(resp);
-        this.router.navigate([""]);
+
+        this.authService.getUser(this.data.token).subscribe(
+          (response: Response) => {
+            this.authService.setIsUserAuthenticated(response);
+          },
+          error => {
+            this.authService.setIsUserAuthenticated(null);
+          }
+        );
+        
+        this.router.navigate(["/"]);
         this.isModal = false;
         this.getSigninModalStateChange.emit(false);
       },
