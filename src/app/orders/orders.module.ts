@@ -7,10 +7,11 @@ import { DeliveryTypeComponent } from './delivery-type/delivery-type.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { OrdersService } from './orders.service';
+import { ShoppingCartItemComponent } from './shopping-cart/shopping-cart-item/shopping-cart-item.component';
 
 
 @NgModule({
-  declarations: [OrdersComponent, DeliveryTypeComponent, ConfirmationComponent, ShoppingCartComponent],
+  declarations: [OrdersComponent, DeliveryTypeComponent, ConfirmationComponent, ShoppingCartComponent, ShoppingCartItemComponent],
   imports: [CommonModule, FormsModule, SharedModule],
   providers: [OrdersService]
 })

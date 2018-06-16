@@ -1,19 +1,22 @@
-import { Component, Output, EventEmitter, HostListener } from '@angular/core';
+import { Component, Output, EventEmitter, HostListener } from "@angular/core";
 
-import { Subscription } from 'rxjs/Subscription';
-import { AuthService } from '../auth/auth.service';
-import { Router } from '@angular/router';
+import { Subscription } from "rxjs/Subscription";
+import { AuthService } from "../auth/auth.service";
+import { Router } from "@angular/router";
+import { OrdersService } from "../orders/orders.service";
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+  selector: "app-header",
+  templateUrl: "./header.component.html",
+  styleUrls: ["./header.component.scss"],
   host: {
-    '(window:scroll)': 'onScroll($event)'
+    "(window:scroll)": "onScroll($event)"
   }
 })
 export class HeaderComponent {
+  orderItemsCount:number;
   subscription: Subscription;
+  orderSubscription: Subscription;
   isUserAuthenticated: boolean;
   isScrolled = false;
   currPos: Number = 0;
@@ -22,7 +25,11 @@ export class HeaderComponent {
   @Output() getSigninModalStateChange = new EventEmitter<boolean>();
   @Output() getSignupModalStateChange = new EventEmitter<boolean>();
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private ordersService: OrdersService
+  ) {}
 
   ngOnInit() {
     this.isUserAuthenticated = this.authService.checkIfUserIsAuthenticated();
@@ -31,12 +38,19 @@ export class HeaderComponent {
         this.isUserAuthenticated = !!user;
       }
     );
+
+    this.orderItemsCount = this.ordersService.getOrderItemsCount();
+    this.orderSubscription = this.ordersService.orderItemsCountChanged.subscribe(
+      (count: number) => {
+        this.orderItemsCount = count;
+      }
+    );
   }
 
   onLogout() {
-    sessionStorage.removeItem('jwtToken');
+    sessionStorage.removeItem("jwtToken");
     this.authService.setIsUserAuthenticated(null);
-    this.router.navigate(['']);
+    this.router.navigate([""]);
   }
 
   ngOnDestroy() {
