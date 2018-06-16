@@ -11,7 +11,7 @@
               <input name="district" formControlName="district" placeholder="Street" />
             </div>
             <div class="col-md-4">
-              <select class="building-type" name="buildingType" id="buildingType" formControlName="buildingType" value="house">
+              <select class="building-type" name="buildingType" id="buildingType" formControlName="buildingType" [(ngModel)]="selectedBuildingType">
                 <option value="house" name="buildingType">House</option>
                 <option value="building" name="buildingType">Building</option>
               </select>

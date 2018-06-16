@@ -31,4 +31,9 @@ export class SingleAddressComponent implements OnInit {
       this.editAddressForm.setValue(this.singleAddress);
     }
   }
+
+  onSave() {
+    this.singleAddress = this.editAddressForm.formGroup.value;
+    this.isEditing = false;
+  }
 }

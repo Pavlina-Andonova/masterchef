@@ -8,7 +8,7 @@ import { OnChanges } from "@angular/core/src/metadata/lifecycle_hooks";
   styleUrls: ["./address-form.component.scss"]
 })
 export class AddressFormComponent implements OnInit, OnChanges {
-  
+  selectedBuildingType: string = "house";
   addressForm: any;
   addressData: any;
   @Output() newAddress = new EventEmitter<any>();
