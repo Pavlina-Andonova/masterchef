@@ -1,60 +1,91 @@
-<div class="container">
-  <div class="wrapper mt-2 mb-2">
-    <div class="row">
-      <div class="col-md-4">
-        <span>City:</span>
-        <hr class="mt-1 mb-1">
-        <div class="city">
-        {{singleAddress.city}}
+<form (ngSubmit)="onSubmit()" ngForm>
+  <fieldset [formGroup]="editAddressForm && editAddressForm.getForm()">
+    <div class="container">
+      <div class="wrapper mt-2 mb-2">
+        <div class="row">
+          <div class="col-md-4">
+            <span>City:</span>
+            <hr class="mt-1 mb-1">
+            <div class="city" *ngIf="!isEditing">
+              {{singleAddress.city}}
+            </div>
+            <div *ngIf="isEditing">
+              <input id="city" name="city" formControlName="city" type="text" [value]="singleAddress.city" placeholder="Add city..">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <span>Street:</span>
+            <hr class="mt-1 mb-1">
+            <div class="street" *ngIf="!isEditing">
+              {{singleAddress.district}}
+            </div>
+            <div *ngIf="isEditing">
+              <input id="district" name="district" formControlName="district" type="text" [value]="singleAddress.district" placeholder="Add street..">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <span>Building type:</span>
+            <hr class="mt-1 mb-1">
+            <div class="type" *ngIf="!isEditing">
+              {{singleAddress.buildingType[0].toUpperCase() + singleAddress.buildingType.slice(1)}}
+            </div>
+            <select *ngIf="isEditing" class="building-type" [value]="singleAddress.buildingType" name="buildingType" id="buildingType"
+              formControlName="buildingType" placeholder="Add type..">
+              <option value="house" name="buildingType">House</option>
+              <option value="apartment" name="buildingType">Apartment</option>
+              <option value="office" name="buildingType">Office</option>
+            </select>
+          </div>
         </div>
-      </div>
-      <div class="col-md-4">
-        <span>Street:</span>
-        <hr class="mt-1 mb-1">
-        <div class="street">
-          {{singleAddress.district}}
+        <div class="row">
+          <div class="col-md-3">
+            <span>Number:</span>
+            <hr class="mt-1 mb-1">
+            <div class="number" *ngIf="!isEditing">
+              {{singleAddress.number}}
+            </div>
+            <div *ngIf="isEditing">
+              <input id="number" name="number" formControlName="number" type="text" [value]="singleAddress.number" placeholder="Add number..">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <span>Entry:</span>
+            <hr class="mt-1 mb-1">
+            <div class="entry" *ngIf="!isEditing">
+              {{singleAddress.entry}}
+            </div>
+            <div *ngIf="isEditing">
+              <input id="entry" name="entry" formControlName="entry" type="text" [value]="singleAddress.entry" placeholder="Add entry..">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <span>Floor:</span>
+            <hr class="mt-1 mb-1">
+            <div class="floor" *ngIf="!isEditing">
+              {{singleAddress.floor}}
+            </div>
+            <div *ngIf="isEditing">
+              <input id="floor" name="floor" formControlName="floor" type="text" [value]="singleAddress.floor" placeholder="Add floor..">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <span>Aparment:</span>
+            <hr class="mt-1 mb-1">
+            <div class="floor" *ngIf="!isEditing">
+              {{singleAddress.apartment}}
+            </div>
+            <div *ngIf="isEditing">
+              <input id="apartment" name="apartment" formControlName="apartment" type="text" [value]="singleAddress.apartment" placeholder="Add apartment..">
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="col-md-4">
-        <span>Number:</span>
-        <hr class="mt-1 mb-1">
-        <div class="number">
-          {{singleAddress.number}}
+        <div class="edit" (click)="onEdit()" *ngIf="!isEditing">
+          <i class="fas fa-edit"></i>
+        </div>
+        <div class="save" (click)="onSave()" *ngIf="isEditing">
+          <i class="fas fa-check"></i>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-3">
-        <span>Building type::</span>
-        <hr class="mt-1 mb-1">
-        <div class="type">
-          {{singleAddress.type}}
-        </div>
-      </div>
-      <div class="col-md-3">
-        <span>Entry:</span>
-        <hr class="mt-1 mb-1">
-        <div class="entry">
-          {{singleAddress.entry}}
-        </div>
-      </div>
-      <div class="col-md-3">
-        <span>Floor:</span>
-        <hr class="mt-1 mb-1">
-        <div class="floor">
-         {{singleAddress.floor}}
-        </div>
-      </div>
-      <div class="col-md-3">
-        <span>Aparment:</span>
-        <hr class="mt-1 mb-1">
-        <div class="floor">
-          {{singleAddress.apartment}}
-        </div>
-      </div>
-    </div>
-    <div class="edit" (click)="onEdit()">
-      <i class="fas fa-edit"></i>
-    </div>
-  </div>
-</div>
+  </fieldset>
+</form>

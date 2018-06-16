@@ -7,7 +7,6 @@ import { Component, OnInit } from "@angular/core";
 })
 export class AddressesComponent implements OnInit {
   addresses=[];
-  editedAddress:any;
   constructor() {}
 
   ngOnInit() {}
@@ -16,7 +15,4 @@ export class AddressesComponent implements OnInit {
     this.addresses.push(addressData);
   }
 
-  handleEdittedAddress(edittedAddress){
-    this.editedAddress = edittedAddress;
-  }
 }

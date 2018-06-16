@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-
+import { ValidationManager } from "../../../shared/Services/validation-manager";
 
 @Component({
   selector: "app-single-address",
@@ -8,14 +8,27 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 })
 export class SingleAddressComponent implements OnInit {
   @Input() singleAddress;
-  @Output() editedAddress = new EventEmitter<any>();
+  isEditing: boolean = false;
+  editAddressForm;
   constructor() {}
 
   ngOnInit() {
-   
+    this.editAddressForm = new ValidationManager({
+      city: "required",
+      district: "required",
+      buildingType: "required",
+      number: "required",
+      entry: "",
+      floor: "required",
+      apartment: ""
+    });
   }
 
-  onEdit(){
-    this.editedAddress.emit(this.singleAddress);
+  onEdit() {
+    this.isEditing = !this.isEditing;
+
+    if (this.isEditing) {
+      this.editAddressForm.setValue(this.singleAddress);
+    }
   }
 }
