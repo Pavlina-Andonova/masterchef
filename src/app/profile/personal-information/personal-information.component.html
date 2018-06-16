@@ -44,6 +44,11 @@
                   formControlName="email"  [value]="userData.email"
                   placeholder="Enter email">
           </div>
+          <div class="error-wrapper col-12">
+              <div *ngIf="profileErrorMessage" class="error">
+                {{profileErrorMessage}}
+              </div>
+            </div>
           <div class="col-12">
             <app-custom-button-goldenrod buttonText="Save"></app-custom-button-goldenrod>
           </div>
@@ -88,12 +93,12 @@
                   formControlName="repPassword"  
                   [value]="userPassData.repPassword"  
                   placeholder="Repeat password">
-          </div>
-          <div class="error-wrapper">
-              <div *ngIf="errorMessage" class="error">
-                  {{errorMessage}}
-              </div>
-          </div>
+                </div>
+                <div class="error-wrapper col-12">
+                  <div *ngIf="passErrorMessage" class="error">
+                    {{passErrorMessage}}
+                  </div>
+                </div>
           <div class="col-12">
               <app-custom-button-goldenrod buttonText="Save"></app-custom-button-goldenrod>
             </div>

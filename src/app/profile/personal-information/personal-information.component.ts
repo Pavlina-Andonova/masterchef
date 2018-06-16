@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ValidationManager } from "../../shared/Services/validation-manager";
+import { ValidationManager } from "ng2-validation-manager";
 import { AuthService } from "../../auth/auth.service";
 import { Subscription } from "rxjs/Subscription";
 
@@ -12,7 +12,8 @@ export class PersonalInformationComponent implements OnInit {
   subscription: Subscription;
   profileForm: any;
   profilePasswordChangeForm: any;
-  errorMessage: string = "";
+  passErrorMessage: string = "";
+  profileErrorMessage: string = "";
   userData;
   userPassData = {
     currentPassword: "",
@@ -31,29 +32,45 @@ export class PersonalInformationComponent implements OnInit {
     );
 
     this.profileForm = new ValidationManager({
-      firstName: "",
+      firstName: "required",
       lastName: "",
-      email: ""
+      email: "required|email"
     });
 
     this.profilePasswordChangeForm = new ValidationManager({
       currentPassword: "required",
       newPassword: "required",
-      repPassword: "equalTo:newPassword"
+      repPassword: "required|equalTo:newPassword"
     });
+
+    this.profilePasswordChangeForm.setErrorMessage('currentPassword', 'required', 'Current password field is required!');
+    this.profilePasswordChangeForm.setErrorMessage('newPassword', 'required', 'New password field is required!');
+    this.profilePasswordChangeForm.setErrorMessage('repPassword', 'required', 'Repeat password field is required!');
+    this.profilePasswordChangeForm.setErrorMessage('repPassword', 'equalTo', 'The passwords does not match!');
   }
 
   onSubmitProfileInfo() {
-    this.userData = this.profileForm.setValue(this.profileForm.formGroup.value);
+    this.profileForm.formGroup.value;
+
+    if (!this.profileForm.isValid()) {
+      this.profileErrorMessage = this.getFirstErrorMessage(
+        this.profileForm.getErrors()
+      );
+    } else {
+      this.profileErrorMessage = "";
+      this.profileForm.reset();
+
+      // Send this.profilePasswordChangeForm.formGroup.value
+    }
   }
 
   onSubmitPasswordInfo() {
     if (!this.profilePasswordChangeForm.isValid()) {
-      this.errorMessage = this.getFirstErrorMessage(
+      this.passErrorMessage = this.getFirstErrorMessage(
         this.profilePasswordChangeForm.getErrors()
       );
     } else {
-      this.errorMessage = "";
+      this.passErrorMessage = "";
       this.profilePasswordChangeForm.reset();
 
       // Send this.profilePasswordChangeForm.formGroup.value
@@ -68,3 +85,4 @@ export class PersonalInformationComponent implements OnInit {
     return errorMessages.length > 0 ? errorMessages[0] : "";
   }
 }
+
