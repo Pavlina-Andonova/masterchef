@@ -9,23 +9,8 @@
 <div class="container-fluid type-selector-wrapper">
   <div class="container type-selector-content">
     <ul class="text-center">
-      <li>
-        <a>Salad</a>
-      </li>
-      <li>
-        <a> Main Dishes</a>
-      </li>
-      <li>
-        <a>Pasta</a>
-      </li>
-      <li>
-        <a>Pizzas</a>
-      </li>
-      <li>
-        <a>Risotto</a>
-      </li>
-      <li>
-        <a>Desserts</a>
+      <li *ngFor="let category of categories" (click)="onSelect(category)" [ngClass]="{'active': category === currentCategory}">
+        <a>{{category}}</a>
       </li>
     </ul>
     <hr>

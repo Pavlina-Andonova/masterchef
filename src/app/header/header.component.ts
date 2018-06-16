@@ -4,6 +4,7 @@ import { Subscription } from "rxjs/Subscription";
 import { AuthService } from "../auth/auth.service";
 import { Router } from "@angular/router";
 import { OrdersService } from "../orders/orders.service";
+import { MenuService } from "../menu/menu.service";
 
 @Component({
   selector: "app-header",
@@ -14,7 +15,7 @@ import { OrdersService } from "../orders/orders.service";
   }
 })
 export class HeaderComponent {
-  orderItemsCount:number;
+  orderItemsCount: number;
   subscription: Subscription;
   orderSubscription: Subscription;
   isUserAuthenticated: boolean;
