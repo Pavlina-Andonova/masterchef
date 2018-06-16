@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { AuthService } from "../../auth/auth.service";
 import { MenuService } from "../menu.service";
 import { FavouritesService } from "../../profile/favourites/favourites.service";
@@ -10,6 +10,7 @@ import { Subscription } from "rxjs/Subscription";
   styleUrls: ["./menu-list.component.scss"]
 })
 export class MenuListComponent implements OnInit {
+  @Input() currentCategory;
   menu: any;
   constructor(
     private menuService: MenuService,

@@ -41,14 +41,14 @@ import { XInput } from "./Components/xinput/xinput";
 import { XPassword } from "./Components/xpassword/xpassword";
 import { XButton } from "./Components/xbutton/xbutton";
 import { PopupCloseButton } from "./Components/popup-close-button/popup-close-button";
-import { SplitPipe } from "./split.pipe";
 import { SearchComponent } from "./Components/search/search.component";
-import { FilterPipe } from "./Components/search/filter.pipe";
 import { PopupComponent } from './Components/popup/popup.component';
 import { FavouriteComponent } from "./Components/favourite/favourite.component";
 import { CustomButtonGoldenrodComponent } from './Components/custom-button-goldenrod/custom-button-goldenrod.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SpinnerComponent } from './Components/spinner/spinner.component'
+import { SpinnerComponent } from './Components/spinner/spinner.component';
+import { FilterPipe } from './pipe/filter.pipe'
+import { SplitPipe } from "./pipe/split.pipe";
 
 
 @NgModule({
@@ -60,12 +60,12 @@ import { SpinnerComponent } from './Components/spinner/spinner.component'
     XButton, 
     PopupCloseButton, 
     SearchComponent, 
-    FilterPipe, 
     PopupComponent, 
     PopupComponent, 
     FavouriteComponent,
     CustomButtonGoldenrodComponent,
     SpinnerComponent,
+    FilterPipe,
       
   ],
   imports: [
