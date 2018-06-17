@@ -22,7 +22,7 @@ module.exports.create = create;
 const getMenu = async function(req, res) {
   res.setHeader("Content-Type", "application/json");
   const menu = await transaction(MenuItem.knex(), () => {
-    return MenuItem.query();
+    return MenuItem.query().eager('category');
   });
 
   return res.send(menu);
@@ -34,7 +34,7 @@ const getMenuGroup = async function(req, res) {
   res.setHeader("Content-Type", "application/json");
   if (req.body.menuItems && req.body.menuItems.length > 0) {
     const menuItems = await transaction(MenuItem.knex(), () => {
-      return MenuItem.query().whereIn("id", req.body.menuItems.map(item => item.id));
+      return MenuItem.query().findByIds(req.body.menuItems.map(item => item.id)).eager('category');
     });
 
     const result = req.body.menuItems.map(item => {
@@ -63,7 +63,7 @@ module.exports.getMenuGroup = getMenuGroup;
 const getMenuItem = async function(req, res) {
   res.setHeader("Content-Type", "application/json");
   const menuItem = await transaction(MenuItem.knex(), () => {
-    return MenuItem.query().findById(req.params.id);
+    return MenuItem.query().findById(req.params.id).eager('category');
   });
   if (!menuItem) {
     return res.status(404).send({ error: "Menu Item not found!" });
@@ -82,7 +82,7 @@ module.exports.getMenuItem = getMenuItem;
 const updateMenuItem = async function(req, res) {
   res.setHeader("Content-Type", "application/json");
   const updatedMenuItem = await transaction(MenuItem.knex(), () => {
-    return MenuItem.query().patchAndFetchById(req.params.id, req.body);
+    return MenuItem.query().patchAndFetchById(req.params.id, req.body).eager('category');
   });
   if (!updatedMenuItem) {
     return res.status(404).send({ error: "Menu Item not found!" });

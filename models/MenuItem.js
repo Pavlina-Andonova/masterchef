@@ -1,6 +1,7 @@
 "use strict";
 
 const Model = require("objection").Model;
+const MenuCategory = require("./MenuCategory");
 
 class MenuItem extends Model {
   // Table name is the only required property.
@@ -14,40 +15,39 @@ class MenuItem extends Model {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["type","title","description","price","weight","menuItemImage"],
+      required: [
+        "categoryId",
+        "title",
+        "description",
+        "price",
+        "weight",
+        "menuItemImage"
+      ],
 
       properties: {
         id: { type: "integer" },
-        type: { type: 'string'},
+        categoryId: { type: "integer" },
         title: { type: "string", minLength: 3, maxLength: 30 },
         description: { type: "string" },
         price: { type: "float" },
-        weight: { type: 'integr'},
+        weight: { type: "integr" },
         menuItemImage: { type: "string" }
       }
     };
   }
 
-  // static get relationMappings() {
-  //   return {
-  //     actors: {
-  //       relation: Model.ManyToManyRelation,
-  //       // The related model. This can be either a Model subclass constructor or an
-  //       // absolute file path to a module that exports one. We use the file path version
-  //       // here to prevent require loops.
-  //       modelClass: __dirname + "/Person",
-  //       join: {
-  //         from: "movies.id",
-  //         // ManyToMany relation needs the `through` object to describe the join table.
-  //         through: {
-  //           from: "persons_movies.movieId",
-  //           to: "persons_movies.personId"
-  //         },
-  //         to: "persons.id"
-  //       }
-  //     }
-  //   };
-  // }
+  static get relationMappings() {
+    return {
+      category: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: MenuCategory,
+        join: {
+          from: "menuItems.categoryId",
+          to: "menuCategories.id"
+        }
+      }
+    };
+  }
 }
 
 module.exports = MenuItem;

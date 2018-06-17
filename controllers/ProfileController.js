@@ -60,7 +60,7 @@ const getFavouriteMenuItems = async function(req, res) {
     return menuItem.menuItemId;
   });
 
-  const menuItems = await MenuItem.query().whereIn("id", menuItemsIds);
+  const menuItems = await MenuItem.query().whereIn("id", menuItemsIds).eager('category');
 
   return res.send(menuItems);
 };

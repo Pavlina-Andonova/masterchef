@@ -1,19 +1,31 @@
 exports.up = knex => {
   return knex.schema
+    .createTable("menuCategories", table => {
+      table.increments("id").primary();
+      table.string("categoryType");
+      table.string("name");
+      table.string("image");
+      table.text("description").defaultTo("");
+    })
     .createTable("menuItems", table => {
       table.increments("id").primary();
-      table.string("type");
       table.string("title");
       table.string("description");
       table.float("price", 4, 2);
       table.integer("weight");
       table.string("menuItemImage");
+      table
+        .integer("categoryId")
+        .unsigned()
+        .references("id")
+        .inTable("menuCategories");
     })
     .createTable("profiles", table => {
       table.increments("id").primary();
       table.string("firstName");
-      table.string("lastName");
-      table.date("birthdate");
+      table.string("lastName").defaultTo("");
+      table.bool("isAdmin").defaultTo(false);            
+      table.date("birthdate").defaultTo(null);
       table
         .string("profileImage")
         .defaultTo("https://www.freeiconspng.com/uploads/profile-icon-9.png");
@@ -25,19 +37,20 @@ exports.up = knex => {
       table.date("passwordResetExpirationDate");
       table.text("passwordResetToken");
       table
-      .integer("profileId")
-      .unsigned()
-      .references("id")
-      .inTable("profiles");
+        .integer("profileId")
+        .unsigned()
+        .references("id")
+        .inTable("profiles");
     })
     .createTable("addresses", table => {
       table.increments("id").primary();
       table.string("city");
-      table.string("district");
-      table.enum("buildingType", ["house", "block"]);
+      table.string("street");
+      table.string("buildingType");
       table.integer("number");
       table.string("entry");
       table.integer("floor");
+      table.bool("isRestaurant").defaultTo(false);
       table.string("apartment");
       table
         .integer("profileId")
@@ -60,7 +73,7 @@ exports.up = knex => {
         .inTable("profiles")
         .onDelete("SET NULL");
     });
-  };
+};
 
 exports.down = knex => {
   return knex.schema
@@ -68,5 +81,6 @@ exports.down = knex => {
     .dropTableIfExists("addresses")
     .dropTableIfExists("profiles")
     .dropTableIfExists("users")
-    .dropTableIfExists("menuItems");
+    .dropTableIfExists("menuItems")
+    .dropTableIfExists("menuCategories");
 };

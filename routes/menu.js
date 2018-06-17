@@ -3,6 +3,8 @@
 const { transaction } = require("objection");
 
 const MenuController = require("../controllers/MenuController");
+const CategoryController = require("../controllers/CategoryController");
+
 
 module.exports = router => {
   //* Create a new menu item *//
@@ -22,4 +24,12 @@ module.exports = router => {
 
   //* Delete menu item*//
   router.delete("/api/menuItem/:id", MenuController.deleteMenuItem);
+
+  //*Get Categories*//
+
+  //*Get Categories *//
+  router.get("/api/categories", CategoryController.getCategories);
+
+  //*Get Category *//
+  router.get("/api/category/:id", CategoryController.getCategory);
 };

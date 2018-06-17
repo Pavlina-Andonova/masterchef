@@ -15,6 +15,7 @@ class Profile extends Model {
         id: { type: 'integer' },
         firstName: { type: 'string', default: '' },
         lastName: { type: 'string', default: '' },
+        isAdmin: { type: 'boolean', defaults: false },
         birthdate: { type: 'date' },
         profileImage: { type: 'string', default: 'https://www.freeiconspng.com/uploads/profile-icon-9.png' }
       }
