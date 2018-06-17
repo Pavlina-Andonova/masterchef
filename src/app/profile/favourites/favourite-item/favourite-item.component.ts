@@ -27,6 +27,7 @@ import { AuthService } from "../../../auth/auth.service";
         style({
           transform: "translateX(70%)",
           opacity: 0,
+          display:'none'
         })
       ),
       transition("normal => fade", animate(400))
