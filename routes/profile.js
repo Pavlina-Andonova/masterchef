@@ -36,6 +36,13 @@ module.exports = router => {
     UserController.updateUserEmail
   );
 
+    //*Update user password*//
+    router.put(
+      "/api/profile/password",
+      passport.authenticate("jwt", { session: false }),
+      UserController.updateUserPassword
+    );
+
   //* Favourites *//
   //* Add new item*//
   router.post(
