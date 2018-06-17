@@ -3,7 +3,6 @@
 const Model = require("objection").Model;
 
 class MenuCategory extends Model {
-  // Table name is the only required property.
   static get tableName() {
     return "menuCategories";
   }

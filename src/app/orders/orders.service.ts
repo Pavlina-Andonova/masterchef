@@ -8,7 +8,6 @@ export class OrdersService {
 
   orderItemsCountChanged = new Subject<number>();
   currentOrders: any[] = [];
-  count: number = 0;
 
   addMenuItem(id: number) {
     const existedMenuItems = this.currentOrders.filter(
