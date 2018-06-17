@@ -15,7 +15,7 @@ module.exports = router => {
     ProfileController.getProfile
   );
 
-  //*Get profle*//
+  //*Update profle*//
   router.put(
     "/api/profile",
     passport.authenticate("jwt", { session: false }),

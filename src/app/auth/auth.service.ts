@@ -10,12 +10,28 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
+  setHeader() {
+    return {
+      headers: new HttpHeaders({
+        Authorization: sessionStorage.getItem("jwtToken")
+      })
+    };
+  }
+
   registerUser(userData) {
     return this.http.post("/api/users", userData);
   }
 
   loginUser(userData) {
     return this.http.post("/api/users/login", userData);
+  }
+
+  getUserEmail() {
+    return this.http.get("/api/profile/email", this.setHeader());
+  }
+
+  updateUserEmail(emailData) {
+    return this.http.put("/api/profile/email", emailData, this.setHeader());
   }
 
   setIsUserAuthenticated(user: any) {
@@ -32,9 +48,6 @@ export class AuthService {
   }
 
   getUser(token) {
-    const httpOptions = {
-      headers: new HttpHeaders({ Authorization: token })
-    };
-    return this.http.get("/api/users", httpOptions);
+    return this.http.get("/api/users", this.setHeader());
   }
 }
