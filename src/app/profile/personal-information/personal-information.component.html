@@ -13,40 +13,24 @@
       </div>
       <div class="col-md-8">
         <div class="row m-0">
-            <div class="col-12">
-                <h2 class="pass-settings-title">Profile Information:</h2>
-              </div>
-          <div class="col-12 col-md-6 mt-1 mb-1">
-            <input class="name fname"
-                   id="firstName" 
-                   style="margin-right: 1%;" 
-                   type="text" 
-                   name="firstName" 
-                   formControlName="firstName"  
-                   placeholder="Enter first name">
+          <div class="col-12">
+            <h2 class="pass-settings-title">Profile Information:</h2>
           </div>
           <div class="col-12 col-md-6 mt-1 mb-1">
-            <input 
-                  class="name" 
-                  id="lastName" 
-                  type="text" 
-                  name="lastName" 
-                  formControlName="lastName"  
-                  placeholder="Enter last name">
+            <input class="name fname" id="firstName" style="margin-right: 1%;" type="text" name="firstName" formControlName="firstName"
+              placeholder="Enter first name">
+          </div>
+          <div class="col-12 col-md-6 mt-1 mb-1">
+            <input class="name" id="lastName" type="text" name="lastName" formControlName="lastName" placeholder="Enter last name">
           </div>
           <div class="col-12 mt-1 mb-1">
-            <input 
-                  id="email"
-                  type="text" 
-                  name="email"
-                  formControlName="email"  
-                  placeholder="Enter email">
+            <input id="email" type="text" name="email" formControlName="email" placeholder="Enter email">
           </div>
           <div class="error-wrapper col-12">
-              <div *ngIf="profileErrorMessage" class="error">
-                {{profileErrorMessage}}
-              </div>
+            <div *ngIf="profileErrorMessage" class="error">
+              {{profileErrorMessage}}
             </div>
+          </div>
           <div class="col-12">
             <app-custom-button-goldenrod buttonText="Save"></app-custom-button-goldenrod>
           </div>
@@ -56,7 +40,7 @@
   </fieldset>
 </form>
 
-<form (ngSubmit)="onSubmitPasswordInfo()" ngForm> 
+<form (ngSubmit)="onSubmitPasswordInfo()" ngForm>
   <fieldset [formGroup]="profilePasswordChangeForm && profilePasswordChangeForm.getForm()">
     <div class="row m-0 personal-information">
       <div class="col-md-4"></div>
@@ -66,43 +50,27 @@
             <h2 class="pass-settings-title">Change Password:</h2>
           </div>
           <div class="col-12 mt-1 mb-1">
-            <input
-                  id="currentPassword" 
-                  type="text"
-                  name="currentPassword" 
-                  formControlName="currentPassword" 
-                  [value]="userPassData.currentPassword" 
-                  placeholder="Enter current password">
+            <input id="oldPassword" type="password" name="oldPassword" formControlName="oldPassword" [value]="userPassData.oldPassword"
+              placeholder="Enter current password">
           </div>
           <div class="col-12 col-md-6  mt-1 mb-1">
-            <input  
-                  type="text" 
-                  id="newPassword" 
-                  name="newPassword" 
-                  formControlName="newPassword"  
-                  [value]="userPassData.newPassword" 
-                  placeholder="Enter new password">
+            <input type="password" id="newPassword" name="newPassword" formControlName="newPassword" [value]="userPassData.newPassword"
+              placeholder="Enter new password">
           </div>
           <div class="col-12 col-md-6  mt-1 mb-1">
-            <input 
-                  type="text"
-                  id="repPassword" 
-                  name="repPassword" 
-                  formControlName="repPassword"  
-                  [value]="userPassData.repPassword"  
-                  placeholder="Repeat password">
-                </div>
-                <div class="error-wrapper col-12">
-                  <div *ngIf="passErrorMessage" class="error">
-                    {{passErrorMessage}}
-                  </div>
-                </div>
-          <div class="col-12">
-              <app-custom-button-goldenrod buttonText="Save"></app-custom-button-goldenrod>
+            <input type="password" id="repPassword" name="repPassword" formControlName="repPassword" [value]="userPassData.repPassword"
+              placeholder="Repeat password">
+          </div>
+          <div class="error-wrapper col-12">
+            <div *ngIf="passErrorMessage" class="error">
+              {{passErrorMessage}}
             </div>
+          </div>
+          <div class="col-12">
+            <app-custom-button-goldenrod buttonText="Save"></app-custom-button-goldenrod>
+          </div>
         </div>
       </div>
     </div>
   </fieldset>
 </form>
-    

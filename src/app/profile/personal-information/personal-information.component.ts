@@ -18,9 +18,10 @@ export class PersonalInformationComponent implements OnInit {
   userData;
   emailData;
   userEmail;
+  passData;
   formData;
   userPassData = {
-    currentPassword: "",
+    oldPassword: "",
     newPassword: "",
     repPassword: ""
   };
@@ -61,13 +62,13 @@ export class PersonalInformationComponent implements OnInit {
     });
 
     this.profilePasswordChangeForm = new ValidationManager({
-      currentPassword: "required",
+      oldPassword: "required",
       newPassword: "required",
       repPassword: "required|equalTo:newPassword"
     });
 
     this.profilePasswordChangeForm.setErrorMessage(
-      "currentPassword",
+      "oldPassword",
       "required",
       "Current password field is required!"
     );
@@ -120,6 +121,20 @@ export class PersonalInformationComponent implements OnInit {
       );
     } else {
       this.passErrorMessage = "";
+      this.authService
+        .updateUserPassword(this.profilePasswordChangeForm.formGroup.value)
+        .subscribe(
+          res => {
+            this.passData = res;
+            this.passErrorMessage = Object.values(res)[0];
+            setTimeout(() => {
+              this.passErrorMessage = "";
+            }, 2000);
+          },
+          err => {
+            this.passErrorMessage = Object.values(err.error)[0];
+          }
+        );
       this.profilePasswordChangeForm.reset();
 
       // Send this.profilePasswordChangeForm.formGroup.value

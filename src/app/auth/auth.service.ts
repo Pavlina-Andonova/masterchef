@@ -50,4 +50,12 @@ export class AuthService {
   getUser(token) {
     return this.http.get("/api/users", this.setHeader());
   }
+
+  updateUserPassword(passwordData) {
+    return this.http.put(
+      "/api/profile/password",
+      passwordData,
+      this.setHeader()
+    );
+  }
 }
