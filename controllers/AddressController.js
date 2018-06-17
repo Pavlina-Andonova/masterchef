@@ -15,7 +15,9 @@ module.exports.createAddress = createAddress;
 //**Get Addresses */
 const getAddresses = async function(req, res) {
   res.setHeader("Content-Type", "application/json");
-  const addresses = await Address.query();
+  const addresses = await Address.query().where({
+    isRestaurant: false
+  });
   if (!addresses) {
     return res.status(404).send({ error: "Not Found!" });
   }
@@ -27,7 +29,11 @@ module.exports.getAddresses = getAddresses;
 //**Get Address */
 const getAddress = async function(req, res) {
   res.setHeader("Content-Type", "application/json");
-  const address = await Address.query().findById(req.params.id);
+  const address = await Address.query()
+    .findById(req.params.id)
+    .where({
+      isRestaurant: false
+    });
   if (!address) {
     return res.status(404).send({ error: "Not Found!" });
   }
