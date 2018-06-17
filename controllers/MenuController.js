@@ -5,7 +5,7 @@ const MenuItem = require("../models/MenuItem");
 //Create a new menuItem
 const create = async function(req, res) {
   const menuItem = await transaction(MenuItem.knex(), () => {
-    return MenuItem.query().insert(req.body);
+    return MenuItem.query().insert(req.body).eager('category');
   });
 
   return res.send(menuItem);

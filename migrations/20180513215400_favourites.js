@@ -10,7 +10,8 @@ exports.up = knex => {
           .integer('menuItemId')
           .unsigned()
           .references('id')
-          .inTable('menuItems');
+          .inTable('menuItems')
+          .onDelete('CASCADE');
       });
   };
   

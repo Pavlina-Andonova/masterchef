@@ -22,7 +22,6 @@ export class MenuListComponent implements OnInit {
     this.menuService.getMenu().subscribe(
       (res: any) => {
         const menu = res;
-        this.menuService.setCategories(this.getCategories(menu));
         this.favService.getFavourites().subscribe(
           (resp: any) => {
             const favouriteMenuItemsId = resp.map(favouriteMenuItem => {
@@ -45,13 +44,5 @@ export class MenuListComponent implements OnInit {
         err.error.msg;
       }
     );
-  }
-  getCategories(menu) {
-    const categories = new Set();
-    menu.forEach((menuItem: any) => {
-      categories.add(menuItem.type.toLowerCase().trim());
-    });
-
-    return categories;
   }
 }

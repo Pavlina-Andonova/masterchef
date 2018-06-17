@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MenuService } from "./menu.service";
 import { Subscription } from "rxjs/Subscription";
+import { AuthService } from "../auth/auth.service";
 
 @Component({
   selector: "app-menu",
@@ -9,30 +10,39 @@ import { Subscription } from "rxjs/Subscription";
 })
 export class MenuComponent implements OnInit {
   listFilter;
+  currentUser;
   currentCategory: string;
   categories: any;
   categoriesSubscription: Subscription;
   currentCategorySubscription: Subscription;
-  constructor(private menuService: MenuService) {}
+  userSubscription: Subscription;
+  isUserAdmin:boolean;
+  constructor(
+    private menuService: MenuService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
-    this.categories = this.menuService.getCategories();
-    this.currentCategory = this.menuService.getCurrentCategory();
+    this.menuService.getMenuCategories().subscribe(res => {
+      this.categories = res;
+      this.menuService.setCategories(res);
+      this.currentCategory = this.menuService.getCurrentCategory();
+    });
 
-    this.categoriesSubscription = this.menuService.categoriesChanged.subscribe(
-      categories => {
-        this.categories = categories;
-      }
-    );
+    this.menuService.currentCategoryChanged.subscribe((newCategory: string) => {
+      this.currentCategory = newCategory;
+    });
 
-    this.currentCategorySubscription = this.menuService.currentCategoryChanged.subscribe(
-      category => {
-        this.currentCategory = category;
+    this.currentUser = this.authService.getCurrentUser();
+
+    this.userSubscription = this.authService.userAuthenticationChanged.subscribe(
+      (user: any) => {
+        this.currentUser = user;
       }
     );
   }
 
-  onSelect(category) {
-    this.menuService.setCurrentCategory(category);
+  onSelect(categoryType: string) {
+    this.menuService.setCurrentCategory(categoryType);
   }
 }

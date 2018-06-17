@@ -1,6 +1,7 @@
 <div class="container">
-  <app-menu-list-item-add (newMenuItemAdded)="handleNewMenuItem($event)"></app-menu-list-item-add>
+  <app-menu-list-item-add [categories]="categories" (newMenuItemAdded)="handleNewMenuItem($event)"></app-menu-list-item-add>
   <ng-container *ngIf="menuList && menuList.length > 0">
-    <app-menu-list-item-edit (editedMenuItem)="handleEditedMenuItem($event)" (deletedMenuItem)="handleDeletedMenuItem($event)" *ngFor="let menuItem of menuList" [menuItem]="menuItem"></app-menu-list-item-edit>
+    <app-menu-list-item-edit [categories]="categories" (editedMenuItem)="handleEditedMenuItem($event)" (deletedMenuItem)="handleDeletedMenuItem($event)"
+      *ngFor="let menuItem of menuList" [menuItem]="menuItem"></app-menu-list-item-edit>
   </ng-container>
 </div>

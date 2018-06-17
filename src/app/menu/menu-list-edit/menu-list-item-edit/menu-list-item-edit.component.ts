@@ -9,7 +9,8 @@ import { ValidationManager } from "../../../shared/Services/validation-manager";
 })
 export class MenuListItemEditComponent implements OnInit {
   @Input() menuItem: any;
-  isEditting: boolean = true;
+  @Input() categories: any;
+  isEditting: boolean = false;
   @Output() deletedMenuItem = new EventEmitter<any>();
   @Output() editedMenuItem = new EventEmitter<any>();
   menuItemForm: any;
@@ -18,7 +19,7 @@ export class MenuListItemEditComponent implements OnInit {
 
   ngOnInit() {
     this.menuItemForm = new ValidationManager({
-      type: "required",
+      categoryId: "required",
       title: "required",
       description: "required",
       price: "required",
@@ -27,7 +28,7 @@ export class MenuListItemEditComponent implements OnInit {
     });
 
     this.menuItemForm.setValue({
-      type: this.menuItem.type,
+      categoryId: this.menuItem.category.id,
       title: this.menuItem.title,
       description: this.menuItem.description,
       price: this.menuItem.price,
@@ -46,16 +47,22 @@ export class MenuListItemEditComponent implements OnInit {
   }
 
   onEdit() {
-    const menuItemData = {
+    let menuItemData = {
       ...this.menuItemForm.formGroup.value,
       id: this.menuItem.id
     };
     this.isEditting = !this.isEditting;
 
-    if (this.isEditting) {
+    menuItemData = {
+      ...menuItemData,
+      categoryId: +menuItemData.categoryId
+    };
+
+    if (!this.isEditting) {
       this.menuService.updateMenuItem(menuItemData).subscribe(
         resp => {
-          this.editedMenuItem.emit(menuItemData);
+          this.menuItem = resp;
+          this.editedMenuItem.emit(resp);
         },
         err => {}
       );

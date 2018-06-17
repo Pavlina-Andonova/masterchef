@@ -1,14 +1,14 @@
 <div class="row dishname" [@divState]="state">
-    <div class="col-md-3">
-      <img src="{{favItem.image}}" alt="">
-    </div>
-    <div class="col-md-7">
-      <span class="title">{{favItem.title}}</span>
-      <hr>
-      <div class="description">{{favItem.description}}</div>
-    </div>
-    <div class="col-md-2 price text-center">
-      <p>{{favItem.price}}$</p>
-      <app-custom-button-goldenrod buttonText="Remove" (click)="onDelete(favItem.id)"></app-custom-button-goldenrod>
-    </div>
+  <div class="col-md-3">
+    <img [src]="favItem.menuItemImage" [alt]="favItem.title" />
   </div>
+  <div class="col-md-7">
+    <span class="title">{{favItem.title}}</span>
+    <hr />
+    <div class="description">{{favItem.description}}</div>
+  </div>
+  <div class="col-md-2 price text-center">
+    <p>{{favItem.price}}$</p>
+    <app-custom-button-goldenrod buttonText="Remove" (click)="onDelete(favItem.id)"></app-custom-button-goldenrod>
+  </div>
+</div>

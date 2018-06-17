@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from "@angular/core";
+import { Component, OnInit, EventEmitter, Input } from "@angular/core";
 import { MenuService } from "../../menu.service";
 import { ValidationManager } from "../../../shared/Services/validation-manager";
 import { HttpClient } from "@angular/common/http";
@@ -11,14 +11,14 @@ import { Output } from "@angular/core";
 })
 export class MenuListItemAddComponent implements OnInit {
   menuItemForm: any;
-
+  @Input() categories: any;
   @Output() newMenuItemAdded = new EventEmitter<any>();
 
   constructor(private menuService: MenuService, private http: HttpClient) {}
 
   ngOnInit() {
     this.menuItemForm = new ValidationManager({
-      type: "required",
+      categoryId: "required",
       title: "required",
       description: "required",
       price: "required",
@@ -28,10 +28,16 @@ export class MenuListItemAddComponent implements OnInit {
   }
 
   onSubmit() {
-    const formData = { 
+    let formData = { 
       ...this.menuItemForm.formGroup.value,
       menuItemImage: 'http://flashnews.bg/wp-content/uploads/2017/03/pizza-1150031_960_720.jpg'
     };
+    
+    formData = {
+      ...formData,
+      categoryId: +formData.categoryId
+    };
+    
     this.menuService.createMenuItem(formData).subscribe(resp => {
       this.newMenuItemAdded.emit(resp);
       this.menuItemForm.reset();

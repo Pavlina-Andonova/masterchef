@@ -9,12 +9,12 @@
 <div class="container-fluid type-selector-wrapper">
   <div class="container type-selector-content">
     <ul class="text-center">
-      <li *ngFor="let category of categories" (click)="onSelect(category)" [ngClass]="{'active': category === currentCategory}">
-        <a>{{category}}</a>
+      <li *ngFor="let category of categories" (click)="onSelect(category.categoryType)" [ngClass]="{'active': category.categoryType === currentCategory}">
+        <a>{{category.name}}</a>
       </li>
     </ul>
     <hr>
   </div>
 </div>
-<app-menu-list [currentCategory]="currentCategory"></app-menu-list>
-<!-- <app-menu-list-edit></app-menu-list-edit> -->
+<app-menu-list *ngIf="!currentUser || currentUser && !currentUser.isAdmin" [currentCategory]="currentCategory"></app-menu-list>
+<app-menu-list-edit *ngIf="currentUser && currentUser.isAdmin" [categories]="categories"></app-menu-list-edit>

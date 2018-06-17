@@ -4,11 +4,12 @@ import { Subject } from "rxjs/Subject";
 
 @Injectable()
 export class MenuService {
-  categories: string[] = [];
+  categories: any[] = [];
   currentCategory: string;
   currentCategoryChanged = new Subject<string>();
   categoriesChanged = new Subject<any>();
   constructor(private http: HttpClient) {}
+
 
   createMenuItem(menuItemData) {
     return this.http.post("/api/menuItem", menuItemData);
@@ -26,6 +27,10 @@ export class MenuService {
     return this.http.get("/api/menuItem/" + id);
   }
 
+  getMenuCategories(){
+    return this.http.get("/api/categories");
+  }
+
   deleteMenuItemById(id: number) {
     return this.http.delete("api/menuItem/" + id);
   }
@@ -39,10 +44,10 @@ export class MenuService {
   }
 
   setCategories(categories: any) {
-    this.categories = Array.from(categories);
+    this.categories = categories;
     
-    if (!this.currentCategory) {
-      this.setCurrentCategory(this.categories[0]);
+    if (!this.currentCategory && categories.length > 0) {
+      this.setCurrentCategory(this.categories[0].categoryType);
     }
 
     this.categoriesChanged.next(this.categories);
@@ -52,8 +57,8 @@ export class MenuService {
     return this.currentCategory;
   }
 
-  setCurrentCategory(category: string) {
-    this.currentCategory = category;
+  setCurrentCategory(categoryType: string) {
+    this.currentCategory = categoryType;
     this.currentCategoryChanged.next(this.currentCategory);
   }
 }

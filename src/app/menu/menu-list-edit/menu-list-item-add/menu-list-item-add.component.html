@@ -23,7 +23,9 @@
         <div class="col-md-3">
           <div class="type">
             <div class="type">
-              <input name="type" formControlName="type" type="text" placeholder="Add type..">
+              <select class="type" formControlName="categoryId">
+                <option name="categoryId" *ngFor="let catogory of categories" [value]="catogory.id">{{catogory.name}}</option>
+              </select>
             </div>
             <div class="pt-2 pb-2 price">
               <input name="price" formControlName="price" type="text" placeholder="Add price..">
