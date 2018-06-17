@@ -8,6 +8,20 @@ const ProfileController = require("../controllers/ProfileController");
 const UserController = require("../controllers/UserController");
 
 module.exports = router => {
+  //*Get profle*//
+  router.get(
+    "/api/profile",
+    passport.authenticate("jwt", { session: false }),
+    ProfileController.getProfile
+  );
+
+  //*Get profle*//
+  router.put(
+    "/api/profile",
+    passport.authenticate("jwt", { session: false }),
+    ProfileController.updateProfile
+  );
+
   //*Get user email*//
   router.get(
     "/api/profile/email",
@@ -21,7 +35,6 @@ module.exports = router => {
     passport.authenticate("jwt", { session: false }),
     UserController.updateUserEmail
   );
-
 
   //* Favourites *//
   //* Add new item*//
