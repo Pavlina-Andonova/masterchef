@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { AuthService } from "../../auth/auth.service";
 import { MenuService } from "../menu.service";
 import { FavouritesService } from "../../profile/favourites/favourites.service";
@@ -11,6 +11,7 @@ import { Subscription } from "rxjs/Subscription";
 })
 export class MenuListComponent implements OnInit {
   @Input() currentCategory;
+  @Output() newMenuitem = new EventEmitter<any>();
   menu: any;
   constructor(
     private menuService: MenuService,
@@ -29,6 +30,7 @@ export class MenuListComponent implements OnInit {
             });
 
             this.menu = menu.map((menuItem: any) => {
+              this.newMenuitem.emit(menuItem);
               return {
                 ...menuItem,
                 isFavourite: favouriteMenuItemsId.indexOf(menuItem.id) >= 0

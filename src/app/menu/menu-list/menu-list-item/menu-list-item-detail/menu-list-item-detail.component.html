@@ -34,7 +34,7 @@
               <app-custom-button-goldenrod (click)="addReview()" [buttonText]="isReviewOpen ? 'Close' : 'Add Review' "></app-custom-button-goldenrod>
             </div>
             <div class="col-12 col-md-5">
-              <app-custom-button-goldenrod buttonText="Order"></app-custom-button-goldenrod>
+              <app-custom-button-goldenrod (click)="onOrder()" buttonText="Order"></app-custom-button-goldenrod>
             </div>
             <div class="col-12 col-md-10 review" *ngIf="isReviewOpen">
               <h2>Review:</h2>

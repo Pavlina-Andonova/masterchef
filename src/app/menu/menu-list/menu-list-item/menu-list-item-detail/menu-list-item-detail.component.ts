@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MenuService } from '../../../menu.service';
+import { OrdersService } from '../../../../orders/orders.service';
 
 @Component({
   selector: 'app-menu-list-item-detail',
@@ -9,21 +10,27 @@ import { MenuService } from '../../../menu.service';
 })
 export class MenuListItemDetailComponent implements OnInit {
   menuDetail: any;
-  isReviewOpen:boolean = false;
-  constructor(private route: ActivatedRoute, private menuSrevice: MenuService) {}
+  isReviewOpen: boolean = false;
+  menuItem;
+  constructor(
+    private route: ActivatedRoute,
+    private menuSrevice: MenuService,
+    private ordersService: OrdersService
+  ) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-     this.menuSrevice.getMenuItemById(params['id']).subscribe(
-       res => {
-         this.menuDetail = res; 
-       }
-     );
+      this.menuSrevice.getMenuItemById(params['id']).subscribe(res => {
+        this.menuDetail = res;
+      });
     });
+  }
+
+  onOrder() {
+    this.ordersService.addMenuItem(this.menuDetail.id);
   }
 
   addReview() {
     this.isReviewOpen = !this.isReviewOpen;
   }
 }
-

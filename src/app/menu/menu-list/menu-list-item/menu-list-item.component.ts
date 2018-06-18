@@ -14,15 +14,11 @@ export class MenuListItemComponent implements OnInit {
   @Input() menuItem;
   // @Output() newFavouriteItemAdded = new EventEmitter<any>();
   // @Output() newOrder = new EventEmitter<any>();
-
   constructor(
     private favService: FavouritesService,
     private ordersService: OrdersService
   ) {}
-  // Orders
-  currentOrders: any[] = [];
-  count: number = 0;
-  existedMenuItems;
+
   ngOnInit() {}
 
   toggleFavourite() {
