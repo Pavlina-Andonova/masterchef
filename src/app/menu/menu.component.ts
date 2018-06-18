@@ -13,7 +13,6 @@ export class MenuComponent implements OnInit {
   currentUser;
   currentCategory: string;
   categories: any;
-  categoriesSubscription: Subscription;
   currentCategorySubscription: Subscription;
   userSubscription: Subscription;
   isUserAdmin:boolean;
