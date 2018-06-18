@@ -2,4 +2,8 @@
   <ng-container *ngFor="let menuItem of menu | filter:currentCategory">
     <app-menu-list-item [menuItem]="menuItem"></app-menu-list-item>
   </ng-container>
+  <ng-container *ngIf="menu && (menu | filter:currentCategory).length === 0">
+      <app-no-results message="No Records Yet!"></app-no-results>
+  </ng-container>
+  
 </div>

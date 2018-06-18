@@ -13,6 +13,7 @@ export class MenuListComponent implements OnInit {
   @Input() currentCategory;
   @Output() newMenuitem = new EventEmitter<any>();
   menu: any;
+  message;
   constructor(
     private menuService: MenuService,
     private authService: AuthService,
