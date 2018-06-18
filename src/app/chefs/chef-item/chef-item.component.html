@@ -1,10 +1,10 @@
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="10000000">
-  <div class="carousel-inner">
+  <div class="carousel-inner container p-0">
     <div class="carousel-item" *ngFor="let chef of chefs; let index = index" [class.active]="index == 0">
       <div class="wrapper">
         <div class="container p-0">
           <div class="chef-wrapper">
-            <div class="row custom-row">
+            <div class="row custom-row m-0">
               <div class="col-4 p-0">
                 <div class="chef-img">
                   <img class="chef" src="{{chef.image}}" alt="">
@@ -13,7 +13,7 @@
               <div class="col-8 p-0">
                 <div class="chef-description">
                   <h2>{{chef.name}}</h2>
-                  <h4>{{chef.job}}</h4>
+                  <h4>{{chef.jobPosition}}</h4>
                   <hr>
                   <div>{{chef.description}}</div>
                 </div>

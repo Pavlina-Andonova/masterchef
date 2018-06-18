@@ -17,6 +17,7 @@ import { ProfileModule } from "./profile/profile.module";
 import { OrdersModule } from "./orders/orders.module";
 import { ChefsComponent } from './chefs/chefs.component';
 import { ChefItemComponent } from './chefs/chef-item/chef-item.component';
+import { ChefService } from "./chefs/chef.servise";
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { ChefItemComponent } from './chefs/chef-item/chef-item.component';
     ProfileModule,
     OrdersModule
   ],
-  providers: [],
+  providers: [ChefService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

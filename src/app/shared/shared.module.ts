@@ -49,6 +49,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SpinnerComponent } from './Components/spinner/spinner.component';
 import { FilterPipe } from './pipe/filter.pipe'
 import { SplitPipe } from "./pipe/split.pipe";
+import { NoResultsComponent } from './Components/no-results/no-results.component';
 
 
 @NgModule({
@@ -66,6 +67,7 @@ import { SplitPipe } from "./pipe/split.pipe";
     CustomButtonGoldenrodComponent,
     SpinnerComponent,
     FilterPipe,
+    NoResultsComponent,
       
   ],
   imports: [
@@ -138,7 +140,9 @@ import { SplitPipe } from "./pipe/split.pipe";
     PopupComponent,
     FavouriteComponent,
     CustomButtonGoldenrodComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    NoResultsComponent,
+    
 
   ]
 })
