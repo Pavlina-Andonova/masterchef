@@ -11,7 +11,7 @@ import { OrdersService } from '../../../../orders/orders.service';
 export class MenuListItemDetailComponent implements OnInit {
   menuDetail: any;
   isReviewOpen: boolean = false;
-  menuItem;
+  // menuItem;
   constructor(
     private route: ActivatedRoute,
     private menuSrevice: MenuService,
@@ -22,6 +22,7 @@ export class MenuListItemDetailComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.menuSrevice.getMenuItemById(params['id']).subscribe(res => {
         this.menuDetail = res;
+        console.log(this.menuDetail);
       });
     });
   }

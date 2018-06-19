@@ -1,6 +1,6 @@
 <div class='input-text' [formGroup]='form.getForm()'>
     <label for='{{id}}' class='{{labelClass}}'>{{label}}</label>
-    <input [type]='type' [id]='id' [name]='name' pInputText [formControlName]='name' placeholder='{{placeholder}}' [maxlength]='maxLenght'>
+    <input [type]='type' [id]='id' [name]='name' pInputText [formControlName]='name' placeholder='{{placeholder}}' [maxlength]='maxLength'>
     <div class="error-wrapper">
         <div *ngIf='(ctrl.touched || form.submitted) && form.hasError(name)' class='error'>
             {{form.getError(name)}}

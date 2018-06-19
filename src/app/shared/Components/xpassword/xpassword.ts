@@ -16,7 +16,7 @@ export class XPassword implements OnInit {
   @Input() id: string;
   @Input() form: any = {};
   @Input() labelClass = "";
-  @Input() maxLenght: number = 9999;
+  @Input() maxLength: number = 9999;
   @Input() disabled: boolean = false;
   @Input() showFeedback: boolean = false;
 
