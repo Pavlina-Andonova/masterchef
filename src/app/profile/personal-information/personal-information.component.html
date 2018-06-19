@@ -17,11 +17,11 @@
             <h2 class="pass-settings-title">Profile Information:</h2>
           </div>
           <div class="col-12 col-md-6 mt-1 mb-1">
-            <input class="name fname" id="firstName" style="margin-right: 1%;" type="text" name="firstName" formControlName="firstName"
+            <input class="name fname" id="firstName" style="margin-right: 1%;" type="text" name="firstName" [value]="userData.firstName" formControlName="firstName"
               placeholder="Enter first name">
           </div>
           <div class="col-12 col-md-6 mt-1 mb-1">
-            <input class="name" id="lastName" type="text" name="lastName" formControlName="lastName" placeholder="Enter last name">
+            <input class="name" id="lastName" type="text"  formControlName="lastName" name="lastName" [value]="userData.lastName" placeholder="Enter last name">
           </div>
           <div class="col-12 mt-1 mb-1">
             <input id="email" type="text" name="email" formControlName="email" placeholder="Enter email">
