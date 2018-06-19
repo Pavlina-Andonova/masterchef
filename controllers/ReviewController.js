@@ -1,63 +1,66 @@
-const Chef = require("../models/Chef");
+const Review = require("../models/Review");
 
-//**Create Chef */
-const createChef = async function(req, res) {
-  res.setHeader("Content-Type", "application/json");
-  const chef = await Chef.query().insert(req.body);
-  if (!chef) {
+//**Create Review */
+const createReview = async function(req, res) {
+  // res.setHeader("Content-Type", "application/json");
+  const review = await Review.query().insert(req.body);
+  if (!review) {
     return res.status(500).send({ error: "Somethig went wrong!" });
   }
 
-  return res.send(chef);
+  return res.send(review);
 };
-module.exports.createChef = createChef;
+module.exports.createReview = createReview;
 
-//**Get Chefs */
-const getChefs = async function(req, res) {
+//**Get Reviews */
+const getReviews = async function(req, res) {
   res.setHeader("Content-Type", "application/json");
-  const chefs = await Chef.query();
-  if (!chefs) {
+  const reviews = await Review.query();
+  if (!reviews) {
     return res.status(404).send({ error: "Not Found!" });
   }
 
-  return res.send(chefs);
+  return res.send(reviews);
 };
-module.exports.getChefs = getChefs;
+module.exports.getReviews = getReviews;
 
-//**Get Chef */
-const getChef = async function(req, res) {
+//**Get Review */
+const getReview = async function(req, res) {
   res.setHeader("Content-Type", "application/json");
-  const chef = await Chef.query().findById(req.params.id);
-  if (!chef) {
+  const review = await Review.query().findById(req.params.id);
+  if (!review) {
     return res.status(404).send({ error: "Not Found!" });
   }
 
-  return res.send(chef);
+  return res.send(review);
 };
-module.exports.getChef = getChef;
+module.exports.getReview = getReview;
 
-//**Update Chef */
-const updateChef = async function(req, res) {
+//**Update Review */
+const updateReview = async function(req, res) {
   res.setHeader("Content-Type", "application/json");
-  const chef = await Chef.query().patchAndFetchById(req.params.id, req.body);
-  if (!chef) {
+  const review = await Review.query().patchAndFetchById(
+    req.params.id,
+    req.body
+  );
+  if (!review) {
     return res.status(404).send({ error: "Not Found!" });
   }
 
-  return res.send(chef);
+  return res.send(review);
 };
 
-module.exports.updateChef = updateChef;
+module.exports.updateReview = updateReview;
 
-//**Delete Chef */
-const deleteChef = async function(req, res) {
+//**Delete Review */
+const deleteReview = async function(req, res) {
   res.setHeader("Content-Type", "application/json");
-  const numberOfDeletedChefs = await Chef.query()
+  const numberOfDeletedReviews = await Review.query()
     .findById(req.params.id)
     .del();
-  if (numberOfDeletedChefs <= 0) {
+  if (numberOfDeletedReviews <= 0) {
     return res.status(404).send({ error: "Not Found!" });
   }
   return res.status(201).send();
 };
-module.exports.deleteChef = deleteChef;
+module.exports.deleteReview = deleteReview;

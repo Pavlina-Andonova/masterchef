@@ -28,6 +28,7 @@ class MenuItem extends Model {
       properties: {
         id: { type: "integer" },
         categoryId: { type: "integer" },
+        reviewId: { type: 'integer'},
         title: { type: "string", minLength: 3, maxLength: 30 },
         description: { type: "string" },
         price: { type: "float" },
@@ -51,8 +52,8 @@ class MenuItem extends Model {
         relation: Model.HasManyRelation,
         modelClass: Review,
         join: {
-          from: "menuItems.id",
-          to: "reviews.menuItemId"
+          from: "menuItems.reviewId",
+          to: "reviews.id"
         }
       }
     };

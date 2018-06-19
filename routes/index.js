@@ -6,6 +6,7 @@ const registerProfileRoutes = require("./profile");
 const registerChefRoutes = require("./chef");
 const registerOrderRoutes = require("./order");
 const registerAddressRoutes = require("./address");
+const registerReviewRoutes = require("./review");
 
 module.exports = router => {
   registerUserRoutes(router);
@@ -14,4 +15,5 @@ module.exports = router => {
   registerChefRoutes(router);
   registerOrderRoutes(router);
   registerAddressRoutes(router);
+  registerReviewRoutes(router);
 };
