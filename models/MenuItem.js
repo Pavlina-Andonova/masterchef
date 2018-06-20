@@ -2,6 +2,7 @@
 
 const Model = require("objection").Model;
 const MenuCategory = require("./MenuCategory");
+const Review = require("./Review");
 
 class MenuItem extends Model {
   // Table name is the only required property.
@@ -27,6 +28,7 @@ class MenuItem extends Model {
       properties: {
         id: { type: "integer" },
         categoryId: { type: "integer" },
+        reviewId: { type: 'integer'},
         title: { type: "string", minLength: 3, maxLength: 30 },
         description: { type: "string" },
         price: { type: "float" },
@@ -44,6 +46,14 @@ class MenuItem extends Model {
         join: {
           from: "menuItems.categoryId",
           to: "menuCategories.id"
+        }
+      },
+      review: {
+        relation: Model.HasManyRelation,
+        modelClass: Review,
+        join: {
+          from: "menuItems.reviewId",
+          to: "reviews.id"
         }
       }
     };
