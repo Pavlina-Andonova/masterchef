@@ -18,7 +18,8 @@ exports.up = knex => {
         .integer("categoryId")
         .unsigned()
         .references("id")
-        .inTable("menuCategories");
+        .inTable("menuCategories")
+        .onDelete("SET NULL");
     })
     .createTable("profiles", table => {
       table.increments("id").primary();
@@ -40,7 +41,8 @@ exports.up = knex => {
         .integer("profileId")
         .unsigned()
         .references("id")
-        .inTable("profiles");
+        .inTable("profiles")
+        .onDelete("CASCADE");
     })
     .createTable("addresses", table => {
       table.increments("id").primary();
@@ -56,28 +58,13 @@ exports.up = knex => {
         .integer("profileId")
         .unsigned()
         .references("id")
-        .inTable("profiles");
-    })
-    .createTable("favourites", table => {
-      table.increments("id").primary();
-      table
-        .integer("menuItemId")
-        .unsigned()
-        .references("id")
-        .inTable("menuItems")
-        .onDelete("SET NULL");
-      table
-        .integer("profileId")
-        .unsigned()
-        .references("id")
         .inTable("profiles")
-        .onDelete("SET NULL");
+        .onDelete("CASCADE");
     });
 };
 
 exports.down = knex => {
   return knex.schema
-    .dropTableIfExists("favourites")
     .dropTableIfExists("addresses")
     .dropTableIfExists("profiles")
     .dropTableIfExists("users")

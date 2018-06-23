@@ -9,6 +9,13 @@ export class OrdersService {
   orderItemsCountChanged = new Subject<number>();
   currentOrders: any[] = [];
 
+  setHeader() {
+    return {
+      headers: new HttpHeaders({
+        Authorization: sessionStorage.getItem("jwtToken")
+      })
+    };
+  }
   addMenuItem(id: number) {
     const existedMenuItems = this.currentOrders.filter(
       order => order.id === id

@@ -54,6 +54,14 @@ module.exports.update = update;
 
 const remove = async function(req, res) {
   res.setHeader("Content-Type", "application/json");
+  const user = await Profile.query()
+    .findById(req.user.id)
+    .del();
+  if (user <= 0) {
+    return res.status(404).send({ error: "Not Found!" });
+  }
+
+  return res.send({ message: "User removed sucessfully" });
 };
 module.exports.remove = remove;
 

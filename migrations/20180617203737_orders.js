@@ -10,13 +10,13 @@ exports.up = knex => {
         .unsigned()
         .references("id")
         .inTable("addresses")
-        .onDelete("RESTRICT");
+        .onDelete("SET NULL");
       table
         .integer("profileId")
         .unsigned()
         .references("id")
         .inTable("profiles")
-        .onDelete("RESTRICT");
+        .onDelete("CASCADE");
     })
     .createTable("orders_menuItems", table => {
       table.integer("itemCount");
@@ -25,13 +25,13 @@ exports.up = knex => {
         .unsigned()
         .references("id")
         .inTable("orders")
-        .onDelete("RESTRICT");
+        .onDelete("CASCADE");
       table
         .integer("menuItemId")
         .unsigned()
         .references("id")
         .inTable("menuItems")
-        .onDelete("RESTRICT");
+        .onDelete("SET NULL");
     });
 };
 

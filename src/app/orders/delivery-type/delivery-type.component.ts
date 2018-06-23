@@ -1,18 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { AddressesService } from "../../profile/addresses/addresses.service";
 
 @Component({
-  selector: 'app-delivery-type',
-  templateUrl: './delivery-type.component.html',
-  styleUrls: ['./delivery-type.component.scss']
+  selector: "app-delivery-type",
+  templateUrl: "./delivery-type.component.html",
+  styleUrls: ["./delivery-type.component.scss"]
 })
 export class DeliveryTypeComponent implements OnInit {
-  
+  profileAddresses: any;
   isHomeOptionsShown: boolean = true;
   isRestaurantOptionsShown: boolean = false;
 
-  constructor() {}
+  constructor(private addressesService: AddressesService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.addressesService.getAddresses().subscribe(res => {
+      this.profileAddresses = res;
+      console.log(this.profileAddresses);
+    });
+  }
 
   handleHomeOptions() {
     this.isHomeOptionsShown = true;
