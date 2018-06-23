@@ -1,7 +1,5 @@
 "use strict";
 
-const { transaction } = require("objection");
-
 const MenuController = require("../controllers/MenuController");
 const CategoryController = require("../controllers/CategoryController");
 
@@ -24,8 +22,6 @@ module.exports = router => {
 
   //* Delete menu item*//
   router.delete("/api/menuItem/:id", MenuController.deleteMenuItem);
-
-  //*Get Categories*//
 
   //*Get Categories *//
   router.get("/api/categories", CategoryController.getCategories);

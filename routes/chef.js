@@ -1,13 +1,12 @@
 "use strict";
 
-const { transaction } = require("objection");
 const passport = require("passport");
 require("../middleware/passport")(passport);
 
 const ChefController = require("../controllers/ChefController");
 
 module.exports = router => {
-  //* CREATE Chef *//
+  /** CREATE Chef **/
   router.post(
     "/api/chef",
     passport.authenticate("jwt", { session: false }),
@@ -34,3 +33,5 @@ module.exports = router => {
     ChefController.deleteChef
   );
 };
+
+

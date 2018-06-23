@@ -82,6 +82,9 @@
         <div class="edit" (click)="onEdit()" *ngIf="!isEditing">
           <i class="fas fa-edit"></i>
         </div>
+        <div class="delete" (click)="onDelete()">
+          <i class="fas fa-trash-alt"></i>
+        </div>
         <div class="save" (click)="onSave()" *ngIf="isEditing">
           <i class="fas fa-check"></i>
         </div>

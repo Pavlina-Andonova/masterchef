@@ -1,37 +1,53 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { ValidationManager } from "../../../shared/Services/validation-manager";
-import { OnChanges } from "@angular/core/src/metadata/lifecycle_hooks";
+import { AddressesService } from "../addresses.service";
 
 @Component({
   selector: "app-address-form",
   templateUrl: "./address-form.component.html",
   styleUrls: ["./address-form.component.scss"]
 })
-export class AddressFormComponent implements OnInit, OnChanges {
+export class AddressFormComponent implements OnInit {
   selectedBuildingType: string = "house";
   addressForm: any;
   addressData: any;
   @Output() newAddress = new EventEmitter<any>();
   @Input() editedAddress;
 
-  constructor() {}
+  constructor(private addressesService: AddressesService) {}
 
   ngOnInit() {
     this.addressForm = new ValidationManager({
       city: "",
-      district: "",
+      street: "",
       number: "",
       buildingType: "",
       entry: "",
       floor: "",
       apartment: ""
     });
-  }
 
-  ngOnChanges() {}
+    this.addressForm.setValue({
+      entry: "",
+      floor: "",
+      apartment: ""
+    });
+  }
 
   onSubmit() {
     this.addressData = this.addressForm.formGroup.value;
-    this.newAddress.emit(this.addressData);
+    const formData = {
+      ...this.addressData,
+      floor: +this.addressData.floor,
+      number: +this.addressData.number
+    };
+
+    console.log(formData);
+    this.addressData = this.addressesService
+      .createAddress(formData)
+      .subscribe(res => {
+        this.addressesService.addAddresses(res);
+      });
+    this.addressForm.reset();
   }
 }

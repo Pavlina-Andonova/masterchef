@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { AddressesService } from "./addresses.service";
 
 @Component({
   selector: "app-addresses",
@@ -6,13 +7,17 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./addresses.component.scss"]
 })
 export class AddressesComponent implements OnInit {
-  addresses=[];
-  constructor() {}
+  addresses;
+  constructor(private addressesService: AddressesService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.addressesService.getAddresses().subscribe(res => {
+      this.addresses = res;
+      this.addressesService.setAddress(res);
+    });
 
-  handleNewAddress(addressData) {
-    this.addresses.push(addressData);
+    this.addressesService.onAddressesChanged.subscribe(addresses => {
+      this.addresses = addresses;
+    });
   }
-
 }

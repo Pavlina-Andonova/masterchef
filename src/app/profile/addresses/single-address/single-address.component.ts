@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { ValidationManager } from "../../../shared/Services/validation-manager";
+import { AddressesService } from "../addresses.service";
 
 @Component({
   selector: "app-single-address",
@@ -10,9 +11,11 @@ export class SingleAddressComponent implements OnInit {
   @Input() singleAddress;
   isEditing: boolean = false;
   editAddressForm;
-  constructor() {}
+  constructor(private addressesService: AddressesService) {}
 
   ngOnInit() {
+    console.log(this.singleAddress);
+
     this.editAddressForm = new ValidationManager({
       city: "required",
       district: "required",
@@ -22,18 +25,26 @@ export class SingleAddressComponent implements OnInit {
       floor: "required",
       apartment: ""
     });
+
+  
   }
 
-  onEdit() {
-    this.isEditing = !this.isEditing;
+  // onEdit() {
+  //   this.isEditing = !this.isEditing;
 
-    if (this.isEditing) {
-      this.editAddressForm.setValue(this.singleAddress);
-    }
+  //   if (this.isEditing) {
+  //     this.editAddressForm.setValue(this.singleAddress);
+  //   }
+  // }
+
+  onDelete() {
+    this.addressesService.deleteAddressById(this.singleAddress.id).subscribe(res => {
+      console.log(res);
+    });
   }
 
-  onSave() {
-    this.singleAddress = this.editAddressForm.formGroup.value;
-    this.isEditing = false;
-  }
+  // onSave() {
+  //   this.singleAddress = this.editAddressForm.formGroup.value;
+  //   this.isEditing = false;
+  // }
 }

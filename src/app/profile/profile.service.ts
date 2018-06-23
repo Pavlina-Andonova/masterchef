@@ -16,4 +16,5 @@ export class ProfileService {
   updateUserData(profileData: any) {
     return this.http.put("/api/profile", profileData, this.setHeader());
   }
+
 }
