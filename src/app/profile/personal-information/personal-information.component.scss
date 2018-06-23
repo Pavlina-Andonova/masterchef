@@ -4,6 +4,7 @@
     border-bottom: 1px solid black;
     background: transparent;
   }
+
   .profile-image-wrapper {
     position: relative;
     width: 100%;
@@ -54,5 +55,13 @@
   }
   .fname {
     margin-right: 1.3%;
+  }
+}
+
+.form-message {
+  color: green;
+
+  &.error {
+    color: red;
   }
 }

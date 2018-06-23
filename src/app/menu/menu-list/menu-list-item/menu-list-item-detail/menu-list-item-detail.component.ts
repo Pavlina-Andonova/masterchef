@@ -22,7 +22,6 @@ export class MenuListItemDetailComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.menuSrevice.getMenuItemById(params['id']).subscribe(res => {
         this.menuDetail = res;
-        console.log(this.menuDetail);
       });
     });
   }

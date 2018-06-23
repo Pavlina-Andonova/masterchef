@@ -13,8 +13,10 @@ export class PersonalInformationComponent implements OnInit {
   subscription: Subscription;
   profileForm: any;
   profilePasswordChangeForm: any;
-  passErrorMessage: string = "";
-  profileErrorMessage: string = "";
+  passMessage: string = "";
+  profileMessage: string = "";
+  isProfileErr: boolean = false;
+  isPassErr: boolean = false;
   userData;
   emailData;
   userEmail;
@@ -90,55 +92,83 @@ export class PersonalInformationComponent implements OnInit {
   }
 
   onSubmitProfileInfo() {
-    this.profileForm.formGroup.value;
-
-    if (!this.profileForm.isValid()) {
-      this.profileErrorMessage = this.getFirstErrorMessage(
-        this.profileForm.getErrors()
-      );
-    } else {
-      this.profileErrorMessage = "";
+    if (this.profileForm.isValid()) {
+      this.profileMessage = "";
+      this.isProfileErr = false;
       const formData = this.profileForm.formGroup.value;
       const emailData = {
         email: this.profileForm.formGroup.value.email
       };
-
       delete formData.email;
 
-      this.profileService.updateUserData(formData).subscribe(res => {
-        this.userData = res;
-      });
-      this.authService.updateUserEmail(emailData).subscribe(res => {
-        this.emailData = res;
-      });
+      this.sendUpdateProfileRequest(formData);
+      this.sendUpdateEmailRequest(emailData);
+
+      this.profileMessage = "Sucessfully updated!";
+    } else {
+      this.isProfileErr = true;
+      this.profileMessage = this.getFirstErrorMessage(
+        this.profileForm.getErrors()
+      );
     }
   }
 
   onSubmitPasswordInfo() {
-    if (!this.profilePasswordChangeForm.isValid()) {
-      this.passErrorMessage = this.getFirstErrorMessage(
-        this.profilePasswordChangeForm.getErrors()
-      );
-    } else {
-      this.passErrorMessage = "";
+    if (this.profilePasswordChangeForm.isValid()) {
+      this.isPassErr = false;
       this.authService
         .updateUserPassword(this.profilePasswordChangeForm.formGroup.value)
         .subscribe(
           res => {
-            this.passData = res;
-            this.passErrorMessage = Object.values(res)[0];
-            setTimeout(() => {
-              this.passErrorMessage = "";
-            }, 2000);
+            this.isPassErr = false;
+            this.passMessage = this.getFirstErrorMessage(res);
           },
           err => {
-            this.passErrorMessage = Object.values(err.error)[0];
+            this.isPassErr = true;
+            this.passMessage = this.getFirstErrorMessage(err.error);
           }
         );
       this.profilePasswordChangeForm.reset();
-
-      // Send this.profilePasswordChangeForm.formGroup.value
+    } else {
+      this.isPassErr = true;
+      this.passMessage = this.getFirstErrorMessage(
+        this.profilePasswordChangeForm.getErrors()
+      );
     }
+
+    setTimeout(() => {
+      this.isPassErr = false;
+      this.passMessage = "";
+    }, 5000);
+  }
+
+  sendUpdateProfileRequest(profileData: any) {
+    this.profileService.updateUserData(profileData).subscribe(
+      res => {
+        this.userData = res;
+      },
+      err => {
+        this.isProfileErr = true;
+        this.profileMessage = "Something went wrong!";
+      }
+    );
+  }
+
+  sendUpdateEmailRequest(emailData: any) {
+    this.authService.updateUserEmail(emailData).subscribe(
+      res => {
+        this.emailData = res;
+      },
+      err => {
+        this.isProfileErr = true;
+        this.profileMessage = "Something went wrong!";
+      }
+    );
+
+    setTimeout(() => {
+      this.isProfileErr = false;
+      this.profileMessage = "";
+    }, 5000);
   }
 
   getFirstErrorMessage(errors: any) {

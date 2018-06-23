@@ -25,7 +25,6 @@ module.exports.updateProfile = updateProfile;
 const addMenuItemToFavourites = async function(req, res) {
   res.setHeader("Content-Type", "application/json");
   if (req.user && req.user.id) {
-    console.log(req.user.id);
     let profileMenuItemData = await ProfileMenuItem.query()
       .first()
       .where({

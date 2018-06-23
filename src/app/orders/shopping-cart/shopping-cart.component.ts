@@ -24,8 +24,6 @@ export class ShoppingCartComponent implements OnInit {
   setOrders() {
     this.ordersService.getOrderItems().subscribe(items => {
       this.ordersList = items;
-      console.log('items');
-      console.log(items);
     });
   }
 

@@ -13,7 +13,6 @@ export class ChefsComponent implements OnInit {
   ngOnInit() {
     this.chefService.getChefs().subscribe(res => {
       this.chefs = res;
-      console.log(this.chefs);
     });
   }
 }
