@@ -59,6 +59,10 @@ export class AddressesService {
   getAddresses() {
     return this.http.get("/api/addresses", this.setHeader());
   }
+  
+  getRestaurants(){
+    return this.http.get("/api/restaurants", this.setHeader());
+  }
 
   getAddress(id) {
     return this.http.get("/api/address/" + id);

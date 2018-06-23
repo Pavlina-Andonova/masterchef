@@ -9,48 +9,83 @@ import { OrdersService } from "../orders.service";
 })
 export class DeliveryTypeComponent implements OnInit {
   profileAddresses: any;
-  isHomeOptionsShown: boolean = true;
+  restaurantAddresses: any;
   isRestaurantOptionsShown: boolean = false;
-  addressesPlaceholders:any;
-  addressPlaceholder:any;
-  selectedAddressId:any;
-  constructor(private addressesService: AddressesService, private ordersService: OrdersService) {}
+  addressesPlaceholders: any;
+  addressPlaceholder: any;
+  restaurantsPlaceholder: any;
+  restaurantPlaceholder: any;
+  selectedAddress: any;
+  constructor(
+    private addressesService: AddressesService,
+    private ordersService: OrdersService
+  ) {}
 
   ngOnInit() {
+    /*Home addresses*/
+
     this.addressesService.getAddresses().subscribe(res => {
       this.profileAddresses = res;
-      console.log(this.profileAddresses);
+      // console.log(this.profileAddresses);
 
-       this.addressesPlaceholders = this.profileAddresses.map(address => {
-         this.addressPlaceholder =
+      this.addressesPlaceholders = this.profileAddresses.map(address => {
+        this.addressPlaceholder =
           address.city + ", " + address.street + ", " + address.number;
         return {
           id: address.id,
           placeholder: this.addressPlaceholder
         };
       });
+
+      if (this.selectedAddress === 0) {
+        this.selectedAddress = { id: 0, isRestaurant: true };
+        this.isRestaurantOptionsShown = true;
+      } else {
+        this.selectedAddress = JSON.parse(sessionStorage.getItem("address"));
+        this.isRestaurantOptionsShown = this.selectedAddress.isRestaurant;
+      }
+    });
+
+    /*Restaurant adresses*/
+    this.addressesService.getRestaurants().subscribe(res => {
+      this.restaurantAddresses = res;
+
+      this.restaurantsPlaceholder = this.restaurantAddresses.map(address => {
+        this.restaurantPlaceholder =
+          address.city + ", " + address.street + ", " + address.number;
+        return {
+          id: address.id,
+          placeholder: this.restaurantPlaceholder
+        };
+      });
     });
   }
 
   handleHomeOptions() {
-    this.isHomeOptionsShown = true;
-
-    if ((this.isHomeOptionsShown = true)) {
-      this.isRestaurantOptionsShown = false;
-    }
+    this.isRestaurantOptionsShown = false;
   }
 
   handleRestaourantOptions() {
     this.isRestaurantOptionsShown = true;
-
-    if ((this.isRestaurantOptionsShown = true)) {
-      this.isHomeOptionsShown = false;
-    }
   }
 
-  selectChangeHandler (event: any) {
-    this.selectedAddressId = event.target.value;
-    console.log(this.selectedAddressId);
-    this.ordersService.setCurrentAddres(this.selectedAddressId);
+  selectChangeHandler(event: any) {
+    const id = event.target.value;
+    // this.ordersService.setCurrentAddress(this.selectedAddressId);
+    this.selectedAddress = {
+      id: id,
+      isRestaurant: false
+    };
+    sessionStorage.setItem("address", JSON.stringify(this.selectedAddress));
+  }
+
+  selectRestaurant(event: any) {
+    const id = event.target.value;
+    // this.ordersService.setCurrentAddress(this.selectedAddressId);
+    this.selectedAddress = {
+      id: id,
+      isRestaurant: true
+    };
+    sessionStorage.setItem("address", JSON.stringify(this.selectedAddress));
   }
 }

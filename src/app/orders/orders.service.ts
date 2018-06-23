@@ -79,7 +79,8 @@ export class OrdersService {
     return allOrders;
   }
 
-  setCurrentAddres(id){
+  setCurrentAddress(id){
     this.currentAddressId = id;
+
   }
 }

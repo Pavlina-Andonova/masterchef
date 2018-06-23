@@ -43,6 +43,19 @@ export class AddressFormComponent implements OnInit {
     };
 
     this.addressData = this.addressesService.addAddress(formData);
+    this.initializeForm();
+  }
+
+  initializeForm(){
     this.addressForm.reset();
+    this.addressForm.setValue({
+      city: "",
+      street: "",
+      number: "",
+      buildingType: "house",
+      entry: "",
+      floor: "",
+      apartment: ""
+    })
   }
 }

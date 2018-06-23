@@ -3,7 +3,12 @@ const Address = require("../models/Address");
 //**Create Address */
 const createAddress = async function(req, res) {
   res.setHeader("Content-Type", "application/json");
-  const address = await Address.query().insert(req.body);
+  const addressData = {
+    ...req.body,
+    profileId: req.user.id
+  };
+
+  const address = await Address.query().insert(addressData);
   if (!address) {
     return res.status(500).send({ error: "Somethig went wrong!" });
   }
