@@ -42,12 +42,7 @@ export class AddressFormComponent implements OnInit {
       number: +this.addressData.number
     };
 
-    console.log(formData);
-    this.addressData = this.addressesService
-      .createAddress(formData)
-      .subscribe(res => {
-        this.addressesService.addAddresses(res);
-      });
+    this.addressData = this.addressesService.addAddress(formData);
     this.addressForm.reset();
   }
 }

@@ -17,10 +17,10 @@
             <span>Street:</span>
             <hr class="mt-1 mb-1">
             <div class="street" *ngIf="!isEditing">
-              {{singleAddress.district}}
+              {{singleAddress.street}}
             </div>
             <div *ngIf="isEditing">
-              <input id="district" name="district" formControlName="district" type="text" [value]="singleAddress.district" placeholder="Add street..">
+              <input id="street" name="street" formControlName="street" type="text" [value]="singleAddress.street" placeholder="Add street..">
             </div>
           </div>
           <div class="col-md-4">

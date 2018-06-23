@@ -21,21 +21,39 @@ export class AddressesService {
     this.addresses = addresses;
   }
 
-  addAddresses(addressData) {
-    this.addresses.push(addressData);
-    this.onAddressesChanged.next(this.addresses);
+  addAddress(addressData) {
+    this.http
+      .post("/api/address", addressData, this.setHeader())
+      .subscribe(res => {
+        this.addresses.push(res);
+        this.onAddressesChanged.next(this.addresses);
+      });
   }
 
-  createAddress(addressData) {
-    return this.http.post("/api/address", addressData, this.setHeader());
-  }
+  updateAddress(id, addressData) {
+    return this.http
+      .put("/api/address/" + id, addressData, this.setHeader())
+      .subscribe(res => {
+        this.addresses = this.addresses.map(address => {
+          if (address.id === id) {
+            address = {
+              id: id,
+              ...addressData
+            };
+          }
 
-  updateAddress(addressData) {
-    return this.http.put("/api/address" + addressData.id, this.setHeader());
+          return address;
+        });
+
+        this.onAddressesChanged.next(this.addresses);
+      });
   }
 
   deleteAddressById(id) {
-    return this.http.delete("/api/address/" + id, this.setHeader());
+    this.http.delete("/api/address/" + id, this.setHeader()).subscribe(res => {
+      this.addresses = this.addresses.filter(address => address.id !== id);
+      this.onAddressesChanged.next(this.addresses);
+    });
   }
 
   getAddresses() {
