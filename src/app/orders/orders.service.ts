@@ -8,6 +8,7 @@ export class OrdersService {
 
   orderItemsCountChanged = new Subject<number>();
   currentOrders: any[] = [];
+  currentAddressId:number;
 
   setHeader() {
     return {
@@ -76,5 +77,9 @@ export class OrdersService {
       allOrders += order.count;
     });
     return allOrders;
+  }
+
+  setCurrentAddres(id){
+    this.currentAddressId = id;
   }
 }
