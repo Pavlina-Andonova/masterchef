@@ -23,6 +23,9 @@ module.exports = router => {
   //* Delete menu item*//
   router.delete("/api/menuItem/:id", MenuController.deleteMenuItem);
 
+  //*Create Categories *//
+  router.post("/api/categories", CategoryController.createCategory);
+
   //*Get Categories *//
   router.get("/api/categories", CategoryController.getCategories);
 
