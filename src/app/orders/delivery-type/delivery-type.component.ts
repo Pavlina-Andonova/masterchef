@@ -90,7 +90,7 @@ export class DeliveryTypeComponent implements OnInit {
       isRestaurant: false
     };
     sessionStorage.setItem("address", JSON.stringify(this.selectedAddress));
-    console.log(this.selectedAddress);
+    // console.log(this.selectedAddress);
   }
 
   selectRestaurant(event: any) {
@@ -101,6 +101,6 @@ export class DeliveryTypeComponent implements OnInit {
       isRestaurant: true
     };
     sessionStorage.setItem("address", JSON.stringify(this.selectedAddress));
-    console.log(this.selectedAddress);
+    // console.log(this.selectedAddress);
   }
 }

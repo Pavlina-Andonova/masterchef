@@ -1,5 +1,8 @@
 <form (ngSubmit)="onSubmit($event)" ngForm>
   <div [formGroup]="paymentForm && paymentForm.getForm()" class="confirmation-wrapper">
+    <div class="message" *ngIf="errorMessage">
+      <h2>{{errorMessage}}</h2>
+    </div>
     <div class="container text-center">
       <h3 class="mb-4">How would you like to pay?</h3>
       <div class="row m-0 content">
@@ -12,9 +15,9 @@
         </div>
         <div class="col-md-6  pay-type">
           <div class="text-center">
-            <input id="payType" type="radio" formControlName="payType" name="payType" value="cart">
+            <input id="payType" type="radio" formControlName="payType" name="payType" value="card">
             <i class="fab fa-cc-visa"></i>
-            <h4>With Cart</h4>
+            <h4>With Card</h4>
           </div>
         </div>
       </div>

@@ -63,8 +63,8 @@ export class OrdersService {
   deleteItem(id: number) {
     let currentOrders = JSON.parse(sessionStorage.getItem("orders")) || [];
     currentOrders = currentOrders.filter(order => order.id !== id);
-    this.orderItemsCountChanged.next(this.getOrderItemsCount());
     sessionStorage.setItem("orders", JSON.stringify(currentOrders));
+    this.orderItemsCountChanged.next(this.getOrderItemsCount());
   }
 
   getOrderItems() {

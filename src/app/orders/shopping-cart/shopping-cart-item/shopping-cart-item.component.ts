@@ -41,8 +41,8 @@ export class ShoppingCartItemComponent implements OnInit {
   constructor(private ordersService: OrdersService) {}
 
   ngOnInit() {
-    console.log('item')
-    console.log(this.item)
+    // console.log('item')
+    // console.log(this.item)
     sessionStorage.getItem('orders');
   }
 
