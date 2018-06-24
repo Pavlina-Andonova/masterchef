@@ -27,6 +27,9 @@ export class PersonalInformationComponent implements OnInit {
     newPassword: "",
     repPassword: ""
   };
+  selectedFile: File;
+  url: string;
+  
   constructor(
     private authService: AuthService,
     private profileService: ProfileService
@@ -91,6 +94,20 @@ export class PersonalInformationComponent implements OnInit {
     );
   }
 
+  onFileChanged(event) {
+    this.selectedFile = event.target.files[0];
+
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.url = e.target.result;
+    };
+    reader.readAsDataURL(this.selectedFile)
+  }
+
+  onUpload() {
+    console.log(this.selectedFile);
+  }
+
   onSubmitProfileInfo() {
     if (this.profileForm.isValid()) {
       this.profileMessage = "";
@@ -111,6 +128,8 @@ export class PersonalInformationComponent implements OnInit {
         this.profileForm.getErrors()
       );
     }
+
+    this.onUpload();
   }
 
   onSubmitPasswordInfo() {

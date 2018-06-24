@@ -4,9 +4,10 @@
       <div class="col-md-4">
         <div class="profile-image-wrapper">
           <div class="profile-image-container text-center">
-            <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-group-256.png" alt="">
+            <img [src]="url ? url : 'https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-group-256.png'" />
           </div>
-          <div class="actions">
+          <div class="actions" (click)="fileInput.click()">
+            <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput/>
             <i class="fas fa-plus"></i>
           </div>
         </div>
