@@ -23,6 +23,7 @@ export class HeaderComponent {
   currPos: Number = 0;
   startPos: Number = 0;
   changePos: Number = 100;
+  profileImg;
   @Output() getSigninModalStateChange = new EventEmitter<boolean>();
   @Output() getSignupModalStateChange = new EventEmitter<boolean>();
 
@@ -37,6 +38,9 @@ export class HeaderComponent {
     this.subscription = this.authService.userAuthenticationChanged.subscribe(
       (user: any) => {
         this.isUserAuthenticated = !!user;
+        if (user) {
+          this.profileImg = user.profileImage;
+        }
       }
     );
 

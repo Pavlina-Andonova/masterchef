@@ -17,7 +17,7 @@ class Profile extends Model {
         lastName: { type: 'string', default: '' },
         isAdmin: { type: 'boolean', defaults: false },
         birthdate: { type: 'date' },
-        profileImage: { type: 'string', default: 'https://www.freeiconspng.com/uploads/profile-icon-9.png' }
+        profileImage: { type: 'string', default: 'https://www.bc.edu/bc-web/schools/law/academics-faculty/faculty-directory/john-flackett/_jcr_content/profileImage.img.png' }
       }
     };
   }
