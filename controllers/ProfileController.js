@@ -59,7 +59,9 @@ const getFavouriteMenuItems = async function(req, res) {
     return menuItem.menuItemId;
   });
 
-  const menuItems = await MenuItem.query().whereIn("id", menuItemsIds).eager('category');
+  const menuItems = await MenuItem.query()
+    .whereIn("id", menuItemsIds)
+    .eager("category");
 
   return res.send(menuItems);
 };
@@ -84,3 +86,10 @@ const removeMenuItemFromFavourites = async function(req, res) {
   return res.send({ result: false });
 };
 module.exports.removeMenuItemFromFavourites = removeMenuItemFromFavourites;
+
+const uploadProfileImage = async function(req, res) {
+  res.setHeader("Content-Type", "application/json");
+  return res.send(req.file);
+};
+
+module.exports.uploadProfileImage = uploadProfileImage;

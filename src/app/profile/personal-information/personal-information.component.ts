@@ -29,7 +29,7 @@ export class PersonalInformationComponent implements OnInit {
   };
   selectedFile: File;
   url: string;
-  
+
   constructor(
     private authService: AuthService,
     private profileService: ProfileService
@@ -101,10 +101,16 @@ export class PersonalInformationComponent implements OnInit {
     reader.onload = (e: any) => {
       this.url = e.target.result;
     };
-    reader.readAsDataURL(this.selectedFile)
+    reader.readAsDataURL(this.selectedFile);
   }
 
   onUpload() {
+    const uploadData = new FormData();
+    uploadData.append("avatar", this.selectedFile, this.selectedFile.name);
+    this.profileService.uploadFormData(uploadData).subscribe((res: any) => {
+      this.url = "/assets/uploads/userImages/" + res.originalname;
+      console.log(res);
+    });
     console.log(this.selectedFile);
   }
 
