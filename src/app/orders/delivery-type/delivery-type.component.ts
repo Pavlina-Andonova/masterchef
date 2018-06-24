@@ -12,7 +12,6 @@ export class DeliveryTypeComponent implements OnInit {
   restaurantAddresses: any;
   isRestaurantOptionsShown: boolean = false;
   addressesPlaceholders: any;
-  addressPlaceholder: any;
   restaurantsPlaceholder: any;
   restaurantPlaceholder: any;
   selectedAddress: any;
@@ -29,20 +28,34 @@ export class DeliveryTypeComponent implements OnInit {
       // console.log(this.profileAddresses);
 
       this.addressesPlaceholders = this.profileAddresses.map(address => {
-        this.addressPlaceholder =
-          address.city + ", " + address.street + ", " + address.number;
+        const addressPlaceholder =
+        address.city + ", " + address.street + ", " + address.number;
         return {
-          id: address.id,
-          placeholder: this.addressPlaceholder
+          id: +address.id,
+          placeholder: addressPlaceholder
         };
       });
+      console.log("adresses");
+      console.log(this.addressesPlaceholders);
 
       if (this.selectedAddress === 0) {
         this.selectedAddress = { id: 0, isRestaurant: true };
         this.isRestaurantOptionsShown = true;
       } else {
         this.selectedAddress = JSON.parse(sessionStorage.getItem("address"));
-        this.isRestaurantOptionsShown = this.selectedAddress.isRestaurant;
+
+        if (!this.selectedAddress) {
+          if (this.addressesPlaceholders.length > 0) {
+            this.selectedAddress = {
+              id: +this.addressesPlaceholders[0].id,
+              isRestaurant: false
+            };
+          }
+          this.selectedAddress = { id: 0, isRestaurant: false };
+          this.isRestaurantOptionsShown = false;
+        } else {
+          this.isRestaurantOptionsShown = this.selectedAddress.isRestaurant;
+        }
       }
     });
 
@@ -54,7 +67,7 @@ export class DeliveryTypeComponent implements OnInit {
         this.restaurantPlaceholder =
           address.city + ", " + address.street + ", " + address.number;
         return {
-          id: address.id,
+          id: +address.id,
           placeholder: this.restaurantPlaceholder
         };
       });
@@ -77,6 +90,7 @@ export class DeliveryTypeComponent implements OnInit {
       isRestaurant: false
     };
     sessionStorage.setItem("address", JSON.stringify(this.selectedAddress));
+    console.log(this.selectedAddress);
   }
 
   selectRestaurant(event: any) {
@@ -87,5 +101,6 @@ export class DeliveryTypeComponent implements OnInit {
       isRestaurant: true
     };
     sessionStorage.setItem("address", JSON.stringify(this.selectedAddress));
+    console.log(this.selectedAddress);
   }
 }

@@ -29,7 +29,7 @@ exports.up = knex => {
       table.date("birthdate").defaultTo(null);
       table
         .string("profileImage")
-        .defaultTo("https://www.freeiconspng.com/uploads/profile-icon-9.png");
+        .defaultTo("/imgs/profile-pic.png");
     })
     .createTable("users", table => {
       table.increments("id").primary();

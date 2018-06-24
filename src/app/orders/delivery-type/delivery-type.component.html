@@ -19,16 +19,23 @@
         <div class="row m-auto">
           <div class="col-12">
             <div class="home-options" *ngIf="!isRestaurantOptionsShown">
-              <h4 class="order-type">
+              <h4 *ngIf="addressesPlaceholders && addressesPlaceholders.length > 0" class="order-type">
                 Please choose the appropriate address for the order
               </h4>
-              <div class="col-5 m-auto" *ngIf="selectedAddress">
-                <select (change)="selectChangeHandler($event)" [value]="selectedAddress.isRestaurant ? 0 : selectedAddress.id">
-                  <option value="0" disabled>
-                    {{selectedAddress.isRestaurant ? 'Switch to a home address' : 'Choose a home address?'}}
-                  </option>
-                  <option *ngFor="let addressData of addressesPlaceholders" [value]="addressData.id">{{addressData.placeholder}}</option>
-                </select>
+              <div *ngIf="addressesPlaceholders && addressesPlaceholders.length > 0">
+                <div class="col-5 m-auto" *ngIf="selectedAddress">
+                  <select (change)="selectChangeHandler($event)" [value]="selectedAddress.isRestaurant ? 0 : selectedAddress.id">
+                    <option value="0" disabled>
+                      {{selectedAddress.isRestaurant ? 'Switch to a home address' : 'Choose a home address?'}}
+                    </option>
+                    <option *ngFor="let addressData of addressesPlaceholders" [value]="addressData.id">{{addressData.placeholder}}</option>
+                  </select>
+                </div>
+              </div>
+              <div *ngIf="!addressesPlaceholders || addressesPlaceholders <= 0"  class="empty-addresses-message">
+                <h2>
+                  Please go to personal infromation and add an address or choose a restaurant!
+                </h2>
               </div>
             </div>
           </div>

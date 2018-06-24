@@ -35,7 +35,7 @@ export class OrdersService {
         return order;
       });
     }
-
+    sessionStorage.setItem("orders", JSON.stringify(this.currentOrders));
     this.orderItemsCountChanged.next(this.getOrderItemsCount());
   }
 
@@ -56,13 +56,14 @@ export class OrdersService {
         return order;
       });
     }
-
+    sessionStorage.setItem("orders", JSON.stringify(this.currentOrders));
     this.orderItemsCountChanged.next(this.getOrderItemsCount());
   }
 
   deleteItem(id: number) {
     this.currentOrders = this.currentOrders.filter(order => order.id !== id);
     this.orderItemsCountChanged.next(this.getOrderItemsCount());
+    sessionStorage.removeItem("orders");
   }
 
   getOrderItems() {

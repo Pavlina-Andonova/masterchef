@@ -54,6 +54,9 @@ export class HeaderComponent {
 
   onLogout() {
     sessionStorage.removeItem("jwtToken");
+    sessionStorage.removeItem("address");
+    sessionStorage.removeItem("orders");
+    sessionStorage.removeItem("paymentMethod");
     this.authService.setIsUserAuthenticated(null);
     this.router.navigate([""]);
   }
