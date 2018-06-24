@@ -40,11 +40,16 @@ export class ShoppingCartItemComponent implements OnInit {
 
   constructor(private ordersService: OrdersService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('item')
+    console.log(this.item)
+    sessionStorage.getItem('orders');
+  }
 
   addItem(id: number) {
     this.ordersService.addMenuItem(id);
     this.menuItemChanged.emit(id);
+    console.log(this.menuItemChanged)
   }
 
   removeItem(id: number) {
