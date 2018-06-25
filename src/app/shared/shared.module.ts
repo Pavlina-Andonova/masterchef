@@ -4,8 +4,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { BrowserModule } from "@angular/platform-browser";
 import * as _ from "lodash";
-import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
-import {MenuItem} from 'primeng/api';                 //api
+import { AccordionModule } from "primeng/accordion"; //accordion and accordion tab
+import { MenuItem } from "primeng/api"; //api
 
 import {
   AutoCompleteModule,
@@ -33,7 +33,7 @@ import {
   SelectButtonModule,
   TriStateCheckboxModule,
   ToggleButtonModule,
-  EditorModule,
+  EditorModule
 } from "./prime";
 
 import { FlipCardComponent } from "./Components/flip-card/flip-card.component";
@@ -42,33 +42,33 @@ import { XPassword } from "./Components/xpassword/xpassword";
 import { XButton } from "./Components/xbutton/xbutton";
 import { PopupCloseButton } from "./Components/popup-close-button/popup-close-button";
 import { SearchComponent } from "./Components/search/search.component";
-import { PopupComponent } from './Components/popup/popup.component';
+import { PopupComponent } from "./Components/popup/popup.component";
 import { FavouriteComponent } from "./Components/favourite/favourite.component";
-import { CustomButtonGoldenrodComponent } from './Components/custom-button-goldenrod/custom-button-goldenrod.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SpinnerComponent } from './Components/spinner/spinner.component';
-import { FilterPipe } from './pipe/filter.pipe'
+import { CustomButtonGoldenrodComponent } from "./Components/custom-button-goldenrod/custom-button-goldenrod.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { SpinnerComponent } from "./Components/spinner/spinner.component";
+import { FilterPipe } from "./pipe/filter.pipe";
 import { SplitPipe } from "./pipe/split.pipe";
-import { NoResultsComponent } from './Components/no-results/no-results.component';
-
+import { NoResultsComponent } from "./Components/no-results/no-results.component";
+import { ReviewComponent } from "./Components/review/review.component";
 
 @NgModule({
   declarations: [
     SplitPipe,
-    FlipCardComponent, 
-    XInput, 
-    XPassword, 
-    XButton, 
-    PopupCloseButton, 
-    SearchComponent, 
-    PopupComponent, 
-    PopupComponent, 
+    FlipCardComponent,
+    XInput,
+    XPassword,
+    XButton,
+    PopupCloseButton,
+    SearchComponent,
+    PopupComponent,
+    PopupComponent,
     FavouriteComponent,
     CustomButtonGoldenrodComponent,
     SpinnerComponent,
     FilterPipe,
     NoResultsComponent,
-      
+    ReviewComponent
   ],
   imports: [
     FormsModule,
@@ -142,8 +142,7 @@ import { NoResultsComponent } from './Components/no-results/no-results.component
     CustomButtonGoldenrodComponent,
     SpinnerComponent,
     NoResultsComponent,
-    
-
+    ReviewComponent
   ]
 })
 export class SharedModule {}
