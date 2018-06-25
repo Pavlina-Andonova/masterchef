@@ -15,7 +15,7 @@ export class SigninComponent implements OnInit {
 
   form: any;
   data: any;
-  message = { user: "", password: "" };
+  message = "";
   
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -45,7 +45,7 @@ export class SigninComponent implements OnInit {
         this.getSigninModalStateChange.emit(false);
       },
       err => {
-        this.message = err.error.msg;
+        this.message = err.error.error;
         this.authService.setIsUserAuthenticated(null);
       }
     );

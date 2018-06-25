@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ChefService } from './chef.servise';
+import { ChefService } from './chef.service';
 
 @Component({
   selector: 'app-chefs',

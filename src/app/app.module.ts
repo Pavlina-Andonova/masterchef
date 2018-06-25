@@ -17,7 +17,7 @@ import { ProfileModule } from "./profile/profile.module";
 import { OrdersModule } from "./orders/orders.module";
 import { ChefsComponent } from './chefs/chefs.component';
 import { ChefItemComponent } from './chefs/chef-item/chef-item.component';
-import { ChefService } from "./chefs/chef.servise";
+import { ChefService } from "./chefs/chef.service";
 
 @NgModule({
   declarations: [

@@ -57,5 +57,8 @@ export class ConfirmationComponent implements OnInit {
     };
   }
 
-  onSubmit() {}
+  onSubmit() {
+    sessionStorage.setItem('paymentMethod', JSON.stringify(this.paymentForm.formGroup.value));
+    console.log(this.paymentForm.formGroup.value);
+  }
 }
