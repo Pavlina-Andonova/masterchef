@@ -105,13 +105,13 @@ export class PersonalInformationComponent implements OnInit {
   }
 
   onUpload() {
-    const uploadData = new FormData();
-    uploadData.append("avatar", this.selectedFile, this.selectedFile.name);
-    this.profileService.uploadFormData(uploadData).subscribe((res: any) => {
-      this.url = "/assets/uploads/userImages/" + res.originalname;
-      console.log(res);
-    });
-    console.log(this.selectedFile);
+    // const uploadData = new FormData();
+    // uploadData.append("avatar", this.selectedFile, this.selectedFile.name);
+    // this.profileService.uploadFormData(uploadData).subscribe((res: any) => {
+    //   this.url = "/assets/uploads/userImages/" + res.originalname;
+    //   console.log(res);
+    // });
+    // console.log(this.selectedFile);
   }
 
   onSubmitProfileInfo() {
@@ -133,9 +133,11 @@ export class PersonalInformationComponent implements OnInit {
       this.profileMessage = this.getFirstErrorMessage(
         this.profileForm.getErrors()
       );
+      console.log("----------- ** ------------")
+      console.log(this.formData)
     }
 
-    this.onUpload();
+    // this.onUpload();
   }
 
   onSubmitPasswordInfo() {
