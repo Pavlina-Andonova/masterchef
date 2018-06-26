@@ -5,17 +5,15 @@
   <div class="header-wrapper">
     <div class="container header">
       <ul class="row text-center m-0 p-0">
-        <li class="col-md-4">
-          <div>
+        <li class="col-md-4" routerLinkActive="active-link">
             <i class="fas fa-shopping-bag"></i>
-            <a [routerLink]="['/orders']">Shopping Cart</a>
-          </div>
+            <a [routerLink]="['/orders/shopping-cart']">Shopping Cart</a>
         </li>
-        <li class="col-md-4">
+        <li class="col-md-4" routerLinkActive="active-link">
           <i class="fas fa-car"></i>
           <a [routerLink]="['/orders/delivery-type']">Delivery Type</a>
         </li>
-        <li class="col-md-4">
+        <li class="col-md-4" routerLinkActive="active-link">
           <i class="fas fa-check"></i>
           <a [routerLink]="['/orders/confirmation']">Confirmation</a>
         </li>

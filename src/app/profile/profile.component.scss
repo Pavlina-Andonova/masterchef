@@ -10,7 +10,7 @@
   }
 
   .intro {
-    background: url("https://media.architecturaldigest.in/wp-content/uploads/2018/01/dining-wine-rack-phoenix-mills-mumbai-restaurant-review-sarah-todd-chef1.jpg");
+    background: url('https://media.architecturaldigest.in/wp-content/uploads/2018/01/dining-wine-rack-phoenix-mills-mumbai-restaurant-review-sarah-todd-chef1.jpg');
     background-size: cover;
     height: 260px;
     position: absolute;
@@ -34,6 +34,12 @@
       ul {
         li {
           display: inline-block;
+          &:hover {
+            i,
+            a {
+              color: goldenrod;
+            }
+          }
 
           i {
             width: 25%;
@@ -41,10 +47,6 @@
 
           a {
             text-decoration: none;
-
-            &:hover {
-              color: black;
-            }
           }
         }
       }
@@ -54,5 +56,12 @@
   .content {
     margin: 0px auto;
     padding: 15px;
+  }
+}
+
+.active-link {
+  i,
+  a {
+    color: goldenrod;
   }
 }

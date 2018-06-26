@@ -10,7 +10,7 @@
   }
 
   .intro {
-    background: url("https://i.ytimg.com/vi/PfeuBxn3MRI/maxresdefault.jpg");
+    background: url('https://i.ytimg.com/vi/PfeuBxn3MRI/maxresdefault.jpg');
     background-size: cover;
     height: 260px;
     position: absolute;
@@ -34,6 +34,11 @@
       ul {
         li {
           display: inline-block;
+          &:hover {
+            i, a{
+              color: goldenrod;
+            }
+          }
 
           i {
             width: 25%;
@@ -41,10 +46,6 @@
 
           a {
             text-decoration: none;
-
-            &:hover {
-              color: black;
-            }
           }
         }
       }
@@ -52,85 +53,9 @@
   }
 }
 
-// .orders-wrapper {
-//   h1,
-//   h2,
-//   h3,
-//   h4,
-//   p,
-//   span {
-//     color: #fff;
-//   }
-//   padding-top: 12%;
-
-//   .orders-content {
-//     background-image: url('../../imgs/orders.jpg');
-//     width: 100%;
-//     height: 500px;
-//     border: 2px solid black;
-
-//     .buttons {
-//       margin: auto;
-
-//       .home,
-//       .restaurant {
-//         width: 70%;
-//         margin: auto;
-//         border: 1px solid #ffff;
-//         color: #fff;
-//         text-align: center;
-//         cursor: pointer;
-//       }
-//       .selected-home {
-//         background: #fff;
-//         color: #000 !important;
-//       }
-//     }
-//     .home-options,
-//     .restaurant-options {
-//       background: #ffffff40;
-//       height: 150px;
-//       margin: 35px auto;
-
-//       .order-type {
-//         text-align: center;
-//         padding: 10px;
-//       }
-//     }
-
-//     .selected-restaurant {
-//       background: #fff;
-//       color: #000 !important;
-//     }
-
-//     .btn-secondary {
-//       color: #fff;
-//       background-color: #00000085;
-//       border-color: #ffffff;
-//       padding: 0;
-
-//       &:hover,
-//       &:active,
-//       &:focus {
-//         color: #000 !important;
-//         background-color: #ffffff !important;
-//         border-color: #545b62 !important;
-//         box-shadow: none;
-//       }
-//     }
-
-//     .show > .btn-secondary.dropdown-toggle:focus {
-//       box-shadow: none;
-//     }
-//   }
-// }
-
-// .total {
-//   height: 70px;
-//   padding-top: 25px;
-//   font-size: 30px;
-//   text-align: center;
-//   background: black;
-//   color: white;
-// }
-
+.active-link {
+  a,
+  i {
+    color: goldenrod;
+  }
+}
