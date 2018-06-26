@@ -9,8 +9,8 @@
 
       <div class="collapse navbar-collapse justify-content-between menu-wrapper" id="navbarSupportedContent">
         <ul class="navbar-nav text-center">
-          <li class="nav-item add-border">
-            <a class="nav-link" routerLink="/">Home</a>
+          <li class="nav-item add-border" >
+            <a class="nav-link" routerLink="/" >Home</a>
           </li>
           <li class="add-border">
             <a class="nav-link" [routerLink]="['chefs']">Chefs</a>
@@ -21,7 +21,7 @@
         </ul>
         <ul class="navbar-nav text-center">
           <li *ngIf="isUserAuthenticated && profileImg">
-            <a class="nav-link p-0" style="margin-top:10px;" [routerLink]="['myProfile']">
+            <a class="nav-link p-0" style="margin-top:8px;" [routerLink]="['myProfile']">
               <div class="profile-img-wrapper">
                 <img class="profile-img" [src]="profileImg" alt="">
               </div>

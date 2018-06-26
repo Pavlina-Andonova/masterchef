@@ -29,37 +29,46 @@ import { OrdersService } from "../../orders.service";
           opacity: 0
         })
       ),
-      transition("normal => fade", animate(1000))
+      transition("normal => fade", animate(400))
     ])
   ]
 })
 export class ShoppingCartItemComponent implements OnInit {
   state = "normal";
+  shoppingBagItems;
+  count;
   @Input() item;
   @Output() menuItemChanged = new EventEmitter<number>();
 
   constructor(private ordersService: OrdersService) {}
 
   ngOnInit() {
-    // console.log('item')
-    // console.log(this.item)
-    sessionStorage.getItem('orders');
+   this.shoppingBagItems = JSON.parse(sessionStorage.getItem('orders'));
+   this.count = this.shoppingBagItems.map( item => item.count);
+  //  console.log("Shopping baaaaaaaaag");
+
+  //  console.log(this.count);
   }
 
   addItem(id: number) {
     this.ordersService.addMenuItem(id);
     this.menuItemChanged.emit(id);
-    console.log(this.menuItemChanged)
   }
 
   removeItem(id: number) {
     this.ordersService.removeMenuItem(id);
     this.menuItemChanged.emit(id);
+    // console.log(id);
+    // console.log("sdfsdfdsfdsf");
+    // console.log(this.ordersService.currentOrders)
+    // if(this.ordersService.currentOrders < 1){
+    //   this.state == "normal" ? (this.state = "fade") : (this.state = "normal");
+    // }
   }
 
   deleteItem(id: number) {
-    this.ordersService.deleteItem(id);
     this.state == "normal" ? (this.state = "fade") : (this.state = "normal");
+    this.ordersService.deleteItem(id);
     this.menuItemChanged.emit(id);
   }
 }

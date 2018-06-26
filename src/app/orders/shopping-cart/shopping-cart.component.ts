@@ -22,18 +22,12 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit() {
     this.setOrders();
     this.total = +sessionStorage.getItem("total");
-    // console.log('total');
-    // console.log(this.total);
-
     this.orders = sessionStorage.getItem("orders");
-    // console.log('orders');
-    // console.log(this.orders);
   }
 
   setOrders() {
     this.ordersService.getOrderItems().subscribe(items => {
       this.ordersList = items;
-      // console.log(items);
       this.total=0;
       this.ordersList.forEach(element => {
         this.total += element.count * element.price;
