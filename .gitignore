@@ -45,3 +45,4 @@ testem.log
 Thumbs.db
 
 /DB
+/src/assets/uploads/*

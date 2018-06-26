@@ -8,7 +8,7 @@ export class OrdersService {
 
   orderItemsCountChanged = new Subject<number>();
   currentAddressId: number;
-  // currentOrders;
+ 
   setHeader() {
     return {
       headers: new HttpHeaders({
@@ -16,6 +16,7 @@ export class OrdersService {
       })
     };
   }
+
   addMenuItem(id: number) {
     const currentOrders = JSON.parse(sessionStorage.getItem('orders')) || [];
     const existedMenuItems = currentOrders.filter(order => order.id === id);
@@ -54,7 +55,6 @@ export class OrdersService {
 
       currentOrders = currentOrders.filter(order => order.count > 0);
     }
-    // this.currentOrders = currentOrders;
     sessionStorage.setItem('orders', JSON.stringify(currentOrders));
 
     this.orderItemsCountChanged.next(this.getOrderItemsCount());

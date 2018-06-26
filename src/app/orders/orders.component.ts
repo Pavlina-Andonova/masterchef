@@ -7,8 +7,10 @@ import { OrdersService } from "./orders.service";
   styleUrls: ["./orders.component.scss"]
 })
 export class OrdersComponent implements OnInit {
+  menuItems;
   constructor() {}
 
   ngOnInit() {
+    this.menuItems = JSON.parse(sessionStorage.getItem("orders"));
   }
 }

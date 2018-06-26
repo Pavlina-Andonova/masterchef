@@ -43,8 +43,11 @@ export class PersonalInformationComponent implements OnInit {
         const updatedData = {
           ...this.formData,
           firstName: this.userData.firstName,
-          lastName: this.userData.lastName
+          lastName: this.userData.lastName,
+          profileImage: this.userData.profileImage || ''
         };
+
+        this.url = this.userData.profileImage;
 
         this.profileForm.setValue(updatedData);
       }
@@ -63,7 +66,8 @@ export class PersonalInformationComponent implements OnInit {
     this.profileForm = new ValidationManager({
       firstName: "required",
       lastName: "",
-      email: "required|email"
+      email: "required|email",
+      profileImage: ""
     });
 
     this.profilePasswordChangeForm = new ValidationManager({
@@ -102,43 +106,53 @@ export class PersonalInformationComponent implements OnInit {
       this.url = e.target.result;
     };
     reader.readAsDataURL(this.selectedFile);
+    // Set the image in the form
+    // console.log(this.selectedFile.name);
+    this.profileForm.setValue({
+      profileImage: '/assets/uploads/userImages/' + this.renameImage(this.selectedFile.name)
+    });
+    console.log(this.profileForm.formGroup.value);
   }
 
-  onUpload() {
-    const uploadData = new FormData();
-    if(this.selectedFile){
-      uploadData.append("avatar", this.selectedFile, this.selectedFile.name);
-      console.log("this.selectedFile");
-      console.log(this.selectedFile);
-      this.profileService.uploadFormData(uploadData).subscribe((res: any) => {
-        this.url = "/assets/uploads/userImages/" + res.originalname;
-        console.log(res);
-      });
-    }
+  updateData() {
+    this.profileMessage = "";
+    this.isProfileErr = false;
+    const formData = this.profileForm.formGroup.value;
+    const emailData = {
+      email: this.profileForm.formGroup.value.email
+    };
+    delete formData.email;
+    this.profileForm.setValue(emailData);
+    this.sendUpdateProfileRequest(formData);
+    this.sendUpdateEmailRequest(emailData);
+
+    this.profileMessage = "Sucessfully updated!";
+  }
+
+  renameImage(originalname) {
+    const imgName = originalname.split(".");
+    const extension = imgName.pop();
+    return this.userData.firstName + this.userData.id + "." + extension;
   }
 
   onSubmitProfileInfo() {
     if (this.profileForm.isValid()) {
-      this.profileMessage = "";
-      this.isProfileErr = false;
-      const formData = this.profileForm.formGroup.value;
-      const emailData = {
-        email: this.profileForm.formGroup.value.email
-      };
-      delete formData.email;
-      this.profileForm.setValue(emailData);
-      this.sendUpdateProfileRequest(formData);
-      this.sendUpdateEmailRequest(emailData);
-
-      this.profileMessage = "Sucessfully updated!";
+      if (this.selectedFile) {
+        const uploadData = new FormData();
+        uploadData.append("avatar", this.selectedFile, '/assets/uploads/userImages/' + this.renameImage(this.selectedFile.name));
+        this.profileService.uploadFormData(uploadData).subscribe((res: any) => {
+          this.url = "/assets/uploads/userImages/" + this.renameImage(this.selectedFile.name);
+          this.updateData();
+        });
+      } else {
+        this.updateData();
+      }
     } else {
       this.isProfileErr = true;
       this.profileMessage = this.getFirstErrorMessage(
         this.profileForm.getErrors()
       );
     }
-
-    this.onUpload();
   }
 
   onSubmitPasswordInfo() {
