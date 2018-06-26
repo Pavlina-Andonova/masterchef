@@ -21,7 +21,8 @@ class Order extends Model {
         profileId: { type: "integer" },
         paymentMethod: { type: "string", defaulTo: "Home" },
         totalPrice: { type: "string" },
-        orderDate: { type: "datetime" }
+        orderDate: { type: "datetime" },
+        additionalInfo: {type:"string"}
       }
     };
   }

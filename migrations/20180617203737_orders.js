@@ -5,6 +5,7 @@ exports.up = knex => {
       table.string("paymentMethod");
       table.integer("totalPrice");
       table.datetime("orderDate");
+      table.text("additionalInfo");
       table
         .integer("addressId")
         .unsigned()

@@ -105,13 +105,16 @@ export class PersonalInformationComponent implements OnInit {
   }
 
   onUpload() {
-    // const uploadData = new FormData();
-    // uploadData.append("avatar", this.selectedFile, this.selectedFile.name);
-    // this.profileService.uploadFormData(uploadData).subscribe((res: any) => {
-    //   this.url = "/assets/uploads/userImages/" + res.originalname;
-    //   console.log(res);
-    // });
-    // console.log(this.selectedFile);
+    const uploadData = new FormData();
+    if(this.selectedFile){
+      uploadData.append("avatar", this.selectedFile, this.selectedFile.name);
+      console.log("this.selectedFile");
+      console.log(this.selectedFile);
+      this.profileService.uploadFormData(uploadData).subscribe((res: any) => {
+        this.url = "/assets/uploads/userImages/" + res.originalname;
+        console.log(res);
+      });
+    }
   }
 
   onSubmitProfileInfo() {
@@ -123,7 +126,7 @@ export class PersonalInformationComponent implements OnInit {
         email: this.profileForm.formGroup.value.email
       };
       delete formData.email;
-
+      this.profileForm.setValue(emailData);
       this.sendUpdateProfileRequest(formData);
       this.sendUpdateEmailRequest(emailData);
 
@@ -133,11 +136,9 @@ export class PersonalInformationComponent implements OnInit {
       this.profileMessage = this.getFirstErrorMessage(
         this.profileForm.getErrors()
       );
-      console.log("----------- ** ------------")
-      console.log(this.formData)
     }
 
-    // this.onUpload();
+    this.onUpload();
   }
 
   onSubmitPasswordInfo() {

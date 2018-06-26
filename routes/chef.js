@@ -9,7 +9,7 @@ module.exports = router => {
   /** CREATE Chef **/
   router.post(
     "/api/chef",
-    passport.authenticate("jwt", { session: false }),
+    // passport.authenticate("jwt", { session: false }),
     ChefController.createChef
   );
 
