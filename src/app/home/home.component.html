@@ -31,7 +31,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-6 col-md-4 col-lg-3 flip-card" *ngFor="let menuCategory of menuCategories">
-        <app-flip-card [flipCardData]="menuCategory"></app-flip-card>
+        <app-flip-card (click)="onClick(menuCategory)" [flipCardData]="menuCategory"></app-flip-card>
       </div>
     </div>
   </div>
