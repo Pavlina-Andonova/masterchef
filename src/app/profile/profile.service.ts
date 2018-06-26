@@ -16,4 +16,8 @@ export class ProfileService {
   updateUserData(profileData: any) {
     return this.http.put("/api/profile", profileData, this.setHeader());
   }
+
+  uploadFormData(formData: FormData) {
+    return this.http.post("/api/profile/image", formData);
+  }
 }

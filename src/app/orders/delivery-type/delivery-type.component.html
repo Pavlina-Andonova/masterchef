@@ -5,7 +5,7 @@
       <p class="text-center pb-3">* Get from the restaurant and get a 10% discount from your order</p>
       <div class="row buttons">
         <div class="col-12 col-md-6">
-          <div class="home" [ngClass]="{'selected-home': isHomeOptionsShown}" (click)="handleHomeOptions()">
+          <div class="home" [ngClass]="{'selected-home': !isRestaurantOptionsShown}" (click)="handleHomeOptions()">
             Home
           </div>
         </div>
@@ -18,41 +18,39 @@
       <div class="container">
         <div class="row m-auto">
           <div class="col-12">
-            <div class="home-options" *ngIf="isHomeOptionsShown">
-              <h4 class="order-type">
+            <div class="home-options" *ngIf="!isRestaurantOptionsShown">
+              <h4 *ngIf="addressesPlaceholders && addressesPlaceholders.length > 0" class="order-type">
                 Please choose the appropriate address for the order
               </h4>
-              <div class="col-5 m-auto">
-                <div class="dropdown home">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    I expect a delivery at home
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item">Addres 1</a>
-                    <a class="dropdown-item">Addres 2</a>
-                  </div>
+              <div *ngIf="addressesPlaceholders && addressesPlaceholders.length > 0">
+                <div class="col-5 m-auto" *ngIf="selectedAddress">
+                  <select (change)="selectChangeHandler($event)" [value]="selectedAddress.isRestaurant ? 0 : selectedAddress.id">
+                    <option value="0" disabled>
+                      {{selectedAddress.isRestaurant ? 'Switch to a home address' : 'Choose a home address?'}}
+                    </option>
+                    <option *ngFor="let addressData of addressesPlaceholders" [value]="addressData.id">{{addressData.placeholder}}</option>
+                  </select>
                 </div>
+              </div>
+              <div *ngIf="!addressesPlaceholders || addressesPlaceholders <= 0"  class="empty-addresses-message">
+                <h2>
+                  Please go to personal infromation and add an address or choose a restaurant!
+                </h2>
               </div>
             </div>
           </div>
         </div>
         <div class="row m-auto">
-          <div class="col-12">
+          <div class="col-12" *ngIf="selectedAddress">
             <div class="restaurant-options" *ngIf="isRestaurantOptionsShown">
               <h4 class="order-type">Please select the restaurant from which you would receive your order</h4>
               <div class="col-5 m-auto">
-                <div class="dropdown restaurant">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    Take out order from the restaurant
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item">бул. България №49Б</a>
-                    <a class="dropdown-item">бул. Васил Левски №53</a>
-                    <a class="dropdown-item">Бул. Витоша, ул. Верила 3</a>
-                  </div>
-                </div>
+                <select (change)="selectRestaurant($event)" [value]="selectedAddress.isRestaurant ? selectedAddress.id : 0">
+                  <option value="0" disabled>
+                    {{selectedAddress.isRestaurant ? 'Choose a restourant' : 'Switch to a restaurant?'}}
+                  </option>
+                  <option *ngFor="let restaurantData of restaurantsPlaceholder" [value]="restaurantData.id">{{restaurantData.placeholder}}</option>
+                </select>
               </div>
             </div>
           </div>

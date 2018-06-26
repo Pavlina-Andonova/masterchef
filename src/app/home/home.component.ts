@@ -13,7 +13,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.menuService.getMenuCategories().subscribe(res => {
       this.menuCategories = res;
-      console.log(this.menuCategories);
     });
   }
 }

@@ -5,7 +5,8 @@ exports.up = knex => {
           .integer('profileId')
           .unsigned()
           .references('id')
-          .inTable('profiles');
+          .inTable('profiles')
+          .onDelete('CASCADE');
         table
           .integer('menuItemId')
           .unsigned()

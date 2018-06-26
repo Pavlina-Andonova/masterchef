@@ -7,67 +7,83 @@ export class OrdersService {
   constructor(private http: HttpClient) {}
 
   orderItemsCountChanged = new Subject<number>();
-  currentOrders: any[] = [];
+  currentAddressId: number;
 
+  setHeader() {
+    return {
+      headers: new HttpHeaders({
+        Authorization: sessionStorage.getItem("jwtToken")
+      })
+    };
+  }
   addMenuItem(id: number) {
-    const existedMenuItems = this.currentOrders.filter(
-      order => order.id === id
-    );
+    const currentOrders = JSON.parse(sessionStorage.getItem("orders")) || [];
+    const existedMenuItems = currentOrders.filter(order => order.id === id);
 
     if (existedMenuItems.length === 0) {
-      this.currentOrders.push({
+      currentOrders.push({
         id: id,
         count: 1
       });
     } else {
-      this.currentOrders.map(order => {
+      currentOrders.map(order => {
         if (id === order.id) {
           order.count += 1;
         }
         return order;
       });
     }
-
+    sessionStorage.setItem("orders", JSON.stringify(currentOrders));
     this.orderItemsCountChanged.next(this.getOrderItemsCount());
   }
 
   removeMenuItem(id: number) {
-    const existedMenuItems = this.currentOrders.filter(
-      order => order.id === id
-    );
+    let currentOrders = JSON.parse(sessionStorage.getItem("orders")) || [];
+    const existedMenuItems = currentOrders.filter(order => order.id === id);
+
     if (existedMenuItems.length === 0) {
       this.deleteItem(id);
     } else {
-      this.currentOrders.map(order => {
+      currentOrders = currentOrders.map(order => {
         if (id === order.id) {
           order.count -= 1;
-          if (order.count < 1) {
-            this.deleteItem(id);
-          }
         }
+
         return order;
       });
+
+      currentOrders = currentOrders.filter(order => order.count > 0);
     }
+
+    sessionStorage.setItem("orders", JSON.stringify(currentOrders));
 
     this.orderItemsCountChanged.next(this.getOrderItemsCount());
   }
 
   deleteItem(id: number) {
-    this.currentOrders = this.currentOrders.filter(order => order.id !== id);
+    let currentOrders = JSON.parse(sessionStorage.getItem("orders")) || [];
+    currentOrders = currentOrders.filter(order => order.id !== id);
+    sessionStorage.setItem("orders", JSON.stringify(currentOrders));
     this.orderItemsCountChanged.next(this.getOrderItemsCount());
   }
 
   getOrderItems() {
     return this.http.post("/api/menu/group", {
-      menuItems: this.currentOrders
+      menuItems: JSON.parse(sessionStorage.getItem("orders")) || []
     });
   }
 
   getOrderItemsCount() {
     let allOrders = 0;
-    this.currentOrders.forEach(order => {
+    const currentOrders = JSON.parse(sessionStorage.getItem("orders")) || [];
+
+    currentOrders.forEach(order => {
       allOrders += order.count;
     });
     return allOrders;
+  }
+
+  setCurrentAddress(id) {
+    this.currentAddressId = id;
   }
 }

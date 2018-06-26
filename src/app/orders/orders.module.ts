@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrdersComponent } from './orders.component';
 import { DeliveryTypeComponent } from './delivery-type/delivery-type.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
@@ -12,7 +12,7 @@ import { ShoppingCartItemComponent } from './shopping-cart/shopping-cart-item/sh
 
 @NgModule({
   declarations: [OrdersComponent, DeliveryTypeComponent, ConfirmationComponent, ShoppingCartComponent, ShoppingCartItemComponent],
-  imports: [CommonModule, FormsModule, SharedModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, SharedModule],
   providers: [OrdersService]
 })
 export class OrdersModule {}

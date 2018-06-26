@@ -25,7 +25,6 @@ module.exports.updateProfile = updateProfile;
 const addMenuItemToFavourites = async function(req, res) {
   res.setHeader("Content-Type", "application/json");
   if (req.user && req.user.id) {
-    console.log(req.user.id);
     let profileMenuItemData = await ProfileMenuItem.query()
       .first()
       .where({
@@ -60,7 +59,9 @@ const getFavouriteMenuItems = async function(req, res) {
     return menuItem.menuItemId;
   });
 
-  const menuItems = await MenuItem.query().whereIn("id", menuItemsIds).eager('category');
+  const menuItems = await MenuItem.query()
+    .whereIn("id", menuItemsIds)
+    .eager("category");
 
   return res.send(menuItems);
 };
@@ -85,3 +86,10 @@ const removeMenuItemFromFavourites = async function(req, res) {
   return res.send({ result: false });
 };
 module.exports.removeMenuItemFromFavourites = removeMenuItemFromFavourites;
+
+const uploadProfileImage = async function(req, res) {
+  res.setHeader("Content-Type", "application/json");
+  return res.send(req.file);
+};
+
+module.exports.uploadProfileImage = uploadProfileImage;

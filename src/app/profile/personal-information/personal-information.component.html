@@ -4,9 +4,10 @@
       <div class="col-md-4">
         <div class="profile-image-wrapper">
           <div class="profile-image-container text-center">
-            <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-group-256.png" alt="">
+            <img [src]="url ? url : 'https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-group-256.png'" />
           </div>
-          <div class="actions">
+          <div class="actions" (click)="fileInput.click()">
+            <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput/>
             <i class="fas fa-plus"></i>
           </div>
         </div>
@@ -17,18 +18,19 @@
             <h2 class="pass-settings-title">Profile Information:</h2>
           </div>
           <div class="col-12 col-md-6 mt-1 mb-1">
-            <input class="name fname" id="firstName" style="margin-right: 1%;" type="text" name="firstName" [value]="userData.firstName" formControlName="firstName"
-              placeholder="Enter first name">
+            <input class="name fname" id="firstName" style="margin-right: 1%;" type="text" name="firstName" [value]="userData.firstName"
+              formControlName="firstName" placeholder="Enter first name">
           </div>
           <div class="col-12 col-md-6 mt-1 mb-1">
-            <input class="name" id="lastName" type="text"  formControlName="lastName" name="lastName" [value]="userData.lastName" placeholder="Enter last name">
+            <input class="name" id="lastName" type="text" formControlName="lastName" [value]="userPassData.lastName" name="lastName"
+              [value]="userData.lastName" placeholder="Enter last name">
           </div>
           <div class="col-12 mt-1 mb-1">
             <input id="email" type="text" name="email" formControlName="email" placeholder="Enter email">
           </div>
           <div class="error-wrapper col-12">
-            <div *ngIf="profileErrorMessage" class="error">
-              {{profileErrorMessage}}
+            <div class="form-message" *ngIf="profileMessage" [ngClass]="{'error' : isProfileErr}">
+              {{profileMessage}}
             </div>
           </div>
           <div class="col-12">
@@ -62,8 +64,8 @@
               placeholder="Repeat password">
           </div>
           <div class="error-wrapper col-12">
-            <div *ngIf="passErrorMessage" class="error">
-              {{passErrorMessage}}
+            <div class="form-message" *ngIf="passMessage" [ngClass]="{'error' : isPassErr}">
+              {{passMessage}}
             </div>
           </div>
           <div class="col-12">

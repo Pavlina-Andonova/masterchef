@@ -1,23 +1,26 @@
-'use strict';
+"use strict";
 
-const Model = require('objection').Model;
+const Model = require("objection").Model;
 
 class Profile extends Model {
   static get tableName() {
-    return 'profiles';
+    return "profiles";
   }
 
   static get jsonSchema() {
     return {
-      type: 'object',
+      type: "object",
 
       properties: {
-        id: { type: 'integer' },
-        firstName: { type: 'string', default: '' },
-        lastName: { type: 'string', default: '' },
-        isAdmin: { type: 'boolean', defaults: false },
-        birthdate: { type: 'date' },
-        profileImage: { type: 'string', default: 'https://www.freeiconspng.com/uploads/profile-icon-9.png' }
+        id: { type: "integer" },
+        firstName: { type: "string", default: "" },
+        lastName: { type: "string", default: "" },
+        isAdmin: { type: "boolean", defaults: false },
+        birthdate: { type: "date" },
+        profileImage: {
+          type: "string",
+          default: "/assets/imgs/profile-pic.png"
+        }
       }
     };
   }

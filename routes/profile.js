@@ -3,6 +3,9 @@
 const { transaction } = require("objection");
 const passport = require("passport");
 require("../middleware/passport")(passport);
+const upload = require("../middleware/multerUpload")(
+  "src/assets/uploads/userImages"
+);
 
 const ProfileController = require("../controllers/ProfileController");
 const UserController = require("../controllers/UserController");
@@ -36,12 +39,12 @@ module.exports = router => {
     UserController.updateUserEmail
   );
 
-    //*Update user password*//
-    router.put(
-      "/api/profile/password",
-      passport.authenticate("jwt", { session: false }),
-      UserController.updateUserPassword
-    );
+  //*Update user password*//
+  router.put(
+    "/api/profile/password",
+    passport.authenticate("jwt", { session: false }),
+    UserController.updateUserPassword
+  );
 
   //* Favourites *//
   //* Add new item*//
@@ -63,5 +66,13 @@ module.exports = router => {
     "/api/favourites/remove",
     passport.authenticate("jwt", { session: false }),
     ProfileController.removeMenuItemFromFavourites
+  );
+
+  //* Image *//
+
+  router.post(
+    "/api/profile/image",
+    upload.single("avatar"),
+    ProfileController.uploadProfileImage
   );
 };

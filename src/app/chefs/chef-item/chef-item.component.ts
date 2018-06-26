@@ -10,7 +10,6 @@ export class ChefItemComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    console.log('Chefs: ' + this.chefs)
   }
 
 

@@ -9,13 +9,13 @@ exports.up = knex => {
       .unsigned()
       .references("id")
       .inTable("profiles")
-      .onDelete("RESTRICT");
+      .onDelete("CASCADE");
     table
       .integer("menuItemId")
       .unsigned()
       .references("id")
       .inTable("menuItems")
-      .onDelete("RESTRICT");
+      .onDelete("CASCADE");
   });
 };
 

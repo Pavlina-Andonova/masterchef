@@ -7,29 +7,31 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse justify-content-between menu-wrapper" id="navbarSupportedContent">
         <ul class="navbar-nav text-center">
           <li class="nav-item add-border">
             <a class="nav-link" routerLink="/">Home</a>
           </li>
           <li class="add-border">
-              <a class="nav-link" [routerLink]="['chefs']">Chefs</a>
-            </li>
+            <a class="nav-link" [routerLink]="['chefs']">Chefs</a>
+          </li>
           <li class="add-border">
             <a class="nav-link" [routerLink]="['menu']">Menu</a>
           </li>
         </ul>
         <ul class="navbar-nav text-center">
-          <li *ngIf="isUserAuthenticated">
+          <li *ngIf="isUserAuthenticated && profileImg">
             <a class="nav-link p-0" style="margin-top:10px;" [routerLink]="['myProfile']">
-              <i class="fas fa-user-circle"> </i>
+              <div class="profile-img-wrapper">
+                <img class="profile-img" [src]="profileImg" alt="">
+              </div>
             </a>
           </li>
           <li *ngIf="isUserAuthenticated">
             <a class="nav-link shopping-cart-wrapper" [routerLink]="['orders/shopping-cart']">
               <div class="shopping-cart"></div>
               <div class="counter">
-               <span class="count">{{orderItemsCount}}</span>
+                <span class="count">{{orderItemsCount}}</span>
               </div>
             </a>
           </li>
@@ -39,7 +41,7 @@
           <li *ngIf="!isUserAuthenticated">
             <a class="nav-link" (click)="openSignupModal()">Sign Up</a>
           </li>
-          <li *ngIf="isUserAuthenticated">
+          <li *ngIf="isUserAuthenticated" style="margin-top: 10px;">
             <a class="nav-link" (click)="onLogout()">Logout</a>
           </li>
         </ul>

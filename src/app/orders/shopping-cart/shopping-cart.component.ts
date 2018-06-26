@@ -16,20 +16,35 @@ import {
 export class ShoppingCartComponent implements OnInit {
   ordersList: any = [];
   constructor(private ordersService: OrdersService) {}
+  total: number = 0;
+  orders;
 
   ngOnInit() {
     this.setOrders();
+    this.total = +sessionStorage.getItem("total");
+    // console.log('total');
+    // console.log(this.total);
+
+    this.orders = sessionStorage.getItem("orders");
+    // console.log('orders');
+    // console.log(this.orders);
   }
 
   setOrders() {
     this.ordersService.getOrderItems().subscribe(items => {
       this.ordersList = items;
-      console.log('items');
-      console.log(items);
+      // console.log(items);
+      this.total=0;
+      this.ordersList.forEach(element => {
+        this.total += element.count * element.price;
+        sessionStorage.setItem("total",  JSON.stringify(this.total));
+      });
+
+      this.total.toFixed(2);
     });
   }
 
-  handleUpdatedMenuItem(){
+  handleUpdatedMenuItem() {
     this.setOrders();
   }
 }

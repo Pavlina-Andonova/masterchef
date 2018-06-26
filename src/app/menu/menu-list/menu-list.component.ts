@@ -24,24 +24,29 @@ export class MenuListComponent implements OnInit {
     this.menuService.getMenu().subscribe(
       (res: any) => {
         const menu = res;
-        this.favService.getFavourites().subscribe(
-          (resp: any) => {
-            const favouriteMenuItemsId = resp.map(favouriteMenuItem => {
-              return favouriteMenuItem.id;
-            });
 
-            this.menu = menu.map((menuItem: any) => {
-              this.newMenuitem.emit(menuItem);
-              return {
-                ...menuItem,
-                isFavourite: favouriteMenuItemsId.indexOf(menuItem.id) >= 0
-              };
-            });
-          },
-          res => {
-            this.menu = menu;
-          }
-        );
+        if (this.authService.checkIfUserIsAuthenticated()) {
+          this.favService.getFavourites().subscribe(
+            (resp: any) => {
+              const favouriteMenuItemsId = resp.map(favouriteMenuItem => {
+                return favouriteMenuItem.id;
+              });
+
+              this.menu = menu.map((menuItem: any) => {
+                this.newMenuitem.emit(menuItem);
+                return {
+                  ...menuItem,
+                  isFavourite: favouriteMenuItemsId.indexOf(menuItem.id) >= 0
+                };
+              });
+            },
+            res => {
+              this.menu = menu;
+            }
+          );
+        } else {
+          this.menu = menu;
+        }
       },
       err => {
         err.error.msg;
