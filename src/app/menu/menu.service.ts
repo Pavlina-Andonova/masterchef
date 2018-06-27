@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Subject } from "rxjs/Subject";
 
 @Injectable()
@@ -10,6 +10,13 @@ export class MenuService {
   categoriesChanged = new Subject<any>();
   constructor(private http: HttpClient) {}
 
+  setHeader() {
+    return {
+      headers: new HttpHeaders({
+        Authorization: sessionStorage.getItem("jwtToken")
+      })
+    };
+  }
 
   createMenuItem(menuItemData) {
     return this.http.post("/api/menuItem", menuItemData);
@@ -27,7 +34,7 @@ export class MenuService {
     return this.http.get("/api/menuItem/" + id);
   }
 
-  getMenuCategories(){
+  getMenuCategories() {
     return this.http.get("/api/categories");
   }
 
@@ -45,7 +52,7 @@ export class MenuService {
 
   setCategories(categories: any) {
     this.categories = categories;
-    
+
     if (!this.currentCategory && categories.length > 0) {
       this.setCurrentCategory(this.categories[0].categoryType);
     }
@@ -60,5 +67,9 @@ export class MenuService {
   setCurrentCategory(categoryType: string) {
     this.currentCategory = categoryType;
     this.currentCategoryChanged.next(this.currentCategory);
+  }
+
+  createReview(reviewData) {
+    return this.http.post("/api/review", reviewData, this.setHeader());
   }
 }

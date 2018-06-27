@@ -36,12 +36,14 @@
             <div class="col-12 col-md-5">
               <app-custom-button-goldenrod (click)="onOrder()" buttonText="Order"></app-custom-button-goldenrod>
             </div>
-            <div class="col-12 col-md-10 review" *ngIf="isReviewOpen">
+            <div class="col-12 col-md-10 review" *ngIf="isReviewOpen" ngForm>
               <h2>Review:</h2>
-              <textarea maxlength="240"></textarea>
+              <form [formGroup]="reviewForm && reviewForm.getForm()">
+                <textarea maxlength="240" formControlName="reviewText" name="reviewText"></textarea>
+              </form>
             </div>
             <div class="col-12 col-md-5" *ngIf="isReviewOpen">
-              <app-custom-button-goldenrod buttonText="Submit"></app-custom-button-goldenrod>
+              <app-custom-button-goldenrod (click)="submitReview()" buttonText="Submit"></app-custom-button-goldenrod>
             </div>
           </div>
         </div>

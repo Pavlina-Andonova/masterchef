@@ -3,7 +3,10 @@ const Review = require("../models/Review");
 //**Create Review */
 const createReview = async function(req, res) {
   // res.setHeader("Content-Type", "application/json");
-  const review = await Review.query().insert(req.body);
+  const review = await Review.query().insert({
+    ...req.body,
+    profileId: req.user.id
+  });
   if (!review) {
     return res.status(500).send({ error: "Somethig went wrong!" });
   }
