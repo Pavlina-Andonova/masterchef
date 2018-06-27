@@ -42,8 +42,8 @@ export class PersonalInformationComponent implements OnInit {
         this.userData = user;
         const updatedData = {
           ...this.formData,
-          firstName: this.userData.firstName,
-          lastName: this.userData.lastName,
+          firstName: this.userData.firstName || '',
+          lastName: this.userData.lastName || '',
           profileImage: this.userData.profileImage || ''
         };
 

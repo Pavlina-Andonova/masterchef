@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ValidationManager } from "ng2-validation-manager";
+import { OrdersService } from "../orders.service";
 
 @Component({
   selector: "app-confirmation",
@@ -14,7 +15,7 @@ export class ConfirmationComponent implements OnInit {
   final;
 
   errorMessage: string;
-  constructor() {}
+  constructor(private ordersService: OrdersService) {}
 
   ngOnInit() {
     this.paymentForm = new ValidationManager({
@@ -52,18 +53,27 @@ export class ConfirmationComponent implements OnInit {
     this.final = {
       menuItems: menuItems,
       paymentMethod: paymentMethod.payType,
-      totalPrice: +sessionStorage.getItem("total"),
-      addressId: addressData.id
+      totalPrice: sessionStorage.getItem("total"),
+      addressId: +addressData.id,
+      orderDate: new Date()
+        .toISOString()
+        .slice(0, 19)
+        .replace("T", " ")
     };
   }
 
   onSubmit() {
     this.final = {
       ...this.final,
-      paymentMethod: this.paymentForm.formGroup.value.paymentMethod,
-      additionalInfo: this.paymentMethod.formGroup.value.additionalInfo
-    }
-    // Save this to DB
-    console.log(this.final);
+      paymentMethod: this.paymentForm.formGroup.value.paymentMethod || this.final.paymentMethod,
+      additionalInfo: this.paymentForm.formGroup.value.additionalInfo || ''
+    };
+
+    this.ordersService.createOrder(this.final).subscribe(res => {
+      sessionStorage.removeItem("orders");
+      sessionStorage.removeItem("paymentMethod");
+      sessionStorage.removeItem("total");
+      sessionStorage.removeItem("address");
+    });
   }
 }

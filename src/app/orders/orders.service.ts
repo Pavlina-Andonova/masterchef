@@ -86,4 +86,8 @@ export class OrdersService {
   setCurrentAddress(id) {
     this.currentAddressId = id;
   }
+
+  createOrder(orderData) {
+    return this.http.post("/api/order", orderData,this.setHeader());
+  }
 }
