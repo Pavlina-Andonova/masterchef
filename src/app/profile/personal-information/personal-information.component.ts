@@ -42,16 +42,18 @@ export class PersonalInformationComponent implements OnInit {
         this.userData = user;
         const updatedData = {
           ...this.formData,
-          firstName: this.userData.firstName || '',
-          lastName: this.userData.lastName || '',
-          profileImage: this.userData.profileImage || ''
+          firstName: this.userData.firstName || "",
+          lastName: this.userData.lastName || "",
+          profileImage: this.userData.profileImage || ""
         };
-
-        this.url = this.userData.profileImage;
-
         this.profileForm.setValue(updatedData);
+        this.url = this.userData.profileImage;
       }
     );
+
+    if (this.userData) {
+      this.url = this.userData.profileImage;
+    }
 
     this.authService.getUserEmail().subscribe((res: any) => {
       this.userEmail = res.email;
@@ -106,12 +108,10 @@ export class PersonalInformationComponent implements OnInit {
       this.url = e.target.result;
     };
     reader.readAsDataURL(this.selectedFile);
-    // Set the image in the form
-    // console.log(this.selectedFile.name);
     this.profileForm.setValue({
-      profileImage: '/assets/uploads/userImages/' + this.renameImage(this.selectedFile.name)
+      profileImage:
+        "/assets/uploads/userImages/" + this.renameImage(this.selectedFile.name)
     });
-    console.log(this.profileForm.formGroup.value);
   }
 
   updateData() {
@@ -139,9 +139,16 @@ export class PersonalInformationComponent implements OnInit {
     if (this.profileForm.isValid()) {
       if (this.selectedFile) {
         const uploadData = new FormData();
-        uploadData.append("avatar", this.selectedFile, '/assets/uploads/userImages/' + this.renameImage(this.selectedFile.name));
+        uploadData.append(
+          "avatar",
+          this.selectedFile,
+          "/assets/uploads/userImages/" +
+            this.renameImage(this.selectedFile.name)
+        );
         this.profileService.uploadFormData(uploadData).subscribe((res: any) => {
-          this.url = "/assets/uploads/userImages/" + this.renameImage(this.selectedFile.name);
+          this.url =
+            "/assets/uploads/userImages/" +
+            this.renameImage(this.selectedFile.name);
           this.updateData();
         });
       } else {

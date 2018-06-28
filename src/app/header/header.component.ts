@@ -58,7 +58,7 @@ export class HeaderComponent {
     sessionStorage.removeItem("orders");
     sessionStorage.removeItem("paymentMethod");
     this.authService.setIsUserAuthenticated(null);
-    this.router.navigate(["/"]);
+    this.router.navigate([""]);
   }
 
   ngOnDestroy() {
