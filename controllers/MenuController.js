@@ -63,7 +63,7 @@ module.exports.getMenuGroup = getMenuGroup;
 const getMenuItem = async function(req, res) {
   res.setHeader("Content-Type", "application/json");
   const menuItem = await transaction(MenuItem.knex(), () => {
-    return MenuItem.query().findById(req.params.id).eager('category');
+    return MenuItem.query().findById(req.params.id).eager('[category, review]');
   });
   if (!menuItem) {
     return res.status(404).send({ error: "Menu Item not found!" });

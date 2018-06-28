@@ -72,4 +72,8 @@ export class MenuService {
   createReview(reviewData) {
     return this.http.post("/api/review", reviewData, this.setHeader());
   }
+
+  getReviews() {
+    return this.http.get("/api/reviews");
+  }
 }
