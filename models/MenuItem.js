@@ -48,12 +48,12 @@ class MenuItem extends Model {
           to: "menuCategories.id"
         }
       },
-      review: {
+      reviews: {
         relation: Model.HasManyRelation,
         modelClass: Review,
         join: {
-          from: "menuItems.reviewId",
-          to: "reviews.id"
+          from: "menuItems.id",
+          to: "reviews.menuItemId"
         }
       }
     };

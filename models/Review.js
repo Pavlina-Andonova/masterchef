@@ -24,7 +24,7 @@ class Review extends Model {
   }
   static get relationMappings() {
     return {
-      category: {
+      profile: {
         relation: Model.BelongsToOneRelation,
         modelClass: Profile,
         join: {

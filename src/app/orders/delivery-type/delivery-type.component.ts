@@ -25,8 +25,6 @@ export class DeliveryTypeComponent implements OnInit {
 
     this.addressesService.getAddresses().subscribe(res => {
       this.profileAddresses = res;
-      // console.log(this.profileAddresses);
-
       this.addressesPlaceholders = this.profileAddresses.map(address => {
         const addressPlaceholder =
         address.city + ", " + address.street + ", " + address.number;
@@ -35,8 +33,6 @@ export class DeliveryTypeComponent implements OnInit {
           placeholder: addressPlaceholder
         };
       });
-      console.log("adresses");
-      console.log(this.addressesPlaceholders);
 
       if (this.selectedAddress === 0) {
         this.selectedAddress = { id: 0, isRestaurant: true };
@@ -84,23 +80,19 @@ export class DeliveryTypeComponent implements OnInit {
 
   selectChangeHandler(event: any) {
     const id = event.target.value;
-    // this.ordersService.setCurrentAddress(this.selectedAddressId);
     this.selectedAddress = {
       id: id,
       isRestaurant: false
     };
     sessionStorage.setItem("address", JSON.stringify(this.selectedAddress));
-    // console.log(this.selectedAddress);
   }
 
   selectRestaurant(event: any) {
     const id = event.target.value;
-    // this.ordersService.setCurrentAddress(this.selectedAddressId);
     this.selectedAddress = {
       id: id,
       isRestaurant: true
     };
     sessionStorage.setItem("address", JSON.stringify(this.selectedAddress));
-    // console.log(this.selectedAddress);
   }
 }

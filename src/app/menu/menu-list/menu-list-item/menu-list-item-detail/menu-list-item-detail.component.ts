@@ -13,7 +13,6 @@ export class MenuListItemDetailComponent implements OnInit {
   menuDetail: any;
   reviewForm;
   isReviewOpen: boolean = false;
-  // menuItem;
   constructor(
     private route: ActivatedRoute,
     private menuSrevice: MenuService,
@@ -22,10 +21,7 @@ export class MenuListItemDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.menuSrevice.getMenuItemById(params["id"]).subscribe(res => {
-        this.menuDetail = res;
-        console.log(this.menuDetail.id);
-      });
+      this.loadData(+params["id"]);
     });
 
     this.reviewForm = new ValidationManager({
@@ -56,9 +52,18 @@ export class MenuListItemDetailComponent implements OnInit {
         menuItemId: this.menuDetail.id
       })
       .subscribe(res => {
-        console.log(res);
+        this.loadData(this.menuDetail.id);
       });
 
-      this.reviewForm.reset();
+    this.reviewForm.reset();
+  }
+
+  loadData(menuItemId: number) {
+    this.menuSrevice.getMenuItemById(menuItemId).subscribe((res: any) => {
+      res.reviews = res.reviews.sort(function(a, b) {
+        return b.id - a.id;
+      });
+      this.menuDetail = res;
+    });
   }
 }

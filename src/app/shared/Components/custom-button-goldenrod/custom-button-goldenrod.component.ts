@@ -11,6 +11,7 @@ export class CustomButtonGoldenrodComponent implements OnInit {
   @Input() id: string = '';
   @Input() clicked: any;
   @Input() type;
+  @Input() disabled: boolean = false;;
   constructor() { }
 
   ngOnInit() {
