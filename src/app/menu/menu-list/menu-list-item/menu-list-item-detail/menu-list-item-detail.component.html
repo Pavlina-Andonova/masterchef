@@ -43,7 +43,7 @@
               </form>
             </div>
             <div class="col-12 col-md-5" *ngIf="isReviewOpen">
-              <app-custom-button-goldenrod (click)="submitReview()" buttonText="Submit"></app-custom-button-goldenrod>
+              <app-custom-button-goldenrod (click)="submitReview()" buttonText="Submit" [disabled]="!this.reviewForm.isValid()"></app-custom-button-goldenrod>
             </div>
           </div>
         </div>
@@ -51,8 +51,8 @@
     </div>
   </div>
 </div>
-<div class="container">
+<div class="container" *ngIf="menuDetail && menuDetail.reviews && menuDetail.reviews.length > 0">
   <div class="row m-0">
-    <app-review style="width:100%;"></app-review>
+    <app-review style="width:100%;" *ngFor="let review of menuDetail.reviews" [review]="review"></app-review>
   </div>
 </div>

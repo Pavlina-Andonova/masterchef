@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-review',
@@ -7,21 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReviewComponent implements OnInit {
   isEditing: boolean = false;
+  @Input() review;
   constructor() { }
 
   ngOnInit() {
-
-  }
-
-  onEdit(){
-    this.isEditing = !this.isEditing;
-  }
-
-  onSave(){
-    this.isEditing = !this.isEditing;
-  }
-
-  onDelete(){
 
   }
 

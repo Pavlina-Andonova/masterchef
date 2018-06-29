@@ -3,35 +3,18 @@
     <div class="row m-0 pt-3 pb-3">
       <div class="col-md-2">
         <div class="image-container">
-          <img class="img-settings" src="https://media1.popsugar-assets.com/files/thumbor/f6mR3MTC66MfnZFc0qGrgcnZ_fg/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2017/12/19/048/n/1922441/tmp_f17bIy_7aef35b1ab387138_k.jpg"
-            alt="">
+          <img class="img-settings" [src]="review.profile.profileImage" [alt]="review.profile.firstName" />
         </div>
       </div>
       <div class="col-md-9">
-        <h2 class="user"> Pavlina Andonova</h2>
+        <h2 class="user">{{review.profile.firstName}}</h2>
         <form>
           <div class="review">
-            <div *ngIf="!isEditing">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas id enim incidunt velit ut minus, et reiciendis voluptatem
-              inventore. Ad error sequi sed facilis dolor temporibus magni dolores similique saepe! Lorem ipsum dolor, sit
-              amet consectetur adipisicing elit. Voluptas id enim incidunt velit ut minus, et reiciendis voluptatem inventore.
-              Ad error sequi sed facilis dolor temporibus magni dolores similique saepe!
+            <div>
+              {{review.reviewText}}
             </div>
-            <textarea type="text" *ngIf="isEditing">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas id enim incidunt velit ut minus, et reiciendis voluptatem
-                inventore. Ad error sequi sed facilis dolor temporibus magni dolores similique saepe! 
-            </textarea>
           </div>
         </form>
-      </div>
-      <div class="edit" (click)="onEdit()" *ngIf="!isEditing">
-        <i class="fas fa-edit"></i>
-      </div>
-      <div class="save" (click)="onSave()" *ngIf="isEditing">
-          <i class="fas fa-check"></i>
-      </div>
-      <div class="delete" (click)="onDelete()">
-        <i class="fas fa-trash-alt"></i>
       </div>
     </div>
   </div>

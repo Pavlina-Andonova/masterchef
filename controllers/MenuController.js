@@ -63,7 +63,7 @@ module.exports.getMenuGroup = getMenuGroup;
 const getMenuItem = async function(req, res) {
   res.setHeader("Content-Type", "application/json");
   const menuItem = await transaction(MenuItem.knex(), () => {
-    return MenuItem.query().findById(req.params.id).eager('[category, review]');
+    return MenuItem.query().findById(req.params.id).eager('[category, reviews, reviews.profile]');
   });
   if (!menuItem) {
     return res.status(404).send({ error: "Menu Item not found!" });
@@ -103,7 +103,6 @@ const deleteMenuItem = async function(req, res) {
   const numberOfDeletedMenuItems = await transaction(MenuItem.knex(), () => {
     return MenuItem.query().deleteById(req.params.id);
   });
-  console.log(numberOfDeletedMenuItems);
   if (numberOfDeletedMenuItems === 0) {
     return res.status(404).send({ error: "Menu Item not found!" });
   }

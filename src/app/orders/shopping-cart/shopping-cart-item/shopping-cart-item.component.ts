@@ -45,9 +45,6 @@ export class ShoppingCartItemComponent implements OnInit {
   ngOnInit() {
    this.shoppingBagItems = JSON.parse(sessionStorage.getItem('orders'));
    this.count = this.shoppingBagItems.map( item => item.count);
-  //  console.log("Shopping baaaaaaaaag");
-
-  //  console.log(this.count);
   }
 
   addItem(id: number) {
@@ -58,12 +55,6 @@ export class ShoppingCartItemComponent implements OnInit {
   removeItem(id: number) {
     this.ordersService.removeMenuItem(id);
     this.menuItemChanged.emit(id);
-    // console.log(id);
-    // console.log("sdfsdfdsfdsf");
-    // console.log(this.ordersService.currentOrders)
-    // if(this.ordersService.currentOrders < 1){
-    //   this.state == "normal" ? (this.state = "fade") : (this.state = "normal");
-    // }
   }
 
   deleteItem(id: number) {
