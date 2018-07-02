@@ -13,6 +13,7 @@ export class ConfirmationComponent implements OnInit {
   paymentMethod;
   address;
   final;
+  isOrderComplete: boolean = false;
 
   errorMessage: string;
   constructor(private ordersService: OrdersService) {}
@@ -65,8 +66,10 @@ export class ConfirmationComponent implements OnInit {
   onSubmit() {
     this.final = {
       ...this.final,
-      paymentMethod: this.paymentForm.formGroup.value.paymentMethod || this.final.paymentMethod,
-      additionalInfo: this.paymentForm.formGroup.value.additionalInfo || ''
+      paymentMethod:
+        this.paymentForm.formGroup.value.paymentMethod ||
+        this.final.paymentMethod,
+      additionalInfo: this.paymentForm.formGroup.value.additionalInfo || ""
     };
 
     this.ordersService.createOrder(this.final).subscribe(res => {
@@ -74,6 +77,11 @@ export class ConfirmationComponent implements OnInit {
       sessionStorage.removeItem("paymentMethod");
       sessionStorage.removeItem("total");
       sessionStorage.removeItem("address");
+      this.ordersService.resetOrdersCount();
+      this.final = {};
+      this.isOrderComplete = true;
+
+      setTimeout(() => (this.isOrderComplete = false), 3600);
     });
   }
 }

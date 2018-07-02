@@ -77,10 +77,17 @@ export class OrdersService {
     let allOrders = 0;
     const currentOrders = JSON.parse(sessionStorage.getItem('orders')) || [];
 
-    currentOrders.forEach(order => {
-      allOrders += order.count;
-    });
+    if (currentOrders.length > 0) {
+      currentOrders.forEach(order => {
+        allOrders += order.count;
+      });
+    }
     return allOrders;
+  }
+
+  resetOrdersCount(){
+    sessionStorage.setItem('orders', JSON.stringify([]));
+    this.orderItemsCountChanged.next(this.getOrderItemsCount());    
   }
 
   setCurrentAddress(id) {

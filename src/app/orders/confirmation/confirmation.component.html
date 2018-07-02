@@ -1,5 +1,10 @@
 <form (ngSubmit)="onSubmit($event)" ngForm>
   <div [formGroup]="paymentForm && paymentForm.getForm()" class="confirmation-wrapper">
+    <div class="col-md-6 m-auto text-center" *ngIf="isOrderComplete">
+      <div class="alert alert-success" role="alert">
+        <strong>Well done!</strong> You successfully made an order.
+      </div>
+    </div>
     <div class="message" *ngIf="errorMessage">
       <h2>{{errorMessage}}</h2>
     </div>
