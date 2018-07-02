@@ -21,7 +21,7 @@
         </ul>
         <ul class="navbar-nav text-center">
           <li *ngIf="isUserAuthenticated && profileImg">
-            <a class="nav-link p-0" style="margin-top:8px;" [routerLink]="['myProfile']">
+            <a class="nav-link p-0" style="margin-top:8px;" [routerLink]="['myProfile/personalInformation']">
               <div class="profile-img-wrapper">
                 <img class="profile-img" [src]="profileImg" alt="">
               </div>
