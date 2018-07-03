@@ -17,6 +17,7 @@ import { DeliveryTypeComponent } from "./orders/delivery-type/delivery-type.comp
 import { ConfirmationComponent } from "./orders/confirmation/confirmation.component";
 import { ShoppingCartComponent } from "./orders/shopping-cart/shopping-cart.component";
 import { ChefsComponent } from "./chefs/chefs.component";
+import { ProfileOrdersComponent } from "./profile/profile-orders/profile-orders.component";
 
 const appRouter: Routes = [
   { path: "", component: HomeComponent, pathMatch: "full" },
@@ -43,7 +44,8 @@ const appRouter: Routes = [
       { path: "", redirectTo: "personalInformation", pathMatch: "full" },
       { path: "personalInformation", component: PersonalInformationComponent },
       { path: "addresses", component: AddressesComponent },
-      { path: "favourites", component: FavouritesComponent }
+      { path: "favourites", component: FavouritesComponent },
+      { path: "my-orders", component: ProfileOrdersComponent }
     ]
   },
   { path: "404", component: PageNotFoundComponent },

@@ -47,6 +47,21 @@ const getOrders = async function(req, res) {
 };
 module.exports.getOrders = getOrders;
 
+//*Get orders for a single user *//
+
+const getUserOrders = async function(req, res) {
+  res.setHeader("Content-Type", "application/json");
+  const orders = await Order.query()
+    .eager("[address, items, items.itemData]")
+    .where({ profileId: req.user.id });
+  if (!orders) {
+    return res.status(404).send({ error: "Not Found!" });
+  }
+
+  return res.send(orders);
+};
+module.exports.getUserOrders = getUserOrders;
+
 //**Get Order */
 const getOrder = async function(req, res) {
   // res.setHeader("Content-Type", "application/json");

@@ -21,6 +21,13 @@ module.exports = router => {
     OrderController.getOrders
   );
 
+    // /**GET Orders for a single User*/
+    router.get(
+      "/api/users-orders",
+      passport.authenticate("jwt", { session: false }),
+      OrderController.getUserOrders
+    );
+
   // /** GET Order */
   router.get(
     "/api/order/:id",

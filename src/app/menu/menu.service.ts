@@ -76,4 +76,8 @@ export class MenuService {
   getReviews() {
     return this.http.get("/api/reviews");
   }
+
+  getUserOders() {
+    return this.http.get("/api/users-orders", this.setHeader());
+  }
 }

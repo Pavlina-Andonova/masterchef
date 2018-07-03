@@ -17,3 +17,10 @@ button {
     background-color: goldenrod;
     border: 2px solid goldenrod;
   }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+  a:disabled {
+    cursor: not-allowed;
+  }

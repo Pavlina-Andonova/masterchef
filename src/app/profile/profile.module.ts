@@ -13,6 +13,8 @@ import { FavouriteItemComponent } from './favourites/favourite-item/favourite-it
 import { AddressFormComponent } from './addresses/address-form/address-form.component';
 import { SingleAddressComponent } from "./addresses/single-address/single-address.component";
 import { AddressesService } from "./addresses/addresses.service";
+import { ProfileOrdersComponent } from './profile-orders/profile-orders.component';
+import { SingleItemComponent } from './profile-orders/single-item/single-item.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { AddressesService } from "./addresses/addresses.service";
     FavouriteItemComponent,
     AddressesComponent,
     AddressFormComponent,
-    SingleAddressComponent
+    SingleAddressComponent,
+    ProfileOrdersComponent,
+    SingleItemComponent,
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule,SharedModule, ProfileRoutesModule],
   providers: [FavouritesService, ProfileService, AddressesService]

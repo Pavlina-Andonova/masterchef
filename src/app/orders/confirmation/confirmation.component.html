@@ -32,7 +32,7 @@
             <h3>Additional information about the order:</h3>
             <textarea formControlName="additionalInfo"></textarea>
           </div>
-          <app-custom-button-goldenrod buttonText="Finish the Order"></app-custom-button-goldenrod>
+          <app-custom-button-goldenrod [disabled]="errorMessage" buttonText="Finish the Order"></app-custom-button-goldenrod>
         </div>
       </div>
     </div>

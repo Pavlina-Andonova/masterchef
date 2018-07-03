@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ValidationManager } from "ng2-validation-manager";
 import { OrdersService } from "../orders.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-confirmation",
@@ -16,7 +17,7 @@ export class ConfirmationComponent implements OnInit {
   isOrderComplete: boolean = false;
 
   errorMessage: string;
-  constructor(private ordersService: OrdersService) {}
+  constructor(private ordersService: OrdersService, private router: Router) {}
 
   ngOnInit() {
     this.paymentForm = new ValidationManager({
@@ -81,7 +82,13 @@ export class ConfirmationComponent implements OnInit {
       this.final = {};
       this.isOrderComplete = true;
 
-      setTimeout(() => (this.isOrderComplete = false), 3600);
+      setTimeout(
+        () => (
+          this.isOrderComplete = false,
+          this.router.navigate(["/myProfile/my-orders"])
+        ),
+        3600
+      );
     });
   }
 }
