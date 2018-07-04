@@ -46,6 +46,9 @@ export class SigninComponent implements OnInit {
       },
       err => {
         this.message = err.error.error;
+        setTimeout(()=> {
+          this.message = null;
+        }, 3000)
         this.authService.setIsUserAuthenticated(null);
       }
     );

@@ -17,11 +17,11 @@ export class PersonalInformationComponent implements OnInit {
   profileMessage: string = "";
   isProfileErr: boolean = false;
   isPassErr: boolean = false;
+  imagesDir: string = "/assets/imgs/uploads/userImages/";
   userData;
   emailData;
   userEmail;
   passData;
-  formData;
   userPassData = {
     oldPassword: "",
     newPassword: "",
@@ -36,12 +36,29 @@ export class PersonalInformationComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.profileForm = new ValidationManager({
+      firstName: "required",
+      lastName: "",
+      email: "required|email",
+      profileImage: ""
+    });
+
     this.userData = this.authService.getCurrentUser();
+    if (this.userData) {
+      const updatedData = {
+        ...this.profileForm.values,
+        firstName: this.userData.firstName || "",
+        lastName: this.userData.lastName || "",
+        profileImage: this.userData.profileImage || ""
+      };
+      this.profileForm.setValue(updatedData);
+    }
+
     this.subscription = this.authService.userAuthenticationChanged.subscribe(
       (user: any) => {
         this.userData = user;
         const updatedData = {
-          ...this.formData,
+        ...this.profileForm.values,
           firstName: this.userData.firstName || "",
           lastName: this.userData.lastName || "",
           profileImage: this.userData.profileImage || ""
@@ -51,26 +68,19 @@ export class PersonalInformationComponent implements OnInit {
       }
     );
 
-    if (this.userData) {
-      this.url = this.userData.profileImage;
-    }
-
     this.authService.getUserEmail().subscribe((res: any) => {
       this.userEmail = res.email;
       const updatedData = {
-        ...this.formData,
+        ...this.profileForm.values,        
         email: this.userEmail
       };
-
+      
       this.profileForm.setValue(updatedData);
     });
 
-    this.profileForm = new ValidationManager({
-      firstName: "required",
-      lastName: "",
-      email: "required|email",
-      profileImage: ""
-    });
+    if (this.userData) {
+      this.url = this.userData.profileImage;
+    }
 
     this.profilePasswordChangeForm = new ValidationManager({
       oldPassword: "required",
@@ -83,16 +93,19 @@ export class PersonalInformationComponent implements OnInit {
       "required",
       "Current password field is required!"
     );
+
     this.profilePasswordChangeForm.setErrorMessage(
       "newPassword",
       "required",
       "New password field is required!"
     );
+
     this.profilePasswordChangeForm.setErrorMessage(
       "repPassword",
       "required",
       "Repeat password field is required!"
     );
+
     this.profilePasswordChangeForm.setErrorMessage(
       "repPassword",
       "equalTo",
@@ -109,8 +122,7 @@ export class PersonalInformationComponent implements OnInit {
     };
     reader.readAsDataURL(this.selectedFile);
     this.profileForm.setValue({
-      profileImage:
-        "/assets/uploads/userImages/" + this.renameImage(this.selectedFile.name)
+      profileImage: this.imagesDir + this.renameImage(this.selectedFile.name)
     });
   }
 
@@ -142,13 +154,10 @@ export class PersonalInformationComponent implements OnInit {
         uploadData.append(
           "avatar",
           this.selectedFile,
-          "/assets/uploads/userImages/" +
-            this.renameImage(this.selectedFile.name)
+          this.imagesDir + this.renameImage(this.selectedFile.name)
         );
         this.profileService.uploadFormData(uploadData).subscribe((res: any) => {
-          this.url =
-            "/assets/uploads/userImages/" +
-            this.renameImage(this.selectedFile.name);
+          this.url = this.imagesDir + this.renameImage(this.selectedFile.name);
           this.updateData();
         });
       } else {

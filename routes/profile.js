@@ -4,7 +4,7 @@ const { transaction } = require("objection");
 const passport = require("passport");
 require("../middleware/passport")(passport);
 const upload = require("../middleware/multerUpload")(
-  "src/assets/uploads/userImages"
+  "src/assets/imgs/uploads/userImages"
 );
 
 const ProfileController = require("../controllers/ProfileController");

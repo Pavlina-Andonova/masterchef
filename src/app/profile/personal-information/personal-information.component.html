@@ -4,7 +4,7 @@
       <div class="col-md-4">
         <div class="profile-image-wrapper">
           <div class="profile-image-container text-center">
-            <img [src]="url ? url : 'https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-group-256.png'" />
+            <img [src]="url ? url : '/assets/imgs/profile-pic.png'" />
           </div>
           <div class="actions" (click)="fileInput.click()">
             <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput/>
